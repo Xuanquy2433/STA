@@ -620,6 +620,7 @@ nav .menu-btn,
 /* about */
 
 #about p ,h5 ,h3 {
+  margin: 0 8px;
   text-align: center;
   color: white;
 }

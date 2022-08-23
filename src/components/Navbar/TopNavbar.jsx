@@ -2,8 +2,6 @@ import React from "react";
 import { Link as LinkScroll } from "react-scroll";
 import { Link as LinkRouter } from 'react-router-dom'
 
-import logo from "../../images/logo.png";
-import Header from "../MainPage/Header/Header";
 const TopNavbar = () => {
   const opengithub = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
@@ -42,15 +40,16 @@ const TopNavbar = () => {
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="subscribe" smooth={true} duration={100}>
-              Subscribe
-            </LinkScroll>
-          </li>
-          <li>
             <LinkScroll to="about" smooth={true} duration={100}>
               About US
             </LinkScroll>
           </li>
+          <li>
+            <LinkScroll to="subscribe" smooth={true} duration={100}>
+              Subscribe
+            </LinkScroll>
+          </li>
+         
         </ul>
         {/* <span
           onClick={() => opengithub("https://github.com")}

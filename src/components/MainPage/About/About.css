@@ -1,0 +1,19 @@
+.member{
+    margin: 0 10px;
+}
+
+.nameMember{
+    background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.dev{
+    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.description{
+
+}
