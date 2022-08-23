@@ -353,8 +353,8 @@ nav .menu-btn,
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
 }
 .s-box:hover {
-  transform: translateY(-10px);
-  transition: all ease 0.3s;
+  transform: translateY(-30px);
+  transition: all ease 0.4s;
 }
 
 #subscribe {
