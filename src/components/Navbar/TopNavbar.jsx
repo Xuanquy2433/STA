@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-scroll";
 import logo from "../../images/logo.png";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Login from "../Login/Login";
+
 const TopNavbar = () => {
   const opengithub = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div>
       <nav>
@@ -48,7 +57,7 @@ const TopNavbar = () => {
         >
           GitHub
         </span> */}
-        <span  className="hey">Login</span>
+        <span className="hey">login<Login/> </span>
       </nav>
     </div>
   );
