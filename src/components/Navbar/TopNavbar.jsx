@@ -10,6 +10,7 @@ const TopNavbar = () => {
   };
 
   const style = {
+    zIndex:'3',
     color: 'white',
     position: 'fixed',
   }
