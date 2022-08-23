@@ -375,7 +375,8 @@ nav .menu-btn,
 }
 
 #subscribe {
-  background-color: #d0ff00;
+  background: linear-gradient(to right, #FF8E15, #B31B98 );
+  /* background-color: #d0ff00; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -385,12 +386,12 @@ nav .menu-btn,
   padding: 30px 0px;
 }
 #subscribe h3 {
-  background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
+  /* background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
 	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	-webkit-text-fill-color: transparent; */
   font-size: 2.5rem;
   margin: 20px;
-  color: #000000;
+  color: #FFFFFF;
 }
 .subscribe-input {
   width: 400px;
