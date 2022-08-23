@@ -2,7 +2,7 @@ import React from "react";
 import featureImg from "../../../images/Frame 19.png";
 const Features = () => {
   return (
-    <>  
+    <>
 
       <div className="f-heading">
         <h1>Features</h1>
@@ -24,7 +24,7 @@ const Features = () => {
             distribution of letters, as opposed to using 'Content here, content
             here', making it look like readable English.
           </p>
-          <button>View More Features</button>
+          <button style={{ fontSize: '0.8em',height: '6vh' }}>View More Features</button>
         </div>
       </div>
     </>
