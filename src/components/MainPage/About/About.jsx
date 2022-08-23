@@ -18,31 +18,33 @@ function About() {
                 <h1>About us</h1>
             </div>
             <Slider {...settings}>
-                <div className="member">
-                    <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/ayo-ogunseinde-316141-3333x3333.jpg" alt="" />
-                    <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Lý Xuân Quý</h5>
-                    <h3 className='dev'>Developer</h3>
-                </div>
-                <div className='member'>
-                    <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/yoann-boyer-316485-1333x1333.jpg" alt="" />
-                    <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Phạm Văn Giang</h5>
-                    <h3 className='dev'>Developer</h3>
-                </div>
-                <div className='member'>
-                    <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/yoann-boyer-316485-1333x1333.jpg" alt="" />
-                    <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Lý Trung Quý</h5>
-                    <h3 className='dev'>Developer</h3>
-                </div>
-                <div className='member'>
-                    <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/ayo-ogunseinde-316141-3333x3333.jpg" alt="" />
-                    <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Phan Thanh Thắng</h5>
-                    <h3 className='dev'>Developer</h3>
-                </div>
-            </Slider>
+                    <div className="member">
+                        <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/ayo-ogunseinde-316141-3333x3333.jpg" alt="" />
+                        <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                        <h5 className="nameMember">Lý Xuân Quý</h5>
+                        <h3 className='dev'>Developer</h3>
+                    </div>
+                    <div className='member'>
+                        <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/yoann-boyer-316485-1333x1333.jpg" alt="" />
+                        <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                        <h5 className="nameMember">Phạm Văn Giang</h5>
+                        <h3 className='dev'>Developer</h3>
+                    </div>
+                    <div className='member'>
+                        <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/yoann-boyer-316485-1333x1333.jpg" alt="" />
+                        <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                        <h5 className="nameMember">Lý Trung Quý</h5>
+                        <h3 className='dev'>Developer</h3>
+                    </div>
+                    <div className='member'>
+                        <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/ayo-ogunseinde-316141-3333x3333.jpg" alt="" />
+                        <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                        <h5 className="nameMember">Phan Thanh Thắng</h5>
+                        <h3 className='dev'>Developer</h3>
+                    </div>
+
+                </Slider>
+            </div>
         </div>
     )
 }
