@@ -9,10 +9,11 @@ function About() {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
+        pauseOnHover: false,
         autoplaySpeed: 2000,
     };
     return (
-        <div id='about' style={{ width: '80%', margin: 'auto',height: '70vh' }}>
+        <div id='about' style={{ width: '80%', margin: 'auto', height: '70vh' }}>
             <div className="s-heading">
                 <h1>About us</h1>
             </div>
@@ -41,7 +42,6 @@ function About() {
                     <h5 >Name</h5>
                     <h3 >Developer</h3>
                 </div>
-
             </Slider></div>
     )
 }
