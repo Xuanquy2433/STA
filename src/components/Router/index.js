@@ -5,6 +5,7 @@ import {
     Link
 } from "react-router-dom";
 import Features from "../Features/Features";
+import Footer from "../Footer/Footer";
 // import { ToastContainer, toast } from 'react-toastify';
 import Header from "../Header/Header";
 import Login from "../Login/Login";
@@ -22,7 +23,7 @@ const RouterScreen = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
             </Routes>
-
+            <Footer/>
         </Router >
 
     )
