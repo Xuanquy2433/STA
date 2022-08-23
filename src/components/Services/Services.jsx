@@ -12,9 +12,9 @@ const Services = () => {
         <p>Here are some services I Provide</p>
       </div>
       <div className="b-container">
-        <Box image={image1} alt="image1" button="REACTJS"/>
-        <Box image={image2} alt="image2" button="PHP"/>
-        <Box image={image1} alt="image1" button="PostgreSQL"/>
+        <Box image={image1} alt="image1" button="1 STA"/>
+        <Box image={image2} alt="image2" button="10 STA"/>
+        <Box image={image1} alt="image1" button="100 STA"/>
       </div>
     </div>
   );

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-scroll";
 import logo from "../../images/logo.png";
+import TestFormLogin from "../Test/TestFormLogin";
 const TopNavbar = () => {
   const opengithub = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
   return (
     <div>
-      <nav>
+      <nav style={{ color: 'white' }}>
         <Link to="main" className="logo" smooth={true} duration={2000}>
-          <img src={logo} alt="" />
+          <h3 style={{ color: 'white', cursor: 'pointer' }}>STA Coin</h3>
         </Link>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
@@ -48,7 +49,11 @@ const TopNavbar = () => {
         >
           GitHub
         </span> */}
-        <span  className="hey">Login</span>
+        <span className="hey" data-toggle="modal" data-target="#exampleModal" >Login</span>
+        {/* 
+        <div class="modal fade" style={{ zIndex: 120, clear: 'both' }} id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <TestFormLogin />
+        </div> */}
       </nav>
     </div>
   );
