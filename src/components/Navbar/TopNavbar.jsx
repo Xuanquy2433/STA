@@ -1,6 +1,6 @@
 import React from "react";
-// import { Link } from "react-scroll";
-import { Link } from 'react-router-dom'
+import { Link as LinkScroll } from "react-scroll";
+import { Link as LinkRouter } from 'react-router-dom'
 
 import logo from "../../images/logo.png";
 import Header from "../MainPage/Header/Header";
@@ -8,41 +8,47 @@ const TopNavbar = () => {
   const opengithub = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
+
+  const style = {
+    color: 'white',
+    position: 'fixed',
+  }
+
   return (
-    <div>
-      <nav style={{ color: 'white'}}>
-        <Link to="/" className="logo" smooth={true} duration={2000}>
+    <div >
+      <nav style={style}>
+        <LinkRouter to="/" className="logo" smooth={true} duration={2000}>
           <h1 style={{ color: 'white', cursor: 'pointer' }}>STA Coin</h1>
-        </Link>
+        </LinkRouter>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="nav-icon"></span>
         </label>
         <ul className="menu">
           <li>
-            <Link to="/" className="active" smooth={true} duration={1000}>
+            <LinkScroll to="main" className="active" smooth={true} duration={1000}>
               Home
-            </Link>
+            </LinkScroll>
           </li>
           <li>
-            <Link to="features" smooth={true} duration={1000}>
+            <LinkScroll to="features" smooth={true} duration={1000}>
               Features
-            </Link>
+            </LinkScroll>
           </li>
           <li>
-            <Link to="services" smooth={true} duration={1000}>
+            <LinkScroll to="services" smooth={true} duration={1000}>
               Services
-            </Link>
+            </LinkScroll>
           </li>
           <li>
-            <Link to="subscribe" smooth={true} duration={1000}>
+            <LinkScroll to="subscribe" smooth={true} duration={1000}>
               Subscribe
-            </Link>
+            </LinkScroll>
           </li>
           <li>
-            <Link to="#" smooth={true} duration={1000}>
+            <LinkScroll to="#" smooth={true} duration={1000}>
               Contact US
-            </Link>
+            </LinkScroll>
           </li>
         </ul>
         {/* <span
@@ -52,9 +58,9 @@ const TopNavbar = () => {
           GitHub
         </span> */}
         <span >
-          <Link to="/login">
-          <p style={{color: 'white',fontSize: '0.8rem'}}>Login</p>
-          </Link>
+          <LinkRouter to="/login">
+            <p style={{ color: 'white', fontSize: '0.8rem' }}>Login</p>
+          </LinkRouter>
         </span>
       </nav>
     </div>
