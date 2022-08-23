@@ -43,12 +43,7 @@ function About() {
                     <h5 className="nameMember">Phan Thanh Thắng</h5>
                     <h3 className='dev'>Developer</h3>
                 </div>
-<<<<<<< HEAD
             </Slider></div>
-=======
-            </Slider>
-        </div>
->>>>>>> cd4bfb6498af518b66fb6a4ed28b31832095cc9b
     )
 }
 
