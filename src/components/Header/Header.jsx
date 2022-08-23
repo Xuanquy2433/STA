@@ -7,7 +7,6 @@ const Header = () => {
   };
   return (
     <div id="main">
-      <TopNavbar />
       <div className="name">
         {/* <h1>
           It's a <span>ReactJS</span> website

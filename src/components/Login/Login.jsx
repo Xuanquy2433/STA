@@ -3,7 +3,7 @@ import React from 'react'
 export default function Login() {
 
     return (
-        <div>
+        <div style={{color: "red"}}>
             login
         </div>
     )

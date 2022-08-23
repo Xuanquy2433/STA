@@ -20,7 +20,7 @@ const TopNavbar = () => {
         </label>
         <ul className="menu">
           <li>
-            <Link to="main" className="active" smooth={true} duration={1000}>
+            <Link to="/" className="active" smooth={true} duration={1000}>
               Home
             </Link>
           </li>
