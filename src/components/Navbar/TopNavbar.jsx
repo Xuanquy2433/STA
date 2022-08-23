@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-scroll";
+// import { Link } from "react-scroll";
+import { Link } from 'react-router-dom'
+
 import logo from "../../images/logo.png";
 const TopNavbar = () => {
   const opengithub = (url) => {
@@ -48,7 +50,11 @@ const TopNavbar = () => {
         >
           GitHub
         </span> */}
-        <span  className="hey">Login</span>
+        <span className="hey">
+          <Link to="/login">
+            Login
+          </Link>
+        </span>
       </nav>
     </div>
   );
