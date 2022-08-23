@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
-import TopNavbar from "../Navbar/TopNavbar";
+import TopNavbar from "../../Navbar/TopNavbar";
 const Header = () => {
   const opengithub = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");

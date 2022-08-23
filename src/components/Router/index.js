@@ -4,15 +4,13 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Features from "../Features/Features";
+import Features from "../MainPage/Features/Features";
 import Footer from "../Footer/Footer";
 // import { ToastContainer, toast } from 'react-toastify';
-import Header from "../Header/Header";
 import Login from "../Login/Login";
 import TopNavbar from "../Navbar/TopNavbar";
 import HomePage from "../Pages/HomePage";
-import Services from "../Services/Services";
-import Subscribe from "../Subscribe/Subscribe";
+
 
 const RouterScreen = () => {
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import featureImg from "../../images/Frame 19.png";
+import featureImg from "../../../images/Frame 19.png";
 const Features = () => {
   return (
     <>  

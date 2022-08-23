@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "./Box";
-import image1 from "../../images/s1.png"
-import image2 from "../../images/s2.png"
+import image1 from "../../../images/s1.png"
+import image2 from "../../../images/s2.png"
 
 const Services = () => {
   return (
