@@ -51,8 +51,9 @@ nav ul {
   display: flex;
 }
 .active {
-  background-color: #d0ff00;
-  color: #000000;
+
+  background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
+  color: #FFFFFF;
   box-shadow: 5px 10px 30px rgba(189, 198, 64, 0.411);
   transition: all ease 0.2s;
 }
@@ -80,8 +81,8 @@ nav ul li a {
   border-bottom: 2px solid #000266;
 }
 nav ul li a:hover {
-  background-color: #d0ff00;
-  color: #000000;
+  background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
+  color: #FFFFFF;
   box-shadow: 5px 10px 30px rgba(189, 198, 64, 0.411);
   transition: all ease 0.2s;
   cursor: pointer;
@@ -100,8 +101,11 @@ nav .menu-btn,
   transform: translate(-50%, -50%);
 }
 .name span {
-  color: #d0ff00;
-  border-bottom: 2px solid #d0ff00;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
+  border-image-slice: 1;
+  color: #FFFFFF;
+  /* border-bottom: 2px solid #d0ff00; */
 }
 .name .details {
   color: #969696;
@@ -124,10 +128,10 @@ nav .menu-btn,
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d0ff00;
+  background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
   box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.137);
   border-radius: 10px;
-  color: #000266;
+  color: #FFFFFF;
   cursor: pointer;
 }
 .cv-btn1 {
@@ -238,12 +242,12 @@ nav .menu-btn,
 .features-text button {
   margin-top: 20px;
   width: 140px;
-  height: 40px;
+  height: 60px;
   border-radius: 10px;
   border: none;
   outline: none;
-  color: #000266;
-  background-color: #d0ff00;
+  color: #FFFFFF;
+  background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
 }
 .features-text button:hover {
   background-color: #ffffff;
@@ -337,8 +341,11 @@ nav .menu-btn,
   color: #000266;
 }
 .s-b-text a {
+  color: white;
   margin-top: 15px;
+  background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
 }
+
 .s-type {
   font-family: calibri;
   color: #000266;
@@ -391,9 +398,10 @@ nav .menu-btn,
 }
 .subscribe-input a {
   width: 200px;
-  height: 35px;
-  background-color: #d0ff00;
-  color: #000000;
+  height: 35px; 
+   color: #FFFFFF;
+
+  background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
   display: flex;
   font-size: 0.9rem;
   justify-content: center;
@@ -406,6 +414,7 @@ nav .menu-btn,
 .subscribe-input a:hover {
   background-color: #000000;
   color: #d0ff00;
+  cursor: pointer;
 }
 @media (max-width: 1190px) {
   #main {

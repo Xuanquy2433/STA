@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-scroll";
+import './Header.css'
 import TopNavbar from "../../Navbar/TopNavbar";
 const Header = () => {
   const opengithub = (url) => {
@@ -12,7 +13,7 @@ const Header = () => {
           It's a <span>ReactJS</span> website
         </h1> */}
         <h1 >
-          <span>STA</span> is an innovative payment network and a new kind of money.
+          <span className="textSTA">STA</span> <h1 className="textIsSTA" style={{display:"inline"}}>is an innovative payment network and a new kind of money.</h1>
         </h1>
         <p className="details">
           It is a long established fact that a reader will be distracted by the

@@ -1,0 +1,12 @@
+.textIsSTA{
+    /* text-transform: uppercase; */
+	background: linear-gradient(to right, #30CFD0 25%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.textSTA{
+    background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
