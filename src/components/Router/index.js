@@ -9,21 +9,17 @@ import Features from "../Features/Features";
 import Header from "../Header/Header";
 import Login from "../Login/Login";
 import TopNavbar from "../Navbar/TopNavbar";
+import HomePage from "../Pages/HomePage";
 import Services from "../Services/Services";
 import Subscribe from "../Subscribe/Subscribe";
-
 
 const RouterScreen = () => {
     return (
         <Router>
             {/* <ToastContainer /> */}
             <TopNavbar />
-            <Header />
-            <Features />
-            <Services />
-            <Subscribe />
-
             <Routes>
+                <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
             </Routes>
 
