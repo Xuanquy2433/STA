@@ -47,8 +47,8 @@ const TopNavbar = () => {
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="#" smooth={true} duration={100}>
-              Contact US
+            <LinkScroll to="about" smooth={true} duration={100}>
+              About US
             </LinkScroll>
           </li>
         </ul>

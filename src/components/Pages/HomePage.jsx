@@ -1,4 +1,5 @@
 import React from 'react'
+import About from '../MainPage/About/About'
 import Features from '../MainPage/Features/Features'
 import Header from '../MainPage/Header/Header'
 import Services from '../MainPage/Services/Services'
@@ -10,6 +11,7 @@ export default function HomePage() {
             <Header />
             <Features />
             <Services />
+            <About/>
             <Subscribe />
         </div>
     )
