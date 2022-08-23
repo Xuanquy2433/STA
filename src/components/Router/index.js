@@ -10,6 +10,7 @@ import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import TopNavbar from "../Navbar/TopNavbar";
 import HomePage from "../Pages/HomePage";
+import Register from "../Register/Register";
 
 
 const RouterScreen = () => {
@@ -20,6 +21,7 @@ const RouterScreen = () => {
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
             <Footer/>
         </Router >

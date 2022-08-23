@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link as Link } from 'react-router-dom'
 
 
 export default function Login() {
@@ -25,15 +26,11 @@ export default function Login() {
                                     <div className="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
                                         <div className="card card-plain">
                                             <div className="card-header">
-                                                <h4 className="font-weight-bolder">Sign Up</h4>
-                                                <p className="mb-0">Enter your email and password to register</p>
+                                                <h4 className="font-weight-bolder">Sign In</h4>
+                                                <p className="mb-0">Enter your email and password to Sign In</p>
                                             </div>
                                             <div className="card-body">
                                                 <form action="Register" method="post">
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        {/*<label class="form-label">Email</label>*/}
-                                                        <input type="email" className="form-control" name="email" placeholder="Email" required />
-                                                    </div>
                                                     <div className="input-group input-group-outline mb-3">
                                                         {/*<label class="form-label">Username</label>*/}
                                                         <input type="text" className="form-control" name="username" placeholder="username" required />
@@ -49,14 +46,16 @@ export default function Login() {
                                                         </label>
                                                     </div>
                                                     <div className="text-center">
-                                                        <button type="submit" name="action" value="register" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                                        <button type="submit" name="action" value="register" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div className="card-footer text-center pt-0 px-lg-2 px-1">
                                                 <p className="mb-2 text-sm mx-auto">
-                                                    Already have an account?
-                                                    <a href="./Login.jsp" className="text-primary text-gradient font-weight-bold">Sign in</a>
+                                                    Don't have an account?
+                                                    <Link to="/register">
+                                                        <a href="" className="text-primary text-gradient font-weight-bold"> Sign Up</a>
+                                                    </Link>
                                                 </p>
                                             </div>
                                         </div>
