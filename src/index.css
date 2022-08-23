@@ -40,7 +40,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.336);
-  /* position: fixed; */
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -108,7 +108,7 @@ nav .menu-btn,
 }
 .name h1 {
   font-family: "Montserrat";
-  font-size: 46px;
+  font-size: 43px;
   margin: 0px;
   letter-spacing: 3px;
   color: #ffffff;
