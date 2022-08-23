@@ -19,7 +19,7 @@ const Header = () => {
         <div className="header-btns">
           <Link className="cv-btn">Hire Me</Link>
           <span
-            onClick={() => opengithub("https://github.com/irtaza9")}
+            onClick={() => opengithub("https://github.com")}
             className="cv-btn1"
           >
             GitHub

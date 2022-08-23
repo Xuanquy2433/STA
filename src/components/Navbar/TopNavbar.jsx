@@ -42,12 +42,13 @@ const TopNavbar = () => {
             </Link>
           </li>
         </ul>
-        <span
-          onClick={() => opengithub("https://github.com/irtaza9")}
+        {/* <span
+          onClick={() => opengithub("https://github.com")}
           className="hey"
         >
           GitHub
-        </span>
+        </span> */}
+        <span  className="hey">Login</span>
       </nav>
     </div>
   );
