@@ -10,9 +10,9 @@ const TopNavbar = () => {
   };
   return (
     <div>
-      <nav style={{ color: 'white' }}>
-        <Link to="main" className="logo" smooth={true} duration={2000}>
-          <h3 style={{ color: 'white', cursor: 'pointer' }}>STA Coin</h3>
+      <nav style={{ color: 'white'}}>
+        <Link to="/" className="logo" smooth={true} duration={2000}>
+          <h1 style={{ color: 'white', cursor: 'pointer' }}>STA Coin</h1>
         </Link>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
@@ -51,9 +51,9 @@ const TopNavbar = () => {
         >
           GitHub
         </span> */}
-        <span className="hey">
+        <span >
           <Link to="/login">
-            Login
+          <p style={{color: 'white',fontSize: '0.8rem'}}>Login</p>
           </Link>
         </span>
       </nav>
