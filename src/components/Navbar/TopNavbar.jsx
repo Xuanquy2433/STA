@@ -42,15 +42,16 @@ const TopNavbar = () => {
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="subscribe" smooth={true} duration={100}>
-              Subscribe
-            </LinkScroll>
-          </li>
-          <li>
             <LinkScroll to="about" smooth={true} duration={100}>
               About US
             </LinkScroll>
           </li>
+          <li>
+            <LinkScroll to="subscribe" smooth={true} duration={100}>
+              Subscribe
+            </LinkScroll>
+          </li>
+         
         </ul>
         {/* <span
           onClick={() => opengithub("https://github.com")}
