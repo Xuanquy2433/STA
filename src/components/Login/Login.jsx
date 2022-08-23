@@ -1,9 +1,10 @@
 import React from 'react'
 
+
 export default function Login() {
 
     return (
-        <div style={{ backgroundColor: "white", zIndex:"-1", marginTop: "60px" }}>
+        <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
             <div>
                 <div className="container position-sticky z-index-sticky top-0">
                     <div className="row">
