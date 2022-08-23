@@ -625,6 +625,10 @@ nav .menu-btn,
   color: white;
 }
 
+#about p {
+  font-size: 0.9em;
+}
+
 #about img{
   width: 25%;
   margin: auto;
