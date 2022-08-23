@@ -9,8 +9,11 @@ const Header = () => {
     <div id="main">
       <TopNavbar />
       <div className="name">
-        <h1>
+        {/* <h1>
           It's a <span>ReactJS</span> website
+        </h1> */}
+        <h1 >
+          <span>STA</span> is an innovative payment network and a new kind of money.
         </h1>
         <p className="details">
           It is a long established fact that a reader will be distracted by the

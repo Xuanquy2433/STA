@@ -1,24 +1,15 @@
 import React from "react";
 import { Link } from "react-scroll";
 import logo from "../../images/logo.png";
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import Login from "../Login/Login";
-
 const TopNavbar = () => {
   const opengithub = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   return (
     <div>
-      <nav>
+      <nav style={{ color: 'white' }}>
         <Link to="main" className="logo" smooth={true} duration={2000}>
-          <img src={logo} alt="" />
+          <h3 style={{ color: 'white', cursor: 'pointer' }}>STA Coin</h3>
         </Link>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
@@ -57,7 +48,7 @@ const TopNavbar = () => {
         >
           GitHub
         </span> */}
-        <span className="hey">login<Login/> </span>
+        <span  className="hey">Login</span>
       </nav>
     </div>
   );
