@@ -14,7 +14,9 @@ function About() {
         autoplaySpeed: 2000,
     };
     return (
+
         <div id='about' style={{ width: '85%', margin: 'auto', paddingTop: '39px' }}>
+
             <div className="s-heading">
                 <h1>About us</h1>
             </div>
@@ -43,7 +45,9 @@ function About() {
                     <h5 className="nameMember">Phan Thanh Thắng</h5>
                     <h3 className='dev'>Developer</h3>
                 </div>
-            </Slider></div>
+
+            </Slider>
+        </div>
     )
 }
 
