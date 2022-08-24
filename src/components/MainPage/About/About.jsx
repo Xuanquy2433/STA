@@ -13,7 +13,7 @@ function About() {
         autoplaySpeed: 2000,
     };
     return (
-        <div id='about' style={{ width: '80%', margin: 'auto',  }}>
+        <div id='about' style={{ width: '80%', margin: 'auto', }}>
             <div className="s-heading">
                 <h1>About us</h1>
             </div>
