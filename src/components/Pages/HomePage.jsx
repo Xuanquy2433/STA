@@ -4,6 +4,7 @@ import Features from '../MainPage/Features/Features'
 import Header from '../MainPage/Header/Header'
 import Services from '../MainPage/Services/Services'
 import Subscribe from '../MainPage/Subscribe/Subscribe'
+import Transaction from '../MainPage/Transaction/Transaction'
 
 export default function HomePage() {
     return (
@@ -12,6 +13,7 @@ export default function HomePage() {
             <Features />
             <Services />
             <About/>
+            <Transaction/>
             <Subscribe />
         </div>
     )

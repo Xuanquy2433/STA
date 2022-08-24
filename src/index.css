@@ -51,9 +51,8 @@ nav ul {
   display: flex;
 }
 .active {
-
   background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
-  color: #FFFFFF;
+  color: #ffffff;
   box-shadow: 5px 10px 30px rgba(189, 198, 64, 0.411);
   transition: all ease 0.2s;
 }
@@ -82,7 +81,7 @@ nav ul li a {
 }
 nav ul li a:hover {
   background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
-  color: #FFFFFF;
+  color: #ffffff;
   box-shadow: 5px 10px 30px rgba(189, 198, 64, 0.411);
   transition: all ease 0.2s;
   cursor: pointer;
@@ -104,7 +103,7 @@ nav .menu-btn,
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
   border-image-slice: 1;
-  color: #FFFFFF;
+  color: #ffffff;
   /* border-bottom: 2px solid #d0ff00; */
 }
 .name .details {
@@ -131,7 +130,7 @@ nav .menu-btn,
   background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
   box-shadow: 5px 10px 30px rgba(255, 2, 2, 0.137);
   border-radius: 10px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 .cv-btn1 {
@@ -192,9 +191,9 @@ nav .menu-btn,
   }
 }
 .f-heading h1 {
-  background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+  background: linear-gradient(to right, #ff8e15 0%, #b31b98 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   /* color: #ffffff; */
   font-size: 2.5rem;
   margin: 0px;
@@ -230,15 +229,14 @@ nav .menu-btn,
   list-style: circle;
 }
 .features-text h2 {
- 
   font-size: 2rem;
   /* color: #d0ff00; */
   font-weight: 700;
 }
 .features-text h2 {
-  background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+  background: linear-gradient(to right, #ff8e15 0%, #b31b98 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0px;
   padding: 0px;
 }
@@ -253,7 +251,7 @@ nav .menu-btn,
   border-radius: 10px;
   border: none;
   outline: none;
-  color: #FFFFFF;
+  color: #ffffff;
   background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
 }
 .features-text button:hover {
@@ -282,9 +280,9 @@ nav .menu-btn,
 }
 
 .s-heading h1 {
-  background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+  background: linear-gradient(to right, #ff8e15 0%, #b31b98 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   /* color: #ffffff; */
   font-size: 3rem;
   margin: 0px;
@@ -375,7 +373,7 @@ nav .menu-btn,
 }
 
 #subscribe {
-  background: linear-gradient(to right, #FF8E15, #B31B98 );
+  background: linear-gradient(to right, #ff8e15, #b31b98);
   /* background-color: #d0ff00; */
   display: flex;
   flex-direction: column;
@@ -391,7 +389,7 @@ nav .menu-btn,
 	-webkit-text-fill-color: transparent; */
   font-size: 2.5rem;
   margin: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .subscribe-input {
   width: 400px;
@@ -412,8 +410,8 @@ nav .menu-btn,
 }
 .subscribe-input a {
   width: 200px;
-  height: 35px; 
-   color: #FFFFFF;
+  height: 35px;
+  color: #ffffff;
 
   background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
   display: flex;
@@ -619,16 +617,268 @@ nav .menu-btn,
 
 /* about */
 
-#about p ,h5 ,h3 {
+#about p,
+h5,
+h3 {
   margin: 0 8px;
   text-align: center;
   color: white;
 }
 
-#about img{
+#about p {
+  font-size: 0.9em;
+}
+
+#about img {
   width: 25%;
   margin: auto;
   border-radius: 50%;
   margin-bottom: 20px;
   margin-top: 30px;
+}
+
+
+/* transaction */
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  background-color: #222;
+  min-height: 100px;
+  max-width: 1000px;
+  margin: 10px auto;
+  padding: 10px 30px;
+}
+.dark,
+.input:focus {
+  background-color: #222;
+}
+.navbar {
+  padding: 0.5rem 0rem;
+}
+.navbar .navbar-brand {
+  font-size: 30px;
+}
+#income {
+  border-right: 1px solid #bbb;
+}
+.notify {
+  display: none;
+}
+.nav-item .nav-link .fa-bell-o,
+.fa-long-arrow-down,
+.fa-long-arrow-up {
+  padding: 10px 10px;
+  background-color: #444;
+  border-radius: 50%;
+  position: relative;
+  font-size: 18px;
+}
+.nav-item .nav-link .fa-bell-o::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ffc0cb;
+  right: 10px;
+  top: 10px;
+}
+.nav-item input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 3px 8px;
+  width: 75%;
+  color: #eee;
+}
+.nav-item .fa-search {
+  font-size: 18px;
+  color: #bbb;
+  cursor: pointer;
+}
+.navbar-nav:last-child {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+.navbar-nav .nav-item {
+  padding: 0px 0px 0px 10px;
+}
+.navbar-brand p {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+.text {
+  color: #bbb;
+}
+.money {
+  font-family: "Lato", sans-serif;
+}
+.fa-long-arrow-down,
+.fa-long-arrow-up {
+  padding-left: 12px;
+  padding-top: 8px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 100;
+  color: #28df99;
+}
+.fa-long-arrow-up {
+  color: #ffa500;
+}
+.nav.nav-tabs {
+  border: none;
+}
+.nav.nav-tabs .nav-item .nav-link {
+  color: #bbb;
+  border: none;
+}
+.nav.nav-tabs .nav-link.active {
+  background-color: #222;
+  border: none;
+  color: #fff;
+  border-bottom: 4px solid #fff;
+}
+.nav.nav-tabs .nav-item .nav-link:hover {
+  border: none;
+  color: #eee;
+}
+.nav.nav-tabs .nav-item .nav-link.active:hover {
+  border-bottom: 4px solid #fff;
+}
+.nav.nav-tabs .nav-item .nav-link:focus {
+  border-bottom: 4px solid #fff;
+  color: #fff;
+}
+.table-darkN {
+  background-color: #222;
+}
+.table thead th {
+  text-transform: uppercase;
+  color: #bbb;
+  font-size: 12px;
+}
+.table thead th,
+.table td,
+.table th {
+  border: none;
+  overflow: auto auto;
+}
+td .fa-briefcase,
+td .fa-bed,
+td .fa-exchange,
+td .fa-cutlery {
+  color: #ff6347;
+  background-color: #444;
+  padding: 5px;
+  border-radius: 50%;
+}
+td .fa-bed,
+td .fa-cutlery {
+  color: #40a8c4;
+}
+td .fa-exchange {
+  color: #b15ac7;
+}
+tbody tr td .fa-cc-mastercard,
+tbody tr td .fa-cc-visa {
+  color: #bbb;
+}
+tbody tr td.text-muted {
+  font-family: "Lato", sans-serif;
+}
+tbody tr td .fa-long-arrow-up,
+tbody tr td .fa-long-arrow-down {
+  font-size: 12px;
+  padding-left: 7px;
+  padding-top: 3px;
+  height: 20px;
+  width: 20px;
+}
+.results span {
+  color: #bbb;
+  font-size: 12px;
+}
+.results span b {
+  font-family: "Lato", sans-serif;
+}
+.pagination .page-item .page-link {
+  background-color: #444;
+  color: #fff;
+  padding: 0.3rem 0.75rem;
+  border: none;
+  border-radius: 0;
+}
+.pagination .page-item .page-link span {
+  font-size: 16px;
+}
+.pagination .page-item.disabled .page-link {
+  background-color: #333;
+  color: #eee;
+  cursor: crosshair;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .wrapper {
+    margin: auto;
+  }
+  .navbar-nav:last-child {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+  }
+  .notify {
+    display: inline;
+  }
+  .nav-item .fa-search {
+    padding-left: 10px;
+  }
+  .navbar-nav .nav-item {
+    padding: 0px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .wrapper {
+    margin: auto;
+  }
+  .navbar-nav:last-child {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+  }
+  .notify {
+    display: inline;
+  }
+  .nav-item .fa-search {
+    padding-left: 10px;
+  }
+  .navbar-nav .nav-item {
+    padding: 0px;
+  }
+  #income {
+    border: none;
+  }
+}
+@media (max-width: 400px) {
+  .wrapper {
+    padding: 10px 15px;
+    margin: auto;
+  }
+  .btn {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .nav.nav-tabs .nav-link {
+    padding: 10px;
+  }
 }
