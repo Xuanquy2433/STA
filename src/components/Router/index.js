@@ -15,6 +15,7 @@ import Basic from "../MainPage/Services/Pack/Basic";
 import Diamond from "../MainPage/Services/Pack/Diamond";
 import Gold from "../MainPage/Services/Pack/Gold";
 import Profile from "../MainPage/Profile/Profile";
+import PageNotFound from "../MainPage/Notfound/PageNotFound";
 
 
 const RouterScreen = () => {
@@ -31,6 +32,8 @@ const RouterScreen = () => {
                 <Route path="/basic" element={<Basic/>} />
                 <Route path="/gold" element={<Gold/>} />
                 <Route path="/diamond" element={<Diamond/>} />
+
+                <Route path="*" element={<PageNotFound/>} />
 
             </Routes>
             <Footer/>
