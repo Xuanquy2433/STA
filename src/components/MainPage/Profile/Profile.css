@@ -135,13 +135,13 @@
   
   a:not([href]):not([tabindex]) {
     text-decoration: none;
-    color: inherit;
+    /* color: inherit; */
   }
   
   a:not([href]):not([tabindex]):hover,
   a:not([href]):not([tabindex]):focus {
     text-decoration: none;
-    color: inherit;
+    /* color: inherit; */
   }
   
   a:not([href]):not([tabindex]):focus {
