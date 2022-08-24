@@ -14,6 +14,7 @@ import Register from "../Register/Register";
 import Basic from "../MainPage/Services/Pack/Basic";
 import Diamond from "../MainPage/Services/Pack/Diamond";
 import Gold from "../MainPage/Services/Pack/Gold";
+import Profile from "../MainPage/Profile/Profile";
 
 
 const RouterScreen = () => {
@@ -25,6 +26,7 @@ const RouterScreen = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/profile" element={<Profile />} />
                 
                 <Route path="/basic" element={<Basic/>} />
                 <Route path="/gold" element={<Gold/>} />
