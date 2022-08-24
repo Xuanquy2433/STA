@@ -165,7 +165,7 @@ nav .menu-btn,
   margin-bottom: 4em;
   position: absolute;
   bottom: 0px;
-  border-right: 2px solid #d0ff00;
+  border-right: 2px solid #b31b98 ;
   animation: arrow-animation ease 1.5s;
   animation-iteration-count: infinite;
 }
@@ -176,7 +176,7 @@ nav .menu-btn,
   height: 0;
   border-style: solid;
   border-width: 11px 11px 0px 11px;
-  border-color: #d0ff00 transparent transparent transparent;
+  border-color: #b31b98  transparent transparent transparent;
   right: -0.7em;
   bottom: -2px;
 }
