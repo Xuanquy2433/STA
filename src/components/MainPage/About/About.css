@@ -9,6 +9,7 @@
 }
 
 .dev{
+	font-size: 17px;
     background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
