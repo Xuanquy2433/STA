@@ -60,7 +60,7 @@ function Transaction() {
                             </a>{" "}
                         </li> */}
                     </ul>{" "}
-                    <button className="btn btn-primary">New Transaction</button>
+                    <button style={{background: "linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)"}} className="btn btn-primary">New Transaction</button>
                 </div>
                 <div className="table-responsive mt-3">
                     <table className="table table-darkN table-borderless">
