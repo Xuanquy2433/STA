@@ -8,10 +8,18 @@ const Box = (props) => {
         <img src={props.image} alt={props.alt} />
       </div>
       <div className="s-b-text">
-        <p className="details">
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout.
+        
+        <p style={{ marginTop: '0' }} className="details">
+          <i class="fa-solid fa-check"></i>  Lorem ipsum dolor sit amet.
         </p>
+
+        <p style={{ marginTop: '0' }} className="details">
+          <i class="fa-solid fa-check"></i>  It is a long established fact
+        </p>
+        <p style={{ marginTop: '0' }} className="details">
+          <i class="fa-solid fa-check"></i>  It is a long established fact
+        </p>
+
         <Link to="#" className="cv-btn">
           {props.button}
         </Link>

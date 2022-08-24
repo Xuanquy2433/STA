@@ -19,7 +19,7 @@ const Services = () => {
         <Link to="/gold">
           <Box image={image1} alt="image2" button="100 STA" />
         </Link>
-        <Link to="/premium">
+        <Link to="/diamond">
           <Box image={image1} alt="image1" button="1000 STA" />
         </Link>
       </div>
