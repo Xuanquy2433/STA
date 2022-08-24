@@ -641,11 +641,7 @@ h3 {
 /* transaction */
 
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 
 .wrapper {
   background-color: #222;

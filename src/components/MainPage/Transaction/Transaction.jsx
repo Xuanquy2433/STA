@@ -167,7 +167,7 @@ function Transaction() {
                         Showing<b className="text-white"> 1-7 0f 200 </b> trasactions
                     </span>
                     <div className="pt-3">
-                        <nav aria-label="Page navigation example">
+                        <div aria-label="Page navigation example">
                             <ul className="pagination">
                                 <li className="page-item disabled">
                                     {" "}
@@ -184,7 +184,7 @@ function Transaction() {
                                     </a>{" "}
                                 </li>
                             </ul>
-                        </nav>
+                        </div>
                     </div>
                 </div>
             </div>
