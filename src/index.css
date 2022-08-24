@@ -739,8 +739,11 @@ h3 {
   border: none;
 }
 .nav.nav-tabs .nav-link.active {
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
+  border-image-slice: 1;
   background-color: #222;
-  border: none;
+  /* border: none; */
   color: #fff;
   border-bottom: 4px solid #fff;
 }
