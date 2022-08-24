@@ -1054,7 +1054,7 @@
       background-position: 0 0;
     }
   }
-  
+ 
   .progress {
     font-size: .75rem;
     display: flex;
@@ -1119,9 +1119,9 @@
     border-radius: 50% !important;
   }
   
-  .d-none {
+  /* .d-none {
     display: none !important;
-  }
+  } */
   
   .d-flex {
     display: flex !important;
@@ -1162,7 +1162,7 @@
     .justify-content-xl-between {
       justify-content: space-between !important;
     }
-  }
+  } */
   
   .float-right {
     float: right !important;
