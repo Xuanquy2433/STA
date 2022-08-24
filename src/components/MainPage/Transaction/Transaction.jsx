@@ -1,5 +1,27 @@
 import React from 'react'
 
+
+const data = [
+    {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$558.8"
+
+    },
+    {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$5833333.8"
+
+    }, {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$45358.8"
+    }
+]
 function Transaction() {
     return (
         <div>
@@ -31,12 +53,12 @@ function Transaction() {
                                 History
                             </a>{" "}
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             {" "}
                             <a className="nav-link" href="#2">
                                 Reports
                             </a>{" "}
-                        </li>
+                        </li> */}
                     </ul>{" "}
                     <button className="btn btn-primary">New Transaction</button>
                 </div>
@@ -44,31 +66,35 @@ function Transaction() {
                     <table className="table table-darkN table-borderless">
                         <thead>
                             <tr>
-                                <th scope="col">Activity</th>
+                                <th scope="col">Id send</th>
                                 <th scope="col">Mode</th>
-                                <th scope="col">Date</th>
-                                <th scope="col" className="text-right">
+                                <th scope="col">Id take</th>
+                                <th  className="" scope="col">Date</th>
+
+                                <th className="d-flex justify-content-end " scope="col" >
                                     Amount
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td scope="row">
-                                    {" "}
-                                    <span className="fa fa-briefcase mr-1" /> Coorg Trip{" "}
-                                </td>
-                                <td>
-                                    <span className="fa fa-cc-mastercard" />
-                                </td>
-                                <td className="text-muted">12 Jul 2020, 12:30 PM</td>
-                                <td className="d-flex justify-content-end align-items-center">
-                                    {" "}
-                                    <span className="fa fa-long-arrow-up mr-1" />
-                                    $52.9{" "}
-                                </td>
-                            </tr>
-                            <tr>
+                            {data.map((item, index) => (
+                                <tr key={index}>
+                                    <td scope="row">
+                                        {item.idsend}
+                                    </td>
+                                    <td className="">
+                                        to
+                                    </td>
+                                    <td className="text-muted">{item.idtake}</td>
+                                    <td className="text-muted">{item.date}</td>
+
+                                    <td className="d-flex justify-content-end align-items-center">
+                                        {item.amount}
+                                    </td>
+                                </tr>
+                            ))}
+
+                            {/* <tr>
                                 <td scope="row">
                                     {" "}
                                     <span className="fa fa-bed mr-1" /> Hotel Leela Palace{" "}
@@ -82,8 +108,8 @@ function Transaction() {
                                     <span className="fa fa-long-arrow-up mr-1" />
                                     $18.9{" "}
                                 </td>
-                            </tr>
-                            <tr>
+                            </tr> */}
+                            {/* <tr>
                                 <td scope="row">
                                     {" "}
                                     <span className="fa fa-exchange mr-1" /> Monthly Salary{" "}
@@ -157,16 +183,16 @@ function Transaction() {
                                     <span className="fa fa-long-arrow-up mr-1" />
                                     $97.9{" "}
                                 </td>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                 </div>
                 <div className="d-flex justify-content-between align-items-center results">
                     {" "}
-                    <span className="pl-md-3">
+                    {/* <span className="pl-md-3">
                         Showing<b className="text-white"> 1-7 0f 200 </b> trasactions
-                    </span>
-                    <div className="pt-3">
+                    </span> */}
+                    {/* <div className="pt-3">
                         <div aria-label="Page navigation example">
                             <ul className="pagination">
                                 <li className="page-item disabled">
@@ -185,7 +211,7 @@ function Transaction() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
