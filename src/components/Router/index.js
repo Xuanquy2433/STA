@@ -12,6 +12,8 @@ import TopNavbar from "../Navbar/TopNavbar";
 import HomePage from "../Pages/HomePage";
 import Register from "../Register/Register";
 import Basic from "../MainPage/Services/Pack/Basic";
+import Diamond from "../MainPage/Services/Pack/Diamond";
+import Gold from "../MainPage/Services/Pack/Gold";
 
 
 const RouterScreen = () => {
@@ -25,8 +27,8 @@ const RouterScreen = () => {
                 <Route path="/register" element={<Register />} />
                 
                 <Route path="/basic" element={<Basic/>} />
-                <Route path="/gold" element={<aaa/>} />
-                <Route path="/diamond" element={<aaa/>} />
+                <Route path="/gold" element={<Gold/>} />
+                <Route path="/diamond" element={<Diamond/>} />
 
             </Routes>
             <Footer/>
