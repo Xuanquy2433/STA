@@ -4,7 +4,7 @@ import './NotFound.css'
 function PageNotFound() {
     return (
         <div style={{ marginTop: '60px' }} className='body'>
-            <a target="_blank" href="https://codepen.io/uiswarup/full/ZExprjr">
+            <a target="_blank" >
             <h2 className='pageNotFound'>Page not found !</h2>
 
                 <div class="container">

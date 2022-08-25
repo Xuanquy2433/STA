@@ -29,9 +29,12 @@ function Profile() {
                   This is your profile page. You can see the progress you've made with
                   your work and manage your projects or assigned tasks
                 </p>
-                {/* <a href="#!" className="btn btn-info">
-                  Edit profile
-                </a> */}
+                <p className="text-white mt-0 mb-5">
+               
+                </p>
+                <a href="#!" className="btn btn-info">
+                 You have  10 STA
+                </a>
               </div>
             </div>
           </div>
@@ -56,7 +59,7 @@ function Profile() {
                 <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                   <div className="d-flex justify-content-between">
                     <a href="#" className="btn btn-sm btn-info mr-4">
-                      Connect
+                      Recharge
                     </a>
                     <a href="#" className="btn btn-sm btn-default float-right">
                       Logout
