@@ -153,10 +153,11 @@ nav .menu-btn,
   color: #000266;
 }
 .cv-btn1:hover {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   transition: all ease 0.5s;
-  color: #000266;
-}
+  background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
 
 .arrow {
   align-self: end;
