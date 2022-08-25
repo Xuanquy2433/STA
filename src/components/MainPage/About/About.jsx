@@ -13,6 +13,7 @@ function About() {
         pauseOnHover: false,
         autoplaySpeed: 2000,
     };
+
     return (
 
         <div id='about' style={{ width: '85%', margin: 'auto', paddingTop: '39px' }}>
@@ -24,25 +25,25 @@ function About() {
                 <div className="member">
                     <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/ayo-ogunseinde-316141-3333x3333.jpg" alt="" />
                     <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Lý Xuân Quý</h5>
+                    <h5 style={{margin:"0px 8px", textAlign: "center"}} className="nameMember">Lý Xuân Quý</h5>
                     <h3 className='dev'>Developer</h3>
                 </div>
                 <div className='member'>
                     <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/yoann-boyer-316485-1333x1333.jpg" alt="" />
                     <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Phạm Văn Giang</h5>
+                    <h5 style={{margin:"0px 8px", textAlign: "center"}} className="nameMember">Phạm Văn Giang</h5>
                     <h3 className='dev'>Developer</h3>
                 </div>
                 <div className='member'>
                     <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/yoann-boyer-316485-1333x1333.jpg" alt="" />
                     <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Lê Trung Quý</h5>
+                    <h5 style={{margin:"0px 8px", textAlign: "center"}} className="nameMember">Lê Trung Quý</h5>
                     <h3 className='dev'>Developer</h3>
                 </div>
                 <div className='member'>
                     <img src="https://mobirise.com/bootstrap-template/about-us-page-template/assets/images/ayo-ogunseinde-316141-3333x3333.jpg" alt="" />
                     <p className='description'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                    <h5 className="nameMember">Phan Thanh Thắng</h5>
+                    <h5 style={{margin:"0px 8px", textAlign: "center"}} className="nameMember">Phan Thanh Thắng</h5>
                     <h3 className='dev'>Developer</h3>
                 </div>
 
