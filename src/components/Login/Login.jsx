@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Link  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 export default function Login() {
@@ -10,14 +10,25 @@ export default function Login() {
     });
 
     const onLogin = async (e) => {
+        e.preventDefault();
         // const reponse = await axios.post(API_USER_LOGIN, data);
         const response = await axios.post(data);
         if (response && response.status === 200) {
             console.log("Login sucsess");
-            alert("dang nhap thanh cong");
+            // alert("dang nhap thanh cong");
             // toast.success("Login sucsess");
             localStorage.setItem("token", response?.data.token);
             localStorage.setItem("user", JSON.stringify(response.data));
+
+            toast.success('dang nhap thanh cong', {
+                position: 'bottom-left',
+                autoClose: 3000
+            })
+
+            navigate('/')
+            setTimeout(() => {
+                window.location.reload()
+            }, 2500);
         }
     };
 
