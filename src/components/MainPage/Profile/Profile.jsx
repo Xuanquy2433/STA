@@ -55,8 +55,8 @@ function Profile() {
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <h2 style={{textAlign: 'center', margin: '10px 0px 30px 0px'}} >Transfer money</h2>
-                      <div class="modal-body">
+                    {showName ?   <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2> : ''}
+                      {showName ? <div class="modal-body">
                         <form class="form-inline">
                           <div class="form-group mb-2">
                             <label for="money" class="sr-only">Email</label>
@@ -69,12 +69,14 @@ function Profile() {
                           </div>
 
                         </form>
-                      </div>
+                      </div> : <div class="modal-body">
+                        <h2 style={{fontSize: '2em', textAlign: 'center'}}>Please login</h2>
+                      </div>}
                       <div class="modal-footer">
-                        <p style={{marginRight: '100px', fontWeight: '500'}} >You have <span style={{color: 'gold'}}>20 STA</span></p>
+                        {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>20 STA</span></p> : ''}
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send</button>
+                     {showName ?    <button type="button" class="btn btn-primary">Send</button> : ''}
                       </div>
                     </div>
                   </div>
