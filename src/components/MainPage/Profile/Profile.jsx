@@ -10,13 +10,13 @@ function Profile() {
     showName = JSON.parse(name).name;
   }
   const logout = () => {
+    window.location.reload()
     // alert("ok")
     localStorage.removeItem("token")
     localStorage.removeItem("user")
     // toast.success("Logout success");
     // setTimeout(() => window.location.reload(false)
     //   , 2000)
-    window.location.reload(false)
   }
 
   return (
