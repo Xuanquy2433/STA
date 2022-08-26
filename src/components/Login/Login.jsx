@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Link as Link } from 'react-router-dom'
+import { Link  } from 'react-router-dom'
 
 
 export default function Login() {
