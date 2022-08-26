@@ -13,34 +13,22 @@ export default function Login() {
     });
 
     const onLogin = async (e) => {
+        e.preventDefault();
         const response = await axios.post(API_USER_LOGIN, data);
-        // const response = await axios.post(data);
         if (response && response.status === 200) {
             console.log("Login success");
-            alert("dang nhap thanh cong");
-            // toast.success("Login success");
-            e.preventDefault();
-            // const reponse = await axios.post(API_USER_LOGIN, data);
-            const response = await axios.post(data);
-            if (response && response.status === 200) {
-                console.log("Login sucsess");
-                // alert("dang nhap thanh cong");
-                // toast.success("Login sucsess");
-                localStorage.setItem("token", response?.data.token);
-                localStorage.setItem("user", JSON.stringify(response.data));
-
-                toast.success('Login success', {
-                    position: 'bottom-left',
-                    autoClose: 3000
-                })
-
-                navigate('/')
-                setTimeout(() => {
-                    window.location.reload()
-                }, 2500);
-            }
+            alert("Login success");
+            localStorage.setItem("token", response?.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data));
+            toast.success('Login success', {
+                position: 'bottom-left',
+                autoClose: 3000
+            })
+            navigate('/')
+            setTimeout(() => {
+                window.location.reload()
+            }, 2500);
         };
-
     }
     return (
         <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
