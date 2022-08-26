@@ -1,6 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 import { Link as Link } from 'react-router-dom'
+import { API_USER_SIGNUP } from '../utils/const';
+import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+
 export default function Register() {
+    const navigate = useNavigate();
+
+    const [data, setData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+    });
+
+
+    const onSignup = async (e) => {
+        e.preventDefault();
+        const response = await axios.post(API_USER_SIGNUP, data);
+        if (response && response.status === 200) {
+            console.log("Signup success");
+            alert("Sign success");
+            toast.success('Login success', {
+                position: 'bottom-left',
+                autoClose: 3000
+            })
+            navigate('/')
+            setTimeout(() => {
+                window.location.reload()
+            }, 2500);
+        };
+    }
+
+
     return (
         <div>
             <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
@@ -28,25 +61,29 @@ export default function Register() {
                                                     <p className="mb-0">Enter your email and password to register</p>
                                                 </div>
                                                 <div className="card-body">
-                                                    <form action="Register" method="post">
+                                                    <form >
                                                         <div className="input-group input-group-outline mb-3">
                                                             {/*<label class="form-label">Email</label>*/}
-                                                            <input type="email" className="form-control" name="email" placeholder="Email" required />
+                                                            <input onChange={(e) =>
+                                                                setData({ ...data, email: e.target.value })
+                                                            } type="email" className="form-control" name="email" placeholder="Email" required />
                                                         </div>
                                                         <div className="input-group input-group-outline mb-3">
                                                             {/*<label class="form-label">Email</label>*/}
-                                                            <input type="text" className="form-control" name="name" placeholder="Name" required />
+                                                            <input onChange={(e) =>
+                                                                setData({ ...data, firstName: e.target.value })
+                                                            } type="text" className="form-control" name="name" placeholder="First name" required />
                                                         </div>
                                                         <div className="input-group input-group-outline mb-3">
-                                                            <input type="number" className="form-control" placeholder="Phone" name="phone" required />
-                                                        </div>
-                                                        <div className="input-group input-group-outline mb-3">
-                                                            {/*<label class="form-label">Username</label>*/}
-                                                            <input type="text" className="form-control" name="username" placeholder="username" required />
+                                                            <input onChange={(e) =>
+                                                                setData({ ...data, lastName: e.target.value })
+                                                            } type="number" className="form-control" placeholder="Phone" name="Last name" required />
                                                         </div>
                                                         {/*<label style="position: relative; bottom: -10px ; color: #344767; font-weight: 700; font-size: 14px" class="form-label">Password</label>*/}
                                                         <div className="input-group input-group-outline mb-3">
-                                                            <input type="password" className="form-control" placeholder="Password" name="password" required />
+                                                            <input onChange={(e) =>
+                                                                setData({ ...data, password: e.target.value })
+                                                            } type="password" className="form-control" placeholder="Password" name="password" required />
                                                         </div>
                                                         <div className="form-check form-check-info text-start ps-0">
                                                             <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
@@ -55,7 +92,12 @@ export default function Register() {
                                                             </label>
                                                         </div>
                                                         <div className="text-center">
-                                                            <button type="submit" name="action" value="register" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                                            <button type="submit" onClick={(e) => {
+                                                                {
+                                                                    e.preventDefault()
+                                                                    onSignup(e);
+                                                                }
+                                                            }} className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
                                                         </div>
                                                     </form>
                                                 </div>

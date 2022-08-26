@@ -1,22 +1,25 @@
 import React from 'react'
 import './Profile.css'
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
+  const navigate = useNavigate();
   let showName = ""
 
   if (localStorage.getItem("user")) {
     let name = localStorage.getItem("user");
-    showName = JSON.parse(name).name;
+    showName = JSON.parse(name).status;
   }
   const logout = () => {
-    window.location.reload()
     // alert("ok")
     localStorage.removeItem("token")
     localStorage.removeItem("user")
+    navigate('/')
+
     // toast.success("Logout success");
-    // setTimeout(() => window.location.reload(false)
-    //   , 2000)
+    setTimeout(() => window.location.reload(false)
+      , 1000)
   }
 
   return (
@@ -55,7 +58,7 @@ function Profile() {
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                     <div class="modal-content">
-                    {showName ?   <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2> : ''}
+                      {showName ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2> : ''}
                       {showName ? <div class="modal-body">
                         <form class="form-inline">
                           <div class="form-group mb-2">
@@ -70,13 +73,13 @@ function Profile() {
 
                         </form>
                       </div> : <div class="modal-body">
-                        <h2 style={{fontSize: '2em', textAlign: 'center'}}>Please login</h2>
+                        <h2 style={{ fontSize: '2em', textAlign: 'center' }}>Please login</h2>
                       </div>}
                       <div class="modal-footer">
                         {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>20 STA</span></p> : ''}
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                     {showName ?    <button type="button" class="btn btn-primary">Send</button> : ''}
+                        {showName ? <button type="button" class="btn btn-primary">Send</button> : ''}
                       </div>
                     </div>
                   </div>

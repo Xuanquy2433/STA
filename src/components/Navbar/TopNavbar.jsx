@@ -12,7 +12,7 @@ const TopNavbar = () => {
 
   if (localStorage.getItem("user")) {
     let name = localStorage.getItem("user");
-    showName = JSON.parse(name).name;
+    showName = JSON.parse(name).status;
   }
 
 

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({
-        username: "",
+        email: "",
         password: "",
     });
 
@@ -20,6 +20,9 @@ export default function Login() {
             alert("Login success");
             localStorage.setItem("token", response?.data.token);
             localStorage.setItem("user", JSON.stringify(response.data));
+            
+        console.log('okokooko ' ,JSON.stringify(response.data));
+
             toast.success('Login success', {
                 position: 'bottom-left',
                 autoClose: 3000
@@ -60,7 +63,7 @@ export default function Login() {
                                                     <div className="input-group input-group-outline mb-3">
                                                         {/*<label class="form-label">Username</label>*/}
                                                         <input onChange={(e) => {
-                                                            setData({ ...data, username: e.target.value })
+                                                            setData({ ...data, email: e.target.value })
                                                             console.log('username value: ', data.username);
                                                         }
                                                         } type="text" className="form-control" name="username" placeholder="Username" required />
