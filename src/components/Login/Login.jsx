@@ -42,11 +42,6 @@ export default function Login() {
         };
 
 
-        useEffect(() => {
-
-        }, []);
-
-
         return (
             <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
                 <div>
