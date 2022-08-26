@@ -1,6 +1,7 @@
 import React from "react";
 import { Link as LinkScroll } from "react-scroll";
 import { Link as LinkRouter } from 'react-router-dom'
+import PersonIcon from '@mui/icons-material/Person';
 
 const TopNavbar = () => {
   const opengithub = (url) => {
@@ -66,7 +67,7 @@ const TopNavbar = () => {
           GitHub
         </span> */}
         {showName ? <span style={{ marginTop: '13px' }} >
-          <LinkRouter to='/profile' >  <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Hi, {showName}</h5> </LinkRouter>
+          <LinkRouter to='/profile' >  <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Hi, {showName} <PersonIcon style={{paddingBottom:"3px"}}/> </h5> </LinkRouter>
         </span> : <LinkRouter to="/login">
           <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Login</h5>
         </LinkRouter>}
