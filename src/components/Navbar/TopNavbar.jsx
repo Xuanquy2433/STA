@@ -16,7 +16,7 @@ const TopNavbar = () => {
   return (
     <div >
       <nav style={style}>
-        <LinkRouter to="/" className="logo" smooth={true} duration={2000}>
+        <LinkRouter to="/" className="logo" smooth='true' duration={2000}>
           <h1 style={{ color: 'white', cursor: 'pointer',fontSize: '2.0em',marginTop: '5px' }}>STA <span style={{color: '#DAA520'}} >Coin</span></h1>
         </LinkRouter>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
@@ -25,27 +25,27 @@ const TopNavbar = () => {
         </label>
         <ul style={{marginTop: '5px',marginBottom: '5px'}} className="menu">
           <li >
-            <LinkScroll to="main" className="active" smooth={true} duration={100}>
+            <LinkScroll to="main" className="active" smooth='true' duration={100}>
               Home
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="features" smooth={true} duration={100}>
+            <LinkScroll to="features" smooth='true' duration={100}>
               Features
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="services" smooth={true} duration={100}>
+            <LinkScroll to="services" smooth='true' duration={100}>
               Services
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="about" smooth={true} duration={100}>
+            <LinkScroll to="about" smooth='true' duration={100}>
               About US
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="subscribe" smooth={true} duration={100}>
+            <LinkScroll to="subscribe" smooth='true' duration={100}>
               Subscribe
             </LinkScroll>
           </li>

@@ -14,7 +14,7 @@ function Gold() {
             <div class="plan-inner">
               <div class="entry-title">
                 <h3>Gold Pack</h3>
-                <div class="price">$10<span >/ STA</span>
+                <div class="price">$100<span >/ STA</span>
                 </div>
               </div>
               <div class="entry-content">

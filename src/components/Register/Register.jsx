@@ -63,7 +63,7 @@ export default function Register() {
                                                     <p className="mb-2 text-sm mx-auto">
                                                         Already have an account?
                                                         <Link to="/login">
-                                                            <a href="" className="text-primary text-gradient font-weight-bold">Sign in</a>
+                                                            <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold">Sign in</span>
                                                         </Link>
                                                     </p>
                                                 </div>

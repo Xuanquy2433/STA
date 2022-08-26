@@ -14,7 +14,7 @@ function Diamond() {
             <div class="plan-inner">
               <div class="entry-title">
                 <h3>DIAMOND PACK</h3>
-                <div class="price">$100<span>/STA</span>
+                <div class="price">$1000<span>/STA</span>
                 </div>
               </div>
               <div class="entry-content">

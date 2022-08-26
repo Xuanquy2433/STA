@@ -1,8 +1,26 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import { Link as Link } from 'react-router-dom'
 
 
 export default function Login() {
+    const [data, setData] = useState({
+        username: "",
+        password: "",
+    });
+
+    const onLogin = async (e) => {
+        // const reponse = await axios.post(API_USER_LOGIN, data);
+        const response = await axios.post(data);
+        if (response && response.status === 200) {
+            console.log("Login sucsess");
+            alert("dang nhap thanh cong");
+            // toast.success("Login sucsess");
+            localStorage.setItem("token", response?.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data));
+        }
+    };
+
 
     return (
         <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
@@ -30,23 +48,31 @@ export default function Login() {
                                                 <p className="mb-0">Enter your email and password to Sign In</p>
                                             </div>
                                             <div className="card-body">
-                                                <form action="Register" method="post">
+                                                <form method="post">
                                                     <div className="input-group input-group-outline mb-3">
                                                         {/*<label class="form-label">Username</label>*/}
-                                                        <input type="text" className="form-control" name="username" placeholder="username" required />
+                                                        <input onChange={(e) => {
+                                                            setData({ ...data, username: e.target.value })
+                                                            console.log('username value: ', data.username);
+                                                        }
+                                                        } type="text" className="form-control" name="username" placeholder="Username" required />
                                                     </div>
                                                     {/*<label style="position: relative; bottom: -10px ; color: #344767; font-weight: 700; font-size: 14px" class="form-label">Password</label>*/}
                                                     <div className="input-group input-group-outline mb-3">
-                                                        <input type="password" className="form-control" placeholder="Password" name="password" required />
+                                                        <input onChange={(e) =>
+                                                            setData({ ...data, username: e.target.value })
+                                                        } type="password" className="form-control" placeholder="Password" name="password" required />
                                                     </div>
                                                     <div className="form-check form-check-info text-start ps-0">
                                                         <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
                                                         <label className="form-check-label" htmlFor="flexCheckDefault">
-                                                            I agree the <a href="javascript:;" className="text-dark font-weight-bolder">Terms and Conditions</a>
+                                                            I agree the <a href="#" className="text-dark font-weight-bolder">Terms and Conditions</a>
                                                         </label>
                                                     </div>
                                                     <div className="text-center">
-                                                        <button type="submit" name="action" value="register" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
+                                                        <button onClick={(e) => {
+                                                            onLogin(e);
+                                                        }} type="submit" name="action" value="register" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -54,7 +80,7 @@ export default function Login() {
                                                 <p className="mb-2 text-sm mx-auto">
                                                     Don't have an account?
                                                     <Link to="/register">
-                                                        <a href="" className="text-primary text-gradient font-weight-bold"> Sign Up</a>
+                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Sign Up</span>
                                                     </Link>
                                                 </p>
                                             </div>
