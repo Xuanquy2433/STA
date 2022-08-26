@@ -49,13 +49,41 @@ function Profile() {
                 <p className="text-white mt-0 mb-5">
 
                 </p>
-                <a href="#!" className="btn btn-info">
+                <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
                   Transfer money
-                </a>
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <h2 style={{textAlign: 'center', margin: '10px 0px 30px 0px'}} >Transfer money</h2>
+                      <div class="modal-body">
+                        <form class="form-inline">
+                          <div class="form-group mb-2">
+                            <label for="money" class="sr-only">Email</label>
+                            <input type="password" class="form-control" id="money" placeholder="Enter the money" />
+                          </div>
+                          <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
+                          <div class="form-group mx-sm-3 mb-2">
+                            <label for="idUser" class="sr-only">Password</label>
+                            <input type="text" class="form-control" id="idUser" placeholder="Id user" />
+                          </div>
+
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <p style={{marginRight: '100px', fontWeight: '500'}} >You have <span style={{color: 'gold'}}>20 STA</span></p>
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
         {/* Page content */}
         <div className="container-fluid mt--7">
           <div className="row">
