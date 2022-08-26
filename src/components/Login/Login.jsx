@@ -42,9 +42,9 @@ export default function Login() {
         };
 
 
-        // useEffect(() => {
+        useEffect(() => {
 
-        // }, []);
+        }, []);
 
 
         return (
