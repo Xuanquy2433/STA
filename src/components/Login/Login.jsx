@@ -20,8 +20,8 @@ export default function Login() {
             alert("Login success");
             localStorage.setItem("token", response?.data.token);
             localStorage.setItem("user", JSON.stringify(response.data));
-            
-        console.log('okokooko ' ,JSON.stringify(response.data));
+
+            console.log('okokooko ', JSON.stringify(response.data));
 
             toast.success('Login success', {
                 position: 'bottom-left',

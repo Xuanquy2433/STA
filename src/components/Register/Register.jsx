@@ -22,11 +22,11 @@ export default function Register() {
         if (response && response.status === 200) {
             console.log("Signup success");
             alert("Sign success");
-            toast.success('Login success', {
+            toast.success('Register success', {
                 position: 'bottom-left',
                 autoClose: 3000
             })
-            navigate('/')
+            navigate('/login')
             setTimeout(() => {
                 window.location.reload()
             }, 2500);
@@ -77,7 +77,7 @@ export default function Register() {
                                                         <div className="input-group input-group-outline mb-3">
                                                             <input onChange={(e) =>
                                                                 setData({ ...data, lastName: e.target.value })
-                                                            } type="number" className="form-control" placeholder="Phone" name="Last name" required />
+                                                            } type="text" className="form-control" placeholder="Last name" name="Last name" required />
                                                         </div>
                                                         {/*<label style="position: relative; bottom: -10px ; color: #344767; font-weight: 700; font-size: 14px" class="form-label">Password</label>*/}
                                                         <div className="input-group input-group-outline mb-3">

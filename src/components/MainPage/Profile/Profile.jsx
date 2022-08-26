@@ -5,12 +5,18 @@ import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const navigate = useNavigate();
-  let showName = ""
-
+  let showName 
+  let firstName 
+  let lastName 
+  let email
   if (localStorage.getItem("user")) {
-    let name = localStorage.getItem("user");
-    showName = JSON.parse(name).status;
+    let dataUser = localStorage.getItem("user");
+    firstName = JSON.parse(dataUser).userDataDto.firstName
+    lastName = JSON.parse(dataUser).userDataDto.lastName
+    email = JSON.parse(dataUser).userDataDto.email
+    showName = lastName + " " + firstName
   }
+
   const logout = () => {
     // alert("ok")
     localStorage.removeItem("token")
@@ -21,6 +27,9 @@ function Profile() {
     setTimeout(() => window.location.reload(false)
       , 1000)
   }
+
+
+
 
   return (
     <div style={{ marginTop: '60px' }}>
@@ -196,7 +205,7 @@ function Profile() {
                               id="input-username"
                               className="form-control form-control-alternative"
                               placeholder="Username"
-                              defaultValue="lucky.jesse"
+                              defaultValue={showName}
                               readOnly
                             />
                           </div>
@@ -213,7 +222,7 @@ function Profile() {
                               type="email"
                               id="input-email"
                               className="form-control form-control-alternative"
-                              placeholder="jesse@example.com"
+                              placeholder={email}
                               readOnly
                             />
                           </div>
@@ -233,7 +242,7 @@ function Profile() {
                               id="input-first-name"
                               className="form-control form-control-alternative"
                               placeholder="First name"
-                              defaultValue="Lucky"
+                              defaultValue={firstName}
                               readOnly
                             />
                           </div>
@@ -251,7 +260,7 @@ function Profile() {
                               id="input-last-name"
                               className="form-control form-control-alternative"
                               placeholder="Last name"
-                              defaultValue="Jesse"
+                              defaultValue={lastName}
                               readOnly
                             />
                           </div>

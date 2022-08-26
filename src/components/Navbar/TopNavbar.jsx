@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 import { Link as LinkScroll } from "react-scroll";
 import { Link as LinkRouter } from 'react-router-dom'
 import PersonIcon from '@mui/icons-material/Person';
@@ -7,12 +7,13 @@ const TopNavbar = () => {
   const opengithub = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
-
-  let showName = ""
+  let showName
 
   if (localStorage.getItem("user")) {
-    let name = localStorage.getItem("user");
-    showName = JSON.parse(name).status;
+    let dataUser = localStorage.getItem("user");
+    let firstName = JSON.parse(dataUser).userDataDto.firstName
+    let lastName = JSON.parse(dataUser).userDataDto.lastName
+    showName = lastName + " " + firstName
   }
 
 
@@ -67,7 +68,7 @@ const TopNavbar = () => {
           GitHub
         </span> */}
         {showName ? <span style={{ marginTop: '13px' }} >
-          <LinkRouter to='/profile' >  <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Hi, {showName} <PersonIcon style={{paddingBottom:"3px"}}/> </h5> </LinkRouter>
+          <LinkRouter to='/profile' >  <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Hi, {showName} <PersonIcon style={{ paddingBottom: "3px" }} /> </h5> </LinkRouter>
         </span> : <LinkRouter to="/login">
           <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Login</h5>
         </LinkRouter>}
