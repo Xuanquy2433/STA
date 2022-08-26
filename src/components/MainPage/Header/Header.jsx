@@ -20,7 +20,7 @@ const Header = () => {
           readable content of a page when looking at its layout. 
         </p>
         <div className="header-btns">
-          <Link className="cv-btn">Hire Me</Link>
+          <Link style={{color:"#FFFFFF"}} className="cv-btn">Hire Me</Link>
           <span
             onClick={() => opengithub("https://github.com")}
             className="cv-btn1"

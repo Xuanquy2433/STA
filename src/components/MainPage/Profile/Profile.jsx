@@ -76,7 +76,7 @@ function Profile() {
                         {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>20 STA</span></p> : ''}
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                     {showName ?    <button type="button" class="btn btn-primary">Send</button> : ''}
+                     {showName ? <button type="button" class="btn btn-primary">Send</button> : ''}
                       </div>
                     </div>
                   </div>
