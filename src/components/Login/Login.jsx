@@ -3,10 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { API_USER_LOGIN } from '../utils/const';
-
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
@@ -46,12 +42,6 @@ export default function Login() {
                 }, 2500);
             }
         };
-
-
-        useEffect(() => {
-
-        }, []);
-
 
         return (
             <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
