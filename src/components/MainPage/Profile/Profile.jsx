@@ -1,7 +1,24 @@
 import React from 'react'
 import './Profile.css'
+import { toast } from 'react-toastify';
 
 function Profile() {
+  let showName = ""
+
+  if (localStorage.getItem("user")) {
+    let name = localStorage.getItem("user");
+    showName = JSON.parse(name).name;
+  }
+  const logout = () => {
+    // alert("ok")
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    // toast.success("Logout success");
+    // setTimeout(() => window.location.reload(false)
+    //   , 2000)
+    window.location.reload(false)
+  }
+
   return (
     <div style={{ marginTop: '60px' }}>
       <div className="main-content">
@@ -24,16 +41,16 @@ function Profile() {
           <div className="container-fluid d-flex align-items-center">
             <div className="row">
               <div className="col-lg-7 col-md-10">
-                <h1 className="display-2 text-white">Your Profile</h1>
+                {showName ? <h1 className="display-2 text-white">Welcome <span style={{ display: 'inline', color: 'gold' }}>{showName}</span>  </h1> : <h1 className="display-2 text-white">Your Profile</h1>}
                 <p className="text-white mt-0 mb-5">
                   This is your profile page. You can see the progress you've made with
                   your work and manage your projects or assigned tasks
                 </p>
                 <p className="text-white mt-0 mb-5">
-               
+
                 </p>
                 <a href="#!" className="btn btn-info">
-                 You have  10 STA
+                  Transfer money
                 </a>
               </div>
             </div>
@@ -61,9 +78,9 @@ function Profile() {
                     <a href="#" className="btn btn-sm btn-info mr-4">
                       Recharge
                     </a>
-                    <a href="#" className="btn btn-sm btn-default float-right">
+                    <button onClick={logout} className="btn btn-sm btn-default float-right">
                       Logout
-                    </a>
+                    </button>
                   </div>
                 </div>
                 <div className="card-body pt-0 pt-md-4">
@@ -296,7 +313,7 @@ function Profile() {
                       <div className="form-group focused">
                         <label>About Me</label>
                         <textarea
-                        readOnly
+                          readOnly
                           rows={4}
                           className="form-control form-control-alternative"
                           placeholder="A few words about you ..."

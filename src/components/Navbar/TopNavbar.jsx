@@ -7,6 +7,14 @@ const TopNavbar = () => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
+  let showName = ""
+
+  if (localStorage.getItem("user")) {
+    let name = localStorage.getItem("user");
+    showName = JSON.parse(name).name;
+  }
+
+
   const style = {
     zIndex: '3',
     color: 'white',
@@ -17,13 +25,13 @@ const TopNavbar = () => {
     <div >
       <nav style={style}>
         <LinkRouter to="/" className="logo" smooth='true' duration={2000}>
-          <h1 style={{ color: 'white', cursor: 'pointer',fontSize: '2.0em',marginTop: '5px' }}>STA <span style={{color: '#DAA520'}} >Coin</span></h1>
+          <h1 style={{ color: 'white', cursor: 'pointer', fontSize: '2.0em', marginTop: '5px' }}>STA <span style={{ color: '#DAA520' }} >Coin</span></h1>
         </LinkRouter>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="nav-icon"></span>
         </label>
-        <ul style={{marginTop: '5px',marginBottom: '5px'}} className="menu">
+        <ul style={{ marginTop: '5px', marginBottom: '5px' }} className="menu">
           <li >
             <LinkScroll to="main" className="active" smooth='true' duration={100}>
               Home
@@ -49,7 +57,7 @@ const TopNavbar = () => {
               Subscribe
             </LinkScroll>
           </li>
-         
+
         </ul>
         {/* <span
           onClick={() => opengithub("https://github.com")}
@@ -57,11 +65,11 @@ const TopNavbar = () => {
         >
           GitHub
         </span> */}
-        <span style={{marginTop: '13px'}} >
-          <LinkRouter to="/login">
-            <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Login</h5>
-          </LinkRouter>
-        </span>
+        {showName ? <span style={{ marginTop: '13px' }} >
+          <LinkRouter to='/profile' >  <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Hi, {showName}</h5> </LinkRouter>
+        </span> : <LinkRouter to="/login">
+          <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Login</h5>
+        </LinkRouter>}
       </nav>
     </div>
   );

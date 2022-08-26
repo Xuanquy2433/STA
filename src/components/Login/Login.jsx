@@ -1,6 +1,8 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { Link  } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import { API_USER_LOGIN } from '../utils/const';
 
 
 export default function Login() {
@@ -9,17 +11,24 @@ export default function Login() {
         password: "",
     });
 
+
+
     const onLogin = async (e) => {
-        // const reponse = await axios.post(API_USER_LOGIN, data);
-        const response = await axios.post(data);
+        const response = await axios.post(API_USER_LOGIN, data);
+        // const response = await axios.post(data);
         if (response && response.status === 200) {
-            console.log("Login sucsess");
+            console.log("Login success");
             alert("dang nhap thanh cong");
-            // toast.success("Login sucsess");
+            // toast.success("Login success");
             localStorage.setItem("token", response?.data.token);
             localStorage.setItem("user", JSON.stringify(response.data));
         }
     };
+
+
+    useEffect(() => {
+
+    }, []);
 
 
     return (
@@ -48,7 +57,7 @@ export default function Login() {
                                                 <p className="mb-0">Enter your email and password to Sign In</p>
                                             </div>
                                             <div className="card-body">
-                                                <form method="post">
+                                                <form >
                                                     <div className="input-group input-group-outline mb-3">
                                                         {/*<label class="form-label">Username</label>*/}
                                                         <input onChange={(e) => {
@@ -60,7 +69,7 @@ export default function Login() {
                                                     {/*<label style="position: relative; bottom: -10px ; color: #344767; font-weight: 700; font-size: 14px" class="form-label">Password</label>*/}
                                                     <div className="input-group input-group-outline mb-3">
                                                         <input onChange={(e) =>
-                                                            setData({ ...data, username: e.target.value })
+                                                            setData({ ...data, password: e.target.value })
                                                         } type="password" className="form-control" placeholder="Password" name="password" required />
                                                     </div>
                                                     <div className="form-check form-check-info text-start ps-0">
@@ -71,8 +80,11 @@ export default function Login() {
                                                     </div>
                                                     <div className="text-center">
                                                         <button onClick={(e) => {
-                                                            onLogin(e);
-                                                        }} type="submit" name="action" value="register" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
+                                                            {
+                                                                e.preventDefault()
+                                                                onLogin(e);
+                                                            }
+                                                        }} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
                                                     </div>
                                                 </form>
                                             </div>

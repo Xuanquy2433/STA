@@ -16,28 +16,44 @@ import Diamond from "../MainPage/Services/Pack/Diamond";
 import Gold from "../MainPage/Services/Pack/Gold";
 import Profile from "../MainPage/Profile/Profile";
 import PageNotFound from "../MainPage/Notfound/PageNotFound";
+import { ToastContainer } from "react-toastify";
+import React from "react";
 
 
 const RouterScreen = () => {
     return (
-        <Router>
-            {/* <ToastContainer /> */}
-            <TopNavbar />
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/profile" element={<Profile />} />
-                
-                <Route path="/basic" element={<Basic/>} />
-                <Route path="/gold" element={<Gold/>} />
-                <Route path="/diamond" element={<Diamond/>} />
+        <React.Fragment>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
 
-                <Route path="*" element={<PageNotFound/>} />
+            <Router>
+                {/* <ToastContainer /> */}
+                <TopNavbar />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/profile" element={<Profile />} />
 
-            </Routes>
-            <Footer/>
-        </Router >
+                    <Route path="/basic" element={<Basic />} />
+                    <Route path="/gold" element={<Gold />} />
+                    <Route path="/diamond" element={<Diamond />} />
+
+                    <Route path="*" element={<PageNotFound />} />
+
+                </Routes>
+                <Footer />
+            </Router >
+        </React.Fragment>
 
     )
 }
