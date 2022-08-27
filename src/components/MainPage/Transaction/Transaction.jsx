@@ -20,6 +20,33 @@ const data = [
         idtake: "ababebbe1234",
         date: "	12 Jul 2020, 12:30 PM",
         amount: "$45358.8"
+    },
+    {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$45358.8"
+    },
+    {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$45358.8"
+    }, {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$45358.8"
+    }, {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$45358.8"
+    }, {
+        idsend: "aaaa33213121",
+        idtake: "ababebbe1234",
+        date: "	12 Jul 2020, 12:30 PM",
+        amount: "$45358.8"
     }
 ]
 function Transaction() {

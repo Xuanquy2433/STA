@@ -3,7 +3,7 @@ import './Profile.css'
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import { API_GET_WALLET } from '../../utils/const';
+import { API_GET_WALLET, API_SEND_STA } from '../../utils/const';
 
 
 function Profile() {
@@ -23,10 +23,28 @@ function Profile() {
 
   const [sta, setSta] = useState('');
   const [money, setMoney] = useState('');
+  let token = localStorage.getItem("token");
 
+  const [sendData, setSendData] = useState({
+    receiver: "",
+    token: token,
+    sta: ""
+  })
+
+  const sendSTA = async (data) => {
+    const response = await axios.put(API_SEND_STA, sendData)
+    if (response && response.status === 200) {
+      alert("send ")
+      // getUserSta()
+    }
+  }
+
+  const onChangeText = (event) => {
+    console.log('onChangeText', event)
+    setSendData({ ...sendData, [event.target.name]: event.target.value })
+  }
 
   const getUserSta = async () => {
-    let token = localStorage.getItem("token");
     console.log(token);
     const response = await axios.post(API_GET_WALLET + token);
     console.log("sta ", response.data);
@@ -34,9 +52,12 @@ function Profile() {
       setSta(response.data.sta);
       setMoney(response.data.money)
     }
-
   }
 
+
+  useEffect(() => {
+    getUserSta();
+  }, []);
 
   const logout = () => {
     // alert("ok")
@@ -49,9 +70,6 @@ function Profile() {
       , 1000)
   }
 
-  useEffect(() => {
-    getUserSta();
-  }, []);
 
 
 
@@ -95,13 +113,13 @@ function Profile() {
                       {showName ? <div class="modal-body">
                         <form class="form-inline">
                           <div class="form-group mb-2">
-                            <label for="money" class="sr-only">Email</label>
-                            <input type="password" class="form-control" id="money" placeholder="Enter the money" />
+                            <label for="money" class="sr-only">STA</label>
+                            <input onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
                           </div>
                           <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
                           <div class="form-group mx-sm-3 mb-2">
-                            <label for="idUser" class="sr-only">Password</label>
-                            <input type="text" class="form-control" id="idUser" placeholder="Id user" />
+                            <label for="idUser" class="sr-only">Email</label>
+                            <input onChange={onChangeText} name="receiver" type="text" class="form-control" id="idUser" placeholder="Id user" />
                           </div>
 
                         </form>
@@ -112,7 +130,7 @@ function Profile() {
                         {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>{sta} STA</span></p> : ''}
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        {showName ? <button type="button" class="btn btn-primary">Send</button> : ''}
+                        {showName ? <button onClick={sendSTA} type="button" class="btn btn-primary">Send</button> : ''}
                         {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
                       </div>
                     </div>
@@ -201,7 +219,7 @@ function Profile() {
                 <div className="card-header bg-white border-0">
                   <div className="row align-items-center">
                     <div className="col-8">
-                      <h3  className="mb-0">My account</h3>
+                      <h3 className="mb-0" style={{ color: "#333", left: "0", position: "absolute" }}>STA: {sta}</h3>
                     </div>
                     <div className="col-4 text-right">
                       <a href="#!" className="btn btn-sm btn-primary">
@@ -292,14 +310,14 @@ function Profile() {
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group focused">
-                            <label  style={{color: 'gold'}}
+                            <label style={{ color: 'gold' }}
                               className="form-control-label"
                               htmlFor="input-last-name"
                             >
                               STA
                             </label>
                             <input
-                            style={{color: 'gold'}}
+                              style={{ color: 'gold' }}
                               type="text"
                               id="input-last-name"
                               className="form-control form-control-alternative"
@@ -311,101 +329,19 @@ function Profile() {
                         </div>
                         <div className="col-lg-6">
                           <div className="form-group focused">
-                            <label  style={{color: 'gold'}}
+                            <label style={{ color: 'gold' }}
                               className="form-control-label"
                               htmlFor="input-last-name"
                             >
                               Money
                             </label>
                             <input
-                             style={{color: 'gold'}}
+                              style={{ color: 'gold' }}
                               type="text"
                               id="input-last-name"
                               className="form-control form-control-alternative"
                               placeholder="Last name"
                               defaultValue={money}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr className="my-4" />
-                    {/* Address */}
-                    <h6 className="heading-small text-muted mb-4">
-                      Contact information
-                    </h6>
-                    <div className="pl-lg-4">
-                      <div className="row">
-                        <div className="col-md-12">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-address"
-                            >
-                              Address
-                            </label>
-                            <input
-                              id="input-address"
-                              className="form-control form-control-alternative"
-                              placeholder="Home Address"
-                              defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                              type="text"
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-4">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-city"
-                            >
-                              City
-                            </label>
-                            <input
-                              type="text"
-                              id="input-city"
-                              className="form-control form-control-alternative"
-                              placeholder="City"
-                              defaultValue="New York"
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-4">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
-                              Country
-                            </label>
-                            <input
-                              type="text"
-                              id="input-country"
-                              className="form-control form-control-alternative"
-                              placeholder="Country"
-                              defaultValue="United States"
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-4">
-                          <div className="form-group">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-country"
-                            >
-                              Postal code
-                            </label>
-                            <input
-                              type="number"
-                              id="input-postal-code"
-                              className="form-control form-control-alternative"
-                              placeholder="Postal code"
                               readOnly
                             />
                           </div>
