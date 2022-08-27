@@ -22,6 +22,8 @@ function Profile() {
   }
 
   const [sta, setSta] = useState('');
+  const [money, setMoney] = useState('');
+
 
   const getUserSta = async () => {
     let token = localStorage.getItem("token");
@@ -30,6 +32,7 @@ function Profile() {
     console.log("sta ", response.data);
     if (response && response.status === 200) {
       setSta(response.data.sta);
+      setMoney(response.data.money)
     }
 
   }
@@ -198,7 +201,7 @@ function Profile() {
                 <div className="card-header bg-white border-0">
                   <div className="row align-items-center">
                     <div className="col-8">
-                      <h3 className="mb-0">My account</h3>
+                      <h3  className="mb-0">My account</h3>
                     </div>
                     <div className="col-4 text-right">
                       <a href="#!" className="btn btn-sm btn-primary">
@@ -283,6 +286,44 @@ function Profile() {
                               className="form-control form-control-alternative"
                               placeholder="Last name"
                               defaultValue={lastName}
+                              readOnly
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group focused">
+                            <label  style={{color: 'gold'}}
+                              className="form-control-label"
+                              htmlFor="input-last-name"
+                            >
+                              STA
+                            </label>
+                            <input
+                            style={{color: 'gold'}}
+                              type="text"
+                              id="input-last-name"
+                              className="form-control form-control-alternative"
+                              placeholder="Last name"
+                              defaultValue={sta}
+                              readOnly
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-6">
+                          <div className="form-group focused">
+                            <label  style={{color: 'gold'}}
+                              className="form-control-label"
+                              htmlFor="input-last-name"
+                            >
+                              Money
+                            </label>
+                            <input
+                             style={{color: 'gold'}}
+                              type="text"
+                              id="input-last-name"
+                              className="form-control form-control-alternative"
+                              placeholder="Last name"
+                              defaultValue={money}
                               readOnly
                             />
                           </div>
