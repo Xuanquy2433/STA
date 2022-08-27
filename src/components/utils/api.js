@@ -28,3 +28,8 @@ export const putAPI = async (url, payload) => {
   return response
 }
 
+export const putAPI2 = async (url,pay ) => {
+  const response = await axios.put(url,{pay} ).catch((err) => console.error(err))
+  return response
+}
+

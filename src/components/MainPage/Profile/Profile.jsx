@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import { API_GET_WALLET, API_SEND_STA } from '../../utils/const';
+import { putAPI } from '../../utils/api';
 
 
 function Profile() {
@@ -27,14 +28,16 @@ function Profile() {
 
   const [sendData, setSendData] = useState({
     receiver: "",
-    token: token,
-    sta: ""
+    sta: "",
+    token: token
   })
   console.log(sendData);
   const sendSTA = async (e) => {
     e.preventDefault()
     console.log(e);
-    const response = await axios.put(API_SEND_STA, sendData)
+
+    const response = await axios.put(API_SEND_STA + "?receiver=" + sendData.receiver + "&sta=" + sendData.sta + "&token=" + sendData.token)
+    // const response = await axios.put(API_SEND_STA, sendData)
     if (response && response.status === 200) {
       alert("send ")
       // getUserSta()
@@ -113,7 +116,7 @@ function Profile() {
                     <div class="modal-content">
                       {showName ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2> : ''}
                       {showName ? <div class="modal-body">
-                        <form  class="form-inline">
+                        <form method='PUT' class="form-inline">
                           <div class="form-group mb-2">
                             <label for="money" class="sr-only">STA</label>
                             <input onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
@@ -121,11 +124,11 @@ function Profile() {
                           <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
                           <div class="form-group mx-sm-3 mb-2">
                             <label for="idUser" class="sr-only">Email</label>
-                            {/* <input onChange={onChangeText} value={token} defaultValue={token} name="token" type="hidden" class="form-control" id="idUser" placeholder="Email" /> */}
-                           
+                            {/* <input onChange={onChangeText}  name="token" type="text" class="form-control" id="idUser" placeholder="Token" /> */}
+
                             <input onChange={onChangeText} name="receiver" type="text" class="form-control" id="idUser" placeholder="Email" />
                           </div>
-                          {showName ? <button onClick={sendSTA} type="submit" class="btn btn-primary">Send</button> : ''}
+
                         </form>
                       </div> : <div class="modal-body">
                         <h2 style={{ fontSize: '2em', textAlign: 'center' }}>Please login</h2>
@@ -134,7 +137,9 @@ function Profile() {
                         {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>{sta} STA</span></p> : ''}
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                       
+
+                        {showName ? <button onClick={sendSTA} type="submit" class="btn btn-primary">Send</button> : ''}
+
                         {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
                       </div>
                     </div>
