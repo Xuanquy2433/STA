@@ -30,8 +30,9 @@ function Profile() {
     token: token,
     sta: ""
   })
-
-  const sendSTA = async (data) => {
+  console.log(sendData);
+  const sendSTA = async (e) => {
+    console.log(e);
     const response = await axios.put(API_SEND_STA, sendData)
     if (response && response.status === 200) {
       alert("send ")
