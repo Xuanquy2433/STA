@@ -39,8 +39,12 @@ function Profile() {
     const response = await axios.put(API_SEND_STA + "?receiver=" + sendData.receiver + "&sta=" + sendData.sta + "&token=" + sendData.token)
     // const response = await axios.put(API_SEND_STA, sendData)
     if (response && response.status === 200) {
-      alert("send ")
-      // getUserSta()
+      // alert("send ")
+      toast.success('Send success', {
+        
+        autoClose: 2000
+    })
+      getUserSta()
     }
   }
 
@@ -138,7 +142,7 @@ function Profile() {
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                        {showName ? <button onClick={sendSTA} type="submit" class="btn btn-primary">Send</button> : ''}
+                        {showName ? <button onClick={sendSTA} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
 
                         {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
                       </div>

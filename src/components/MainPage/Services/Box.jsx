@@ -20,7 +20,7 @@ const Box = (props) => {
           <i class="fa-solid fa-check"></i>  It is a long established fact
         </p>
 
-        <Link to="#" className="cv-btn">
+        <Link  style={{color: 'white'}}to="#" className="cv-btn btnHover">
           {props.button}
         </Link>
       </div>

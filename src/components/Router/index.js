@@ -17,6 +17,7 @@ import Gold from "../MainPage/Services/Pack/Gold";
 import Profile from "../MainPage/Profile/Profile";
 import PageNotFound from "../MainPage/Notfound/PageNotFound";
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import React from "react";
 
 
