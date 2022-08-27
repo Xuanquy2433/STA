@@ -17,20 +17,17 @@ export default function Login() {
         const response = await axios.post(API_USER_LOGIN, data);
         if (response && response.status === 200) {
             console.log("Login success");
-            alert("Login success");
+            // alert("Login success");
             localStorage.setItem("token", response?.data.token);
             localStorage.setItem("user", JSON.stringify(response.data));
 
-            console.log('okokooko ', JSON.stringify(response.data));
-
             toast.success('Login success', {
-                position: 'bottom-left',
                 autoClose: 3000
             })
             navigate('/')
             setTimeout(() => {
                 window.location.reload()
-            }, 1500);
+            }, 1000);
         };
     }
     return (

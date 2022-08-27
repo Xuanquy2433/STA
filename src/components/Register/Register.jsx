@@ -21,9 +21,8 @@ export default function Register() {
         const response = await axios.post(API_USER_SIGNUP, data);
         if (response && response.status === 200) {
             console.log("Signup success");
-            alert("Sign success");
+            // alert("Sign success");
             toast.success('Register success', {
-                position: 'bottom-left',
                 autoClose: 3000
             })
             navigate('/login')

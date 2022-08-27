@@ -41,9 +41,8 @@ function Profile() {
     if (response && response.status === 200) {
       // alert("send ")
       toast.success('Send success', {
-        
         autoClose: 2000
-    })
+      })
       getUserSta()
     }
   }
@@ -74,7 +73,7 @@ function Profile() {
     localStorage.removeItem("user")
     navigate('/')
 
-    // toast.success("Logout success");
+    toast.success("Logout success");
     setTimeout(() => window.location.reload(false)
       , 1000)
   }
@@ -373,7 +372,7 @@ function Profile() {
                           className="form-control form-control-alternative"
                           placeholder="A few words about you ..."
                           defaultValue={
-                            "A beautiful Dashboard for Bootstrap 4. It is Free and Open Source."
+                            "A professional developer"
                           }
                         />
                       </div>
