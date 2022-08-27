@@ -13,7 +13,7 @@ const TopNavbar = () => {
     let dataUser = localStorage.getItem("user");
     let firstName = JSON.parse(dataUser).userDataDto.firstName
     let lastName = JSON.parse(dataUser).userDataDto.lastName
-    showName = lastName + " " + firstName
+    showName = firstName + " " + lastName
   }
 
 
