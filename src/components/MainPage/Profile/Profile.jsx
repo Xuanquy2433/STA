@@ -89,7 +89,7 @@ function Profile() {
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         {showName ? <button type="button" class="btn btn-primary">Send</button> : ''}
-                     {showName ? <button type="button" class="btn btn-primary">Send</button> : ''}
+                     {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
                       </div>
                     </div>
                   </div>
