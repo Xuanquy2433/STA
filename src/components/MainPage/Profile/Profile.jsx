@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Profile.css'
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,19 +21,18 @@ function Profile() {
 
   }
 
-  let sta
+  const [sta, setSta] = useState('');
+
   const getUserSta = async () => {
     let token = localStorage.getItem("token");
     console.log(token);
     const response = await axios.post(API_GET_WALLET + token);
     console.log("sta ", response.data);
-    // if (response && response.status === 200) {
-    return response.data.sta;
-    // }
+    if (response && response.status === 200) {
+      setSta(response.data.sta);
+    }
 
   }
-  sta = getUserSta();
-  console.log("asdadada ", sta);
 
 
   const logout = () => {
@@ -107,7 +106,7 @@ function Profile() {
                         <h2 style={{ fontSize: '2em', textAlign: 'center' }}>Please login</h2>
                       </div>}
                       <div class="modal-footer">
-                        {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}> STA</span></p> : ''}
+                        {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>{sta} STA</span></p> : ''}
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         {showName ? <button type="button" class="btn btn-primary">Send</button> : ''}
