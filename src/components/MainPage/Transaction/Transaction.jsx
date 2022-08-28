@@ -1,21 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { API_GET_LOGS } from '../../utils/const';
 import { getAPI } from './../../utils/api';
-
-const data = [
-    {
-        idsend: "aaaa33213121",
-        idtake: "ababebbe1234",
-        date: "	12 Jul 2020, 12:30 PM",
-        amount: "$558.8"
-
-    }
-]
+import Moment from 'react-moment';
 
 function Transaction() {
-
     const [dataLogs, setDataLogs] = useState([])
-
     const fetchAPI = async () => {
         const result = await getAPI(API_GET_LOGS)
         if (result) {
@@ -67,8 +56,13 @@ function Transaction() {
                     </ul>{" "}
                     <button style={{ background: "linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }} className="btn btn-primary">New Transaction</button>
                 </div>
+<<<<<<< HEAD
                 <div  id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
                     <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
+=======
+                <div id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
+                    <table className="table table-darkN table-borderless">
+>>>>>>> 462d10adc72a11c3fd1e1e0506ffceab5920e0b4
                         <thead>
                             <tr>
                                 <th scope="col">UID</th>
@@ -81,15 +75,13 @@ function Transaction() {
                                 </th>
                             </tr>
                         </thead>
-                        {/* cc
-s */}
                         <tbody>
                             {dataLogs.map((item, index) => (
                                 <tr key={index}>
                                     <td scope="row">{item.user.id}</td>
                                     <td style={{ textAlign: "center" }} className="">Sent to</td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.receiverId}</td>
-                                    <td style={{ textAlign: "center" }} className="text-muted">{item.createdDate}</td>
+                                    <td style={{ textAlign: "center" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.status}</td>
                                     <td className="d-flex justify-content-end align-items-center">$ {item.sta}</td>
                                 </tr>
