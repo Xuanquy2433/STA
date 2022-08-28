@@ -67,41 +67,36 @@ function Transaction() {
                     </ul>{" "}
                     <button style={{ background: "linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }} className="btn btn-primary">New Transaction</button>
                 </div>
-                <div className="table-responsive mt-3">
-                    <table className="table table-darkN table-borderless">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar" className="table-responsive mt-3">
+                    <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
                         <thead>
                             <tr>
-                                <th scope="col">Id send</th>
+                                <th scope="col">UID</th>
                                 <th style={{ textAlign: "center" }} scope="col">Message</th>
-                                <th style={{ textAlign: "center" }} scope="col">Status</th>
+                                <th style={{ textAlign: "center" }} scope="col">Receiver ID</th>
                                 <th style={{ textAlign: "center" }} scope="col">Date</th>
-
+                                <th style={{ textAlign: "center" }} scope="col">Status</th>
                                 <th className="d-flex justify-content-end " scope="col" >
                                     Amount
                                 </th>
                             </tr>
                         </thead>
+
                         <tbody>
                             {dataLogs.map((item, index) => (
                                 <tr key={index}>
-                                    <td scope="row">
-                                        {item.user.id}
-                                    </td>
-                                    <td style={{ textAlign: "center" }} className="">
-                                        {item.message} to {item.user.email}
-                                    </td>
-                                    <td style={{ textAlign: "center" }} className="text-muted">{item.status}</td>
-                                    {/* <td style={{ textAlign: "center" }} className="text-muted">{item.receiverId}</td> */}
+                                    <td scope="row">{item.user.id}</td>
+                                    <td style={{ textAlign: "center" }} className="">Sent to</td>
+                                    <td style={{ textAlign: "center" }} className="text-muted">{item.receiverId}</td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.createdDate}</td>
-                                    <td className="d-flex justify-content-end align-items-center">
-                                        $ {item.sta}
-                                    </td>
+                                    <td style={{ textAlign: "center" }} className="text-muted">{item.status}</td>
+                                    <td className="d-flex justify-content-end align-items-center">$ {item.sta}</td>
                                 </tr>
                             ))}
-
                         </tbody>
                     </table>
                 </div>
+                
                 <div className="d-flex justify-content-between align-items-center results">
                     {" "}
                     {/* <span className="pl-md-3">
