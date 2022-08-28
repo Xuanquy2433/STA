@@ -81,7 +81,8 @@ function Transaction() {
                                 </th>
                             </tr>
                         </thead>
-
+{/* cc
+s */}
                         <tbody>
                             {dataLogs.map((item, index) => (
                                 <tr key={index}>
