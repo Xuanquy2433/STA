@@ -13,15 +13,16 @@ function Profile() {
   let firstName
   let lastName
   let email
+  let checksta
   if (localStorage.getItem("user")) {
     let dataUser = localStorage.getItem("user");
     firstName = JSON.parse(dataUser).userDataDto.firstName
     lastName = JSON.parse(dataUser).userDataDto.lastName
     email = JSON.parse(dataUser).userDataDto.email
     showName = firstName + " " + lastName
-
+    checksta = JSON.parse(dataUser).userDataDto.sta
   }
-
+  console.log(localStorage.getItem("user"));
   const [sta, setSta] = useState('');
   const [money, setMoney] = useState('');
   let token = localStorage.getItem("token");
@@ -36,10 +37,18 @@ function Profile() {
     e.preventDefault()
     console.log(e);
 
-    const response = await axios.put(API_SEND_STA + "?receiver=" + sendData.receiver + "&sta=" + sendData.sta + "&token=" + sendData.token)
-    // const response = await axios.put(API_SEND_STA, sendData)
-    if (response && response.status === 200) {
-      // alert("send ")
+    if (sendData.receiver == email) {
+      toast.error("You can't transfer money to yourself", {
+        autoClose: 2000
+      })
+      getUserSta()
+    } else if (sendData.sta > sta) {
+      toast.error("you don't have enough money", {
+        autoClose: 2000
+      })
+      getUserSta()
+    } else {
+      const response = await axios.put(API_SEND_STA + "?receiver=" + sendData.receiver + "&sta=" + sendData.sta + "&token=" + sendData.token)
       toast.success('Send success', {
         autoClose: 2000
       })
@@ -122,7 +131,7 @@ function Profile() {
                         <form method='PUT' class="form-inline">
                           <div class="form-group mb-2">
                             <label for="money" class="sr-only">STA</label>
-                            <input onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
+                            <input onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money"/>
                           </div>
                           <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
                           <div class="form-group mx-sm-3 mb-2">
