@@ -46,6 +46,21 @@ export default function Chart() {
             "amt": 2100
         }
     ]
+
+    function CustomTooltip({ payload, label, active }) {
+        if (active) {
+          return (
+            <div className="custom-tooltip">
+              <p className="label">{`${label} : ${payload[0].value}`}</p>
+              <p className="label">{`${label} : ${payload[1].value}`}</p>
+
+              {/* <p className="desc">Anything you want can be displayed here.</p> */}
+            </div>
+          );
+        }
+      
+        return null;
+      }
     return (
         <div style={{margin:"50px 0px 0px 0px", padding:"50px 0px 0px 0px"}} id='chart'>
             <div className="s-heading">
@@ -60,8 +75,8 @@ export default function Chart() {
                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
                         <XAxis stroke="#8898aa" dataKey="name" />
                         <YAxis stroke="#8898aa" />
-                        <Tooltip stroke="#8898aa" />
-                        <Legend stroke="#8898aa" />
+                        <Tooltip content={<CustomTooltip />} wrapperStyle={{ width: 100}}  />
+                        <Legend  width={100} wrapperStyle={{ top: 40, right: 20, backgroundColor: '#333', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }}  />
                         <Line type="monotone" dataKey="pv" stroke="#ff9900" />
                         <Line type="monotone" dataKey="uv" stroke="#ff567a" />
                     </LineChart>
