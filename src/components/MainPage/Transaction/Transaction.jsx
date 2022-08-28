@@ -1,21 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { API_GET_LOGS } from '../../utils/const';
 import { getAPI } from './../../utils/api';
-
-const data = [
-    {
-        idsend: "aaaa33213121",
-        idtake: "ababebbe1234",
-        date: "	12 Jul 2020, 12:30 PM",
-        amount: "$558.8"
-
-    }
-]
+import Moment from 'react-moment';
 
 function Transaction() {
-
     const [dataLogs, setDataLogs] = useState([])
-
     const fetchAPI = async () => {
         const result = await getAPI(API_GET_LOGS)
         if (result) {
@@ -87,7 +76,7 @@ function Transaction() {
                                     <td scope="row">{item.user.id}</td>
                                     <td style={{ textAlign: "center" }} className="">Sent to</td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.receiverId}</td>
-                                    <td style={{ textAlign: "center" }} className="text-muted">{item.createdDate}</td>
+                                    <td style={{ textAlign: "center" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.status}</td>
                                     <td className="d-flex justify-content-end align-items-center">$ {item.sta}</td>
                                 </tr>
