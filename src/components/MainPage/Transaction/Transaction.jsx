@@ -96,7 +96,7 @@ function Transaction() {
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div className="d-flex justify-content-between align-items-center results">
                     {" "}
                     {/* <span className="pl-md-3">
