@@ -13,14 +13,12 @@ function Profile() {
   let firstName
   let lastName
   let email
-  let checksta
   if (localStorage.getItem("user")) {
     let dataUser = localStorage.getItem("user");
     firstName = JSON.parse(dataUser).userDataDto.firstName
     lastName = JSON.parse(dataUser).userDataDto.lastName
     email = JSON.parse(dataUser).userDataDto.email
     showName = firstName + " " + lastName
-    checksta = JSON.parse(dataUser).userDataDto.sta
   }
   console.log(localStorage.getItem("user"));
   const [sta, setSta] = useState('');
