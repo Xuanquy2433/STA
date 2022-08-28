@@ -55,8 +55,8 @@ const TopNavbar = () => {
             </LinkScroll>
           </li>
           <li>
-            <LinkScroll to="subscribe" smooth='true' duration={100}>
-              Subscribe
+            <LinkScroll to="chart" smooth='true' duration={100}>
+              Chart
             </LinkScroll>
           </li>
 

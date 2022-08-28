@@ -1,4 +1,5 @@
 import React from 'react'
+import Chart from '../Chart/Chart'
 import About from '../MainPage/About/About'
 import Features from '../MainPage/Features/Features'
 import Header from '../MainPage/Header/Header'
@@ -14,6 +15,7 @@ export default function HomePage() {
             <Services />
             <About/>
             <Transaction/>
+            <Chart/>
             <Subscribe />
         </div>
     )

@@ -133,7 +133,9 @@
 }
 
 .btn a {
-  background: #323232;
+  border-radius: 5px;
+  background: linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%);
+  /* background: #323232; */
   padding: 10px 30px;
   color: #fff;
   text-transform: uppercase;
@@ -141,7 +143,7 @@
   text-decoration: none
 }
 .btn a:hover{
-    color: white;
+    color: inherit;
 }
 .hot {
     position: absolute;

@@ -44,7 +44,7 @@ const RouterScreen = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/profile" element={<Profile />} />
-
+                    
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
                     <Route path="/diamond" element={<Diamond />} />

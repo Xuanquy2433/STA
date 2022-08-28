@@ -16,7 +16,7 @@ function About() {
 
     return (
 
-        <div id='about' style={{ width: '85%', margin: 'auto', paddingTop: '39px' }}>
+        <div id='about' style={{ width: '85%', margin: 'auto', paddingTop: '65px' }}>
 
             <div className="s-heading">
                 <h1>About us</h1>
