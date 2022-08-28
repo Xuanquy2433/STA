@@ -2,17 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Moment from 'react-moment';
 import { API_GET_LOGS } from '../../utils/const';
 import { getAPI } from './../../utils/api';
-
-const data = [
-    {
-        idsend: "aaaa33213121",
-        idtake: "ababebbe1234",
-        date: "	12 Jul 2020, 12:30 PM",
-        amount: "$558.8"
-
-    }
-]
-
 function Transaction() {
 
     const [dataLogs, setDataLogs] = useState([])
@@ -82,8 +71,7 @@ function Transaction() {
                                 </th>
                             </tr>
                         </thead>
-                        {/* cc
-s */}
+
                         <tbody>
                             {dataLogs.map((item, index) => (
                                 <tr key={index}>
