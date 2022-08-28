@@ -67,7 +67,7 @@ function Transaction() {
                     </ul>{" "}
                     <button style={{ background: "linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }} className="btn btn-primary">New Transaction</button>
                 </div>
-                <div id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
+                <div  id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
                     <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
                         <thead>
                             <tr>
