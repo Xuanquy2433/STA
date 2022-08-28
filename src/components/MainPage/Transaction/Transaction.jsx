@@ -15,6 +15,7 @@ const data = [
 function Transaction() {
 
     const [dataLogs, setDataLogs] = useState([])
+
     const fetchAPI = async () => {
         const result = await getAPI(API_GET_LOGS)
         if (result) {
@@ -71,9 +72,9 @@ function Transaction() {
                         <thead>
                             <tr>
                                 <th scope="col">Id send</th>
-                                <th style={{textAlign: "center"}} scope="col">Mode</th>
-                                <th style={{textAlign: "center"}} scope="col">Id take</th>
-                                <th style={{textAlign: "center"}} scope="col">Date</th>
+                                <th style={{ textAlign: "center" }} scope="col">Message</th>
+                                <th style={{ textAlign: "center" }} scope="col">Status</th>
+                                <th style={{ textAlign: "center" }} scope="col">Date</th>
 
                                 <th className="d-flex justify-content-end " scope="col" >
                                     Amount
@@ -86,14 +87,14 @@ function Transaction() {
                                     <td scope="row">
                                         {item.user.id}
                                     </td>
-                                    <td style={{textAlign: "center"}} className="">
-                                    sent to
+                                    <td style={{ textAlign: "center" }} className="">
+                                        {item.message} to {item.user.email}
                                     </td>
-                                    <td style={{textAlign: "center"}} className="text-muted">{item.receiverId}</td>
-                                    <td style={{textAlign: "center"}} className="text-muted">{item.createdDate}</td>
-
+                                    <td style={{ textAlign: "center" }} className="text-muted">{item.status}</td>
+                                    {/* <td style={{ textAlign: "center" }} className="text-muted">{item.receiverId}</td> */}
+                                    <td style={{ textAlign: "center" }} className="text-muted">{item.createdDate}</td>
                                     <td className="d-flex justify-content-end align-items-center">
-                                       $ {item.sta}
+                                        $ {item.sta}
                                     </td>
                                 </tr>
                             ))}
