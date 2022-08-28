@@ -55,7 +55,7 @@ export default function Chart() {
 
 
                 <div style={{ padding: "40px" }} className="d-flex justify-content-between align-items-center results">
-                    <LineChart width={800} height={300} data={data}
+                    <LineChart width={850} height={300} data={data}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
                         <XAxis stroke="#8898aa" dataKey="name" />
