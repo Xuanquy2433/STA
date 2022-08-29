@@ -19,6 +19,7 @@ import PageNotFound from "../MainPage/Notfound/PageNotFound";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import React from "react";
+import BuySta from "../MainPage/BuySta/BuySta";
 
 
 const RouterScreen = () => {
@@ -44,10 +45,12 @@ const RouterScreen = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/profile" element={<Profile />} />
-                    
+
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
                     <Route path="/diamond" element={<Diamond />} />
+
+                    <Route path="/profile/buySta" element={<BuySta />} />
 
                     <Route path="*" element={<PageNotFound />} />
 

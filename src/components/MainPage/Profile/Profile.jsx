@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Profile.css'
 import { toast } from 'react-toastify';
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import { API_GET_WALLET, API_SEND_STA } from '../../utils/const';
+import { API_BUY_STA, API_GET_WALLET, API_SEND_STA } from '../../utils/const';
 import { putAPI } from '../../utils/api';
 
 
@@ -30,6 +30,12 @@ function Profile() {
     sta: "",
     token: token
   })
+
+  const [dataBuy, setDataBuy] = useState({
+    sta: "",
+    token: token
+  })
+
   console.log(sendData);
   const sendSTA = async (e) => {
     e.preventDefault()
@@ -52,6 +58,15 @@ function Profile() {
       })
       getUserSta()
     }
+  }
+
+  const buySTA = async (e) => {
+    e.preventDefault()
+    const response = await axios.put(API_BUY_STA + "?sta=" + dataBuy.sta + "&token=" + dataBuy.token)
+    toast.success('Send success', {
+      autoClose: 2000
+    })
+    getUserSta()
   }
 
   const onChangeText = (event) => {
@@ -129,7 +144,7 @@ function Profile() {
                         <form method='PUT' class="form-inline">
                           <div class="form-group mb-2">
                             <label for="money" class="sr-only">STA</label>
-                            <input onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money"/>
+                            <input onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
                           </div>
                           <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
                           <div class="form-group mx-sm-3 mb-2">
@@ -179,9 +194,41 @@ function Profile() {
                 </div>
                 <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                   <div className="d-flex justify-content-between">
-                    <a href="#" className="btn btn-sm btn-info mr-4">
+                    <p data-toggle="modal" data-target="#recharge" className="btn btn-sm btn-info mr-4">
                       Recharge
-                    </a>
+                    </p>
+
+                    <div class="modal fade" id="recharge" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          {showName ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Buy STA</h2> : ''}
+                          {showName ? <div class="modal-body">
+                            <form method='PUT' class="form-inline">
+                              <div class="form-group mb-2">
+                                <label for="money" class="sr-only">STA</label>
+                                <input style={{ width: '470px' }} onChange={(e) =>
+                                  setDataBuy({ ...dataBuy, sta: e.target.value })
+                                } type="number" name="sta" class="form-control" id="money" placeholder="Enter the STA" />
+                              </div>
+                            </form>
+                          </div> : <div class="modal-body">
+                            <h2 style={{ fontSize: '2em', textAlign: 'center' }}>Please login</h2>
+                          </div>}
+                          <div class="modal-footer">
+                            {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} ><span style={{ color: 'gold' }}>1 STA</span> = 10.000 money </p> : ''}
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                            {showName ? <button onClick={buySTA} type="submit" data-dismiss="modal" class="btn btn-primary">Buy</button> : ''}
+
+                            {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
                     <button onClick={logout} className="btn btn-sm btn-default float-right">
                       Logout
                     </button>
