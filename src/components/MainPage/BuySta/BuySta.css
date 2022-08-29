@@ -5,7 +5,7 @@ h4,
 h5,
 h6 {}
 
-section {
+.buySta section {
     padding: 60px 0;
     min-height: 100vh;
 }
@@ -44,7 +44,7 @@ img {
 max-width: 100%;
 height: auto;
 }
-section{
+.buySta  section{
 background-color: #f7f6fb;
 color: #808080;
 }
