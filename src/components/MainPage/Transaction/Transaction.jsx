@@ -76,12 +76,12 @@ function Transaction() {
                         <tbody>
                             {dataLogs.map((item, index) => (
                                 <tr key={index}>
-                                    <td scope="row">{item.user.id}</td>
-                                    <td style={{ textAlign: "center" }} className="">Sent to</td>
+                                    <td style={{color:"#8898aa"}} scope="row">{item.user.id}</td>
+                                    <td style={{ textAlign: "center" , color:"#8898aa "}} className="">Sent to</td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.receiverId}</td>
                                     <td style={{ textAlign: "center" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.status}</td>
-                                    <td className="d-flex justify-content-end align-items-center">$ {item.sta}</td>
+                                    <td style={{color:"#8898aa"}} className="d-flex justify-content-end align-items-center">$ {item.sta}</td>
                                 </tr>
                             ))}
                         </tbody>
