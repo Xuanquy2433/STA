@@ -5,9 +5,10 @@ import { getAPI } from './../../utils/api';
 function Transaction() {
 
     const [dataLogs, setDataLogs] = useState([])
+    let status = localStorage.getItem("user");
 
     const fetchAPI = async () => {
-        const result = await getAPI(API_GET_LOGS)
+        const result = await getAPI(API_GET_LOGS + JSON.parse(status).status)
         if (result) {
             setDataLogs(result)
         }
