@@ -27,7 +27,9 @@ const TopNavbar = () => {
     <div >
       <nav style={style}>
         <LinkRouter to="/" className="logo" smooth='true' duration={2000}>
-          <h1 style={{ color: 'white', cursor: 'pointer', fontSize: '2.0em', marginTop: '5px' }}>STA <span style={{ color: '#DAA520' }} >Coin</span></h1>
+          <div className='logoSTA'>
+            <h1 style={{ color: 'white', cursor: 'pointer', fontSize: '2.0em', marginTop: '5px' }}>STA <span style={{ color: '#DAA520' }} >Coin</span></h1>
+          </div>
         </LinkRouter>
         <input className="menu-btn" type="checkbox" id="menu-btn" />
         <label className="menu-icon" htmlFor="menu-btn">

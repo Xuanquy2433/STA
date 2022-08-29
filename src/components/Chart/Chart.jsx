@@ -75,7 +75,8 @@ export default function Chart() {
                         {/* <CartesianGrid strokeDasharray="3 3" /> */}
                         <XAxis stroke="#8898aa" dataKey="name" />
                         <YAxis stroke="#8898aa" />
-                        <Tooltip content={<CustomTooltip />} wrapperStyle={{ width: 100}}  />
+                        {/* content={<CustomTooltip />} */}
+                        <Tooltip  wrapperStyle={{ width: 100}}  />
                         <Legend  width={100} wrapperStyle={{ top: 40, right: 20, backgroundColor: '#333', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }}  />
                         <Line type="monotone" dataKey="pv" stroke="#ff9900" />
                         <Line type="monotone" dataKey="uv" stroke="#ff567a" />
