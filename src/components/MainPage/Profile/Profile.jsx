@@ -63,7 +63,7 @@ function Profile() {
   const buySTA = async (e) => {
     e.preventDefault()
     const response = await axios.put(API_BUY_STA + "?sta=" + dataBuy.sta + "&token=" + dataBuy.token)
-    toast.success('Send success', {
+    toast.success('Buy success', {
       autoClose: 2000
     })
     getUserSta()
@@ -208,7 +208,7 @@ function Profile() {
                                 <label for="money" class="sr-only">STA</label>
                                 <input style={{ width: '470px' }} onChange={(e) =>
                                   setDataBuy({ ...dataBuy, sta: e.target.value })
-                                } type="number" name="sta" class="form-control" id="money" placeholder="Enter the STA" />
+                                } type="number" name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the STA" />
                               </div>
                             </form>
                           </div> : <div class="modal-body">
@@ -285,7 +285,7 @@ function Profile() {
                 <div className="card-header bg-white border-0">
                   <div className="row align-items-center">
                     <div className="col-8">
-                      <h3 className="mb-0" style={{ color: "#333", left: "0", position: "absolute" }}>STA: {sta}</h3>
+                      <h3 className="mb-0" style={{ color: "#333", left: "0", position: "absolute" }}>STA: <span style={{ color: 'gold', fontWeight: '600', fontSize: '1.2em' }}> {sta}</span></h3>
                     </div>
                     <div className="col-4 text-right">
                       <a href="#!" className="btn btn-sm btn-primary">
