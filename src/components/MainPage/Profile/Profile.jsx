@@ -47,7 +47,7 @@ function Profile() {
       })
       getUserSta()
     } else if (sendData.sta > sta) {
-      toast.error("you don't have enough money", {
+      toast.error("You don't have enough money", {
         autoClose: 2000
       })
       getUserSta()
@@ -60,13 +60,23 @@ function Profile() {
     }
   }
 
+  const checkSTA = money / 10000
+  console.log(checkSTA);
   const buySTA = async (e) => {
     e.preventDefault()
-    const response = await axios.put(API_BUY_STA + "?sta=" + dataBuy.sta + "&token=" + dataBuy.token)
-    toast.success('Buy success', {
-      autoClose: 2000
-    })
-    getUserSta()
+    if (dataBuy.sta > checkSTA) {
+      toast.warning("You don't have enough money", {
+        autoClose: 2000
+      })
+      getUserSta()
+    } else {
+      const response = await axios.put(API_BUY_STA + "?sta=" + dataBuy.sta + "&token=" + dataBuy.token)
+      toast.success('Buy success', {
+        autoClose: 2000
+      })
+      getUserSta()
+    }
+
   }
 
   const onChangeText = (event) => {
