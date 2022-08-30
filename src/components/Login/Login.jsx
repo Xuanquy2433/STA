@@ -29,6 +29,7 @@ export default function Login() {
                 window.location.reload()
             }, 1000);
         };
+        
     }
     return (
         <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>

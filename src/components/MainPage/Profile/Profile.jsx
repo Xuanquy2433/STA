@@ -6,20 +6,23 @@ import axios from 'axios';
 import { API_BUY_STA, API_GET_WALLET, API_SEND_STA } from '../../utils/const';
 import { putAPI } from '../../utils/api';
 
-
 function Profile() {
-  const navigate = useNavigate();
   let showName
   let firstName
   let lastName
   let email
+  let role
   if (localStorage.getItem("user")) {
     let dataUser = localStorage.getItem("user");
     firstName = JSON.parse(dataUser).userDataDto.firstName
     lastName = JSON.parse(dataUser).userDataDto.lastName
     email = JSON.parse(dataUser).userDataDto.email
+    role = JSON.parse(dataUser).userDataDto.role
+
     showName = firstName + " " + lastName
   }
+  const navigate = useNavigate();
+
   console.log(localStorage.getItem("user"));
   const [sta, setSta] = useState('');
   const [money, setMoney] = useState('');
@@ -110,8 +113,39 @@ function Profile() {
       , 1000)
   }
 
-
-
+  const data = [
+    {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }, {
+      name: "aansn"
+    }
+  ]
 
   return (
     <div style={{ marginTop: '60px' }}>
@@ -140,9 +174,9 @@ function Profile() {
                   This is your profile page. You can see the progress you've made with
                   your work and manage your projects or assigned tasks
                 </p>
-                <p className="text-white mt-0 mb-5">
+                <div className="text-white mt-0 mb-5">
 
-                </p>
+                </div>
                 <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
                   Transfer money
                 </button>
@@ -185,7 +219,7 @@ function Profile() {
           </div>
         </div>
 
-        {/* Page content */}
+
         <div className="container-fluid mt--7">
           <div className="row">
             <div className="col-xl-4 order-xl-2 mb-5 mb-xl-0">
@@ -290,163 +324,214 @@ function Profile() {
                 </div>
               </div>
             </div>
-            <div className="col-xl-8 order-xl-1">
-              <div className="card bg-secondary shadow">
-                <div className="card-header bg-white border-0">
-                  <div className="row align-items-center">
-                    <div className="col-8">
-                      <h3 className="mb-0" style={{ color: "#333", left: "0", position: "absolute" }}>STA: <span style={{ color: 'gold', fontWeight: '600', fontSize: '1.2em' }}> {sta}</span></h3>
+
+            {
+              role == "user" || role == undefined ?
+                <div className="col-xl-8 order-xl-1">
+                  <div className="card bg-secondary shadow">
+                    <div className="card-header bg-white border-0">
+                      <div className="row align-items-center">
+                        <div className="col-8">
+                          <h3 className="mb-0" style={{ color: "#333", left: "0", position: "absolute" }}>STA: <span style={{ color: 'gold', fontWeight: '600', fontSize: '1.2em' }}> {sta}</span></h3>
+                        </div>
+                        <div className="col-4 text-right">
+                          <a href="#!" className="btn btn-sm btn-primary">
+                            Settings
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-4 text-right">
-                      <a href="#!" className="btn btn-sm btn-primary">
-                        Settings
-                      </a>
+                    <div className="card-body">
+                      <form>
+                        <h6 className="heading-small text-muted mb-4">
+                          User information
+                        </h6>
+                        <div className="pl-lg-4">
+                          <div className="row">
+                            <div className="col-lg-6">
+                              <div className="form-group focused">
+                                <label
+                                  className="form-control-label"
+                                  htmlFor="input-username"
+                                >
+                                  Username
+                                </label>
+                                <input
+                                  type="text"
+                                  id="input-username"
+                                  className="form-control form-control-alternative"
+                                  placeholder="Username"
+                                  defaultValue={showName}
+                                  readOnly
+                                />
+                              </div>
+                            </div>
+                            <div className="col-lg-6">
+                              <div className="form-group">
+                                <label
+                                  className="form-control-label"
+                                  htmlFor="input-email"
+                                >
+                                  Email address
+                                </label>
+                                <input
+                                  type="email"
+                                  id="input-email"
+                                  className="form-control form-control-alternative"
+                                  placeholder={email}
+                                  readOnly
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="col-lg-6">
+                              <div className="form-group focused">
+                                <label
+                                  className="form-control-label"
+                                  htmlFor="input-first-name"
+                                >
+                                  First name
+                                </label>
+                                <input
+                                  type="text"
+                                  id="input-first-name"
+                                  className="form-control form-control-alternative"
+                                  placeholder="First name"
+                                  defaultValue={firstName}
+                                  readOnly
+                                />
+                              </div>
+                            </div>
+                            <div className="col-lg-6">
+                              <div className="form-group focused">
+                                <label
+                                  className="form-control-label"
+                                  htmlFor="input-last-name"
+                                >
+                                  Last name
+                                </label>
+                                <input
+                                  type="text"
+                                  id="input-last-name"
+                                  className="form-control form-control-alternative"
+                                  placeholder="Last name"
+                                  defaultValue={lastName}
+                                  readOnly
+                                />
+                              </div>
+                            </div>
+                            <div className="col-lg-6">
+                              <div className="form-group focused">
+                                <label style={{ color: 'gold' }}
+                                  className="form-control-label"
+                                  htmlFor="input-last-name"
+                                >
+                                  STA
+                                </label>
+                                <input
+                                  style={{ color: 'gold' }}
+                                  type="text"
+                                  id="input-last-name"
+                                  className="form-control form-control-alternative"
+                                  placeholder="Last name"
+                                  defaultValue={sta}
+                                  readOnly
+                                />
+                              </div>
+                            </div>
+                            <div className="col-lg-6">
+                              <div className="form-group focused">
+                                <label style={{ color: 'gold' }}
+                                  className="form-control-label"
+                                  htmlFor="input-last-name"
+                                >
+                                  Money
+                                </label>
+                                <input
+                                  style={{ color: 'gold' }}
+                                  type="text"
+                                  id="input-last-name"
+                                  className="form-control form-control-alternative"
+                                  placeholder="Last name"
+                                  defaultValue={money}
+                                  readOnly
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr className="my-4" />
+                        {/* Description */}
+                        <h6 className="heading-small text-muted mb-4">About me</h6>
+                        <div className="pl-lg-4">
+                          <div className="form-group focused">
+                            <label>About Me</label>
+                            <textarea
+                              readOnly
+                              rows={4}
+                              className="form-control form-control-alternative"
+                              placeholder="A few words about you ..."
+                              defaultValue={
+                                "A professional developer"
+                              }
+                            />
+                          </div>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
-                <div className="card-body">
-                  <form>
-                    <h6 className="heading-small text-muted mb-4">
-                      User information
-                    </h6>
-                    <div className="pl-lg-4">
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-username"
-                            >
-                              Username
-                            </label>
-                            <input
-                              type="text"
-                              id="input-username"
-                              className="form-control form-control-alternative"
-                              placeholder="Username"
-                              defaultValue={showName}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-email"
-                            >
-                              Email address
-                            </label>
-                            <input
-                              type="email"
-                              id="input-email"
-                              className="form-control form-control-alternative"
-                              placeholder={email}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-lg-6">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-first-name"
-                            >
-                              First name
-                            </label>
-                            <input
-                              type="text"
-                              id="input-first-name"
-                              className="form-control form-control-alternative"
-                              placeholder="First name"
-                              defaultValue={firstName}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group focused">
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-last-name"
-                            >
-                              Last name
-                            </label>
-                            <input
-                              type="text"
-                              id="input-last-name"
-                              className="form-control form-control-alternative"
-                              placeholder="Last name"
-                              defaultValue={lastName}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group focused">
-                            <label style={{ color: 'gold' }}
-                              className="form-control-label"
-                              htmlFor="input-last-name"
-                            >
-                              STA
-                            </label>
-                            <input
-                              style={{ color: 'gold' }}
-                              type="text"
-                              id="input-last-name"
-                              className="form-control form-control-alternative"
-                              placeholder="Last name"
-                              defaultValue={sta}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                        <div className="col-lg-6">
-                          <div className="form-group focused">
-                            <label style={{ color: 'gold' }}
-                              className="form-control-label"
-                              htmlFor="input-last-name"
-                            >
-                              Money
-                            </label>
-                            <input
-                              style={{ color: 'gold' }}
-                              type="text"
-                              id="input-last-name"
-                              className="form-control form-control-alternative"
-                              placeholder="Last name"
-                              defaultValue={money}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr className="my-4" />
-                    {/* Description */}
-                    <h6 className="heading-small text-muted mb-4">About me</h6>
-                    <div className="pl-lg-4">
-                      <div className="form-group focused">
-                        <label>About Me</label>
-                        <textarea
-                          readOnly
-                          rows={4}
-                          className="form-control form-control-alternative"
-                          placeholder="A few words about you ..."
-                          defaultValue={
-                            "A professional developer"
-                          }
-                        />
-                      </div>
-                    </div>
-                  </form>
+                : 
+                <div style={{ backgroundColor: "#222222", padding: "0", borderRadius:"5px"}} className="col-xl-8 order-xl-1">
+
+                  <div style={{ height: "650px",borderRadius:"5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
+                    <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
+                      <thead>
+                        <tr>
+                          <th scope="col">UID</th>
+                          <th style={{ textAlign: "center" }} scope="col">ID</th>
+                          <th style={{ textAlign: "center" }} scope="col">User ID</th>
+                          <th style={{ textAlign: "center" }} scope="col">GMAIL</th>
+                          <th style={{ textAlign: "center" }} scope="col" >
+                            Amount
+                          </th>
+                          <th style={{ textAlign: "center" }} scope="col" >
+                            date
+                          </th>
+                          <th style={{ textAlign: "center" }} scope="col">Status</th>
+                          <th style={{ textAlign: "center" }} scope="col">Status</th>
+
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {data.map((item, index) => (
+                          <tr key={index}>
+                            <td style={{ color: "#8898aa" }} scope="row">{item.name}</td>
+                            <td style={{ textAlign: "center", color: "#8898aa " }} className="text-muted">Sent to</td>
+                            <td style={{ textAlign: "center" }} className="text-muted">{item.name}</td>
+                            <td style={{ textAlign: "center" }} className="text-muted">a</td>
+                            <td style={{ textAlign: "center" }} className="text-muted ">{item.name}</td>
+                            <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.name}</td>
+                            <td style={{ textAlign: "center" }} className="text-muted">
+                              <button style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
+                            </td>
+                            <td style={{ textAlign: "center" }} className="text-muted">
+                              <button style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
-            </div>
+
+
+            }
           </div>
         </div>
+
       </div>
 
 

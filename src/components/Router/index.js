@@ -1,9 +1,12 @@
 import {
     BrowserRouter as Router,
     Routes,
+    Navigate,
     Route,
     Link
 } from "react-router-dom";
+
+import { Redirect } from 'react-router-dom';
 import Features from "../MainPage/Features/Features";
 import Footer from "../Footer/Footer";
 // import { ToastContainer, toast } from 'react-toastify';
@@ -20,9 +23,15 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import React from "react";
 import BuySta from "../MainPage/BuySta/BuySta";
+import AdminRechart from './../Admin/AdminRechart';
+import { Reddit } from "@mui/icons-material";
+import { Switch } from "@mui/material";
 
+let cc = localStorage.getItem("user")
+console.log(cc);
 
 const RouterScreen = () => {
+
     return (
         <React.Fragment>
             <ToastContainer
@@ -44,6 +53,7 @@ const RouterScreen = () => {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+
                     <Route path="/profile" element={<Profile />} />
 
                     <Route path="/basic" element={<Basic />} />
@@ -51,6 +61,8 @@ const RouterScreen = () => {
                     <Route path="/diamond" element={<Diamond />} />
 
                     <Route path="/profile/buySta" element={<BuySta />} />
+
+                    <Route path="/admin" element={<AdminRechart />} />
 
                     <Route path="*" element={<PageNotFound />} />
 
