@@ -15,10 +15,11 @@ function BuySta() {
             setMoney(response.data.money)
         }
     }
-
+    
     useEffect(() => {
         getUserSta();
     }, []);
+
     return (
         <div className='buySta' style={{ marginTop: '60px' }}>
             <section className="choose-package">
