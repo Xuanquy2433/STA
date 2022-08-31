@@ -170,10 +170,13 @@ function Profile() {
             <div className="row">
               <div className="col-lg-7 col-md-10">
                 {showName ? <h1 className="display-2 text-white">Welcome <span style={{ display: 'inline', color: 'gold' }}>{showName}</span>  </h1> : <h1 className="display-2 text-white">Your Profile</h1>}
-                <p className="text-white mt-0 mb-5">
+                {role === 'user' || role === undefined ? <p className="text-white mt-0 mb-5">
                   This is your profile page. You can see the progress you've made with
                   your work and manage your projects or assigned tasks
-                </p>
+                </p> : <p className="text-white mt-0 mb-5">
+                  This is admin page. You can see the progress you've made with
+                  your work and manage your projects or assigned tasks
+                </p>}
                 <div className="text-white mt-0 mb-5">
 
                 </div>
@@ -238,11 +241,11 @@ function Profile() {
                 </div>
                 <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                   <div className="d-flex justify-content-between">
-                    <p data-toggle="modal" data-target="#recharge" className="btn btn-sm btn-info mr-4">
-                      Recharge
+                    <p data-toggle="modal" data-target="#buySTA" className="btn btn-sm btn-info mr-4">
+                      Buy STA
                     </p>
 
-                    <div class="modal fade" id="recharge" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="buySTA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                         <div class="modal-content">
                           {showName ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Buy STA</h2> : ''}
@@ -335,9 +338,49 @@ function Profile() {
                           <h3 className="mb-0" style={{ color: "#333", left: "0", position: "absolute" }}>STA: <span style={{ color: 'gold', fontWeight: '600', fontSize: '1.2em' }}> {sta}</span></h3>
                         </div>
                         <div className="col-4 text-right">
-                          <a href="#!" className="btn btn-sm btn-primary">
-                            Settings
-                          </a>
+                          <p data-toggle="modal" data-target="#rechargeMoney" className="btn btn-sm btn-primary">
+                            Recharge money
+                          </p>
+
+                          <div class="modal fade" id="rechargeMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                {showName || role !== 'admin' ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Recharge money</h2> : ''}
+                                {showName || role !== 'admin' ? <div class="modal-body">
+                                  <form>
+                                    <div class="form-row">
+                                      <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" />
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Password</label>
+                                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password" />
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label style={{ textAlign: 'left' }} for="inputAddress">Address</label>
+                                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+                                    </div>
+
+                                  </form>
+                                </div> : <div class="modal-body">
+                                  <h2 style={{ fontSize: '2em', textAlign: 'center' }}>You are admin ! </h2>
+                                </div>}
+                                <div class="modal-footer">
+                                  {/* {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} ><span style={{ color: 'gold' }}>1 STA</span> = 10.000 money </p> : ''} */}
+
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                  {showName || role !== 'admin' ? <button onClick={buySTA} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
+
+                                  {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
                         </div>
                       </div>
                     </div>
@@ -482,10 +525,10 @@ function Profile() {
                     </div>
                   </div>
                 </div>
-                : 
-                <div style={{ backgroundColor: "#222222", padding: "0", borderRadius:"5px"}} className="col-xl-8 order-xl-1">
+                :
+                <div style={{ backgroundColor: "#222222", padding: "0", borderRadius: "5px" }} className="col-xl-8 order-xl-1">
 
-                  <div style={{ height: "650px",borderRadius:"5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
+                  <div style={{ height: "650px", borderRadius: "5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
                     <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
                       <thead>
                         <tr>
