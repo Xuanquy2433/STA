@@ -3,8 +3,9 @@ import './Profile.css'
 import { toast } from 'react-toastify';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import { API_BUY_STA, API_GET_WALLET, API_SEND_STA } from '../../utils/const';
+import { API_ADD_REQUEST, API_BUY_STA, API_GET_REQUEST, API_GET_WALLET, API_SEND_STA, API_UPDATE_REQUEST } from '../../utils/const';
 import { putAPI } from '../../utils/api';
+import Moment from 'react-moment';
 
 function Profile() {
   let showName
@@ -23,7 +24,28 @@ function Profile() {
   }
   const navigate = useNavigate();
 
-  console.log(localStorage.getItem("user"));
+  const [dataUser, setDataUser] = useState({
+    "message": email,
+    "money": '',
+    "sta": 0,
+    "status": "pending"
+  });
+
+
+  const addRequest = async (e) => {
+    e.preventDefault();
+    const response = await axios.post(API_ADD_REQUEST + token, dataUser);
+    if (response && response.status === 200) {
+      toast.success('Send success', {
+        autoClose: 3000
+      })
+
+    };
+
+
+  }
+  console.log(dataUser);
+
   const [sta, setSta] = useState('');
   const [money, setMoney] = useState('');
   let token = localStorage.getItem("token");
@@ -96,10 +118,56 @@ function Profile() {
       setMoney(response.data.money)
     }
   }
+  const [status, setStatus] = useState([]);
 
+  const getAllByStatus = async () => {
+    const response = await axios.get(API_GET_REQUEST);
+    if (response && response.status === 200) {
+      setStatus(response.data)
+    }
 
+  }
+
+  const accept = async (id, money, message) => {
+    console.log(money, message);
+    const response = await axios.put(API_UPDATE_REQUEST + token, {
+      "id": id,
+      "message": message,
+      "money": money,
+      "sta": 0,
+      "status": "accept"
+    });
+    if (response && response.status === 200) {
+      toast.success("Accept success", {
+        autoClose: 2000
+      });
+      getAllByStatus()
+    }
+
+  }
+
+  const decline = async (id, money, message) => {
+    console.log(money, message);
+    const response = await axios.put(API_UPDATE_REQUEST + token, {
+      "id": id,
+      "message": message,
+      "money": money,
+      "sta": 0,
+      "status": "decline"
+    });
+    if (response && response.status === 200) {
+      toast.error("Decline success", {
+        autoClose: 2000
+      });
+      getAllByStatus()
+    }
+
+  }
+
+  console.log("status ", status);
   useEffect(() => {
     getUserSta();
+    getAllByStatus()
   }, []);
 
   const logout = () => {
@@ -112,40 +180,6 @@ function Profile() {
     setTimeout(() => window.location.reload(false)
       , 1000)
   }
-
-  const data = [
-    {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }, {
-      name: "aansn"
-    }
-  ]
 
   return (
     <div style={{ marginTop: '60px' }}>
@@ -347,32 +381,24 @@ function Profile() {
                               <div class="modal-content">
                                 {showName || role !== 'admin' ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Recharge money</h2> : ''}
                                 {showName || role !== 'admin' ? <div class="modal-body">
-                                  <form>
-                                    <div class="form-row">
-                                      <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email" />
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Password</label>
-                                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password" />
-                                      </div>
+                                  <form method='PUT' class="form-inline">
+                                    <div class="form-group mb-2">
+                                      <label for="money" class="sr-only">Money</label>
+                                      <input style={{ width: '470px' }} onChange={(e) => {
+                                        setDataUser({ ...dataUser, money: e.target.value })
+                                      }
+                                      } type="number" name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the money" />
                                     </div>
-                                    <div class="form-group">
-                                      <label style={{ textAlign: 'left' }} for="inputAddress">Address</label>
-                                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
-                                    </div>
-
                                   </form>
                                 </div> : <div class="modal-body">
                                   <h2 style={{ fontSize: '2em', textAlign: 'center' }}>You are admin ! </h2>
                                 </div>}
                                 <div class="modal-footer">
                                   {/* {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} ><span style={{ color: 'gold' }}>1 STA</span> = 10.000 money </p> : ''} */}
-
+                                  <p>Soạn <span style={{ color: 'gold' }}>[uid or email] + </span> <span style={{ color: 'gold' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold' }}>029323278927 MB BANK</span> </p>
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                                  {showName || role !== 'admin' ? <button onClick={buySTA} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
+                                  {showName || role !== 'admin' ? <button onClick={addRequest} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
 
                                   {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
                                 </div>
@@ -532,36 +558,39 @@ function Profile() {
                     <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
                       <thead>
                         <tr>
-                          <th scope="col">UID</th>
+                          {/* <th scope="col">UID</th> */}
                           <th style={{ textAlign: "center" }} scope="col">ID</th>
-                          <th style={{ textAlign: "center" }} scope="col">User ID</th>
-                          <th style={{ textAlign: "center" }} scope="col">GMAIL</th>
+                          <th style={{ textAlign: "center" }} scope="col">Message</th>
+                          <th style={{ textAlign: "center" }} scope="col">Money</th>
                           <th style={{ textAlign: "center" }} scope="col" >
-                            Amount
+                            Status
                           </th>
                           <th style={{ textAlign: "center" }} scope="col" >
-                            date
+                            Create date
                           </th>
-                          <th style={{ textAlign: "center" }} scope="col">Status</th>
-                          <th style={{ textAlign: "center" }} scope="col">Status</th>
+
 
                         </tr>
                       </thead>
 
                       <tbody>
-                        {data.map((item, index) => (
+                        {status.map((item, index) => (
                           <tr key={index}>
-                            <td style={{ color: "#8898aa" }} scope="row">{item.name}</td>
+                            <td style={{ color: "#8898aa" }} scope="row">{item.id}</td>
                             <td style={{ textAlign: "center", color: "#8898aa " }} className="text-muted">Sent to</td>
-                            <td style={{ textAlign: "center" }} className="text-muted">{item.name}</td>
-                            <td style={{ textAlign: "center" }} className="text-muted">a</td>
-                            <td style={{ textAlign: "center" }} className="text-muted ">{item.name}</td>
-                            <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.name}</td>
+                            {/* <td style={{ textAlign: "center" }} className="text-muted">{item.message}</td> */}
+                            {/* <td style={{ textAlign: "center" }} className="text-muted">a</td> */}
+                            <td style={{ textAlign: "center" }} className="text-muted ">{item.money}</td>
+                            <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
+                            <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
+
+
+
                             <td style={{ textAlign: "center" }} className="text-muted">
-                              <button style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
+                              <button onClick={() => accept(item.id, item.money, item.message)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
                             </td>
                             <td style={{ textAlign: "center" }} className="text-muted">
-                              <button style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
+                              <button onClick={() => decline(item.id, item.money, item.message)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
                             </td>
                           </tr>
                         ))}
