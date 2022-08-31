@@ -13,22 +13,26 @@ function Profile() {
   let lastName
   let email
   let role
+  let userID
   if (localStorage.getItem("user")) {
     let dataUser = localStorage.getItem("user");
     firstName = JSON.parse(dataUser).userDataDto.firstName
     lastName = JSON.parse(dataUser).userDataDto.lastName
     email = JSON.parse(dataUser).userDataDto.email
     role = JSON.parse(dataUser).userDataDto.role
-
+    userID = JSON.parse(dataUser).userDataDto.id
     showName = firstName + " " + lastName
   }
-  const navigate = useNavigate();
 
+  const [randomSave, setRandomSave] = useState((Math.random() + 1).toString(36).substring(7));
+
+  const navigate = useNavigate();
   const [dataUser, setDataUser] = useState({
-    "message": email,
+    "message": email + " [" + randomSave + "]",
     "money": '',
     "sta": 0,
-    "status": "pending"
+    "status": "pending",
+    "userID": userID
   });
 
 
@@ -41,12 +45,15 @@ function Profile() {
       })
     } else {
       const response = await axios.post(API_ADD_REQUEST + token, dataUser);
-        toast.success('Send success, waiting for confirmation', {
-          autoClose: 3000
-        })
+      toast.success('Send success, waiting for confirmation', {
+        autoClose: 3000
+      })
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000);
     }
   }
-  console.log(dataUser);
+  console.log("data user", dataUser);
 
   const [sta, setSta] = useState('');
   const [money, setMoney] = useState('');
@@ -130,14 +137,15 @@ function Profile() {
 
   }
 
-  const accept = async (id, money, message) => {
+  const accept = async (id, money, message, userId) => {
     console.log(money, message);
     const response = await axios.put(API_UPDATE_REQUEST + token, {
       "id": id,
       "message": message,
       "money": money,
       "sta": 0,
-      "status": "accept"
+      "status": "accept",
+      "userId": userId
     });
     if (response && response.status === 200) {
       toast.success("Accept success", {
@@ -148,14 +156,15 @@ function Profile() {
 
   }
 
-  const decline = async (id, money, message) => {
+  const decline = async (id, money, message, userId) => {
     console.log(money, message);
     const response = await axios.put(API_UPDATE_REQUEST + token, {
       "id": id,
       "message": message,
       "money": money,
       "sta": 0,
-      "status": "decline"
+      "status": "decline",
+      "userId": userID
     });
     if (response && response.status === 200) {
       toast.error("Decline success", {
@@ -363,10 +372,10 @@ function Profile() {
                 </div>
               </div>
             </div>
-            
+
 
             {
-              role == "user" || role == undefined ?
+              role === "user" || role === undefined ?
                 <div className="col-xl-8 order-xl-1">
                   <div className="card bg-secondary shadow">
                     <div className="card-header bg-white border-0">
@@ -384,7 +393,7 @@ function Profile() {
                               <div class="modal-content">
                                 {showName || role !== 'admin' ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Recharge money</h2> : ''}
                                 <div style={{ textAlign: "center" }}>
-                                  <p>Soạn <span style={{ color: 'gold' }}>[UID or email] + </span> <span style={{ color: 'gold' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold' }}>029323278927 MB BANK</span> </p>
+                                  <p>Soạn <span style={{ color: 'gold', fontWeight: '520' }}>[{email}] + [{randomSave}] + </span> <span style={{ color: 'gold', fontWeight: '520' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold', fontWeight: '520' }}>029323278927 NGUYEN VAN A</span>  <span style={{ color: 'blue', fontWeight: '520' }}>MB BANK</span> </p>
                                 </div>
                                 {showName || role !== 'admin' ? <div class="modal-body">
                                   <form method='PUT' class="form-inline">
@@ -565,6 +574,7 @@ function Profile() {
                         <tr>
                           {/* <th scope="col">UID</th> */}
                           <th style={{ textAlign: "center" }} scope="col">ID</th>
+                          <th style={{ textAlign: "center" }} scope="col">User ID</th>
                           <th style={{ textAlign: "center" }} scope="col">Message</th>
                           <th style={{ textAlign: "center" }} scope="col">Money</th>
                           <th style={{ textAlign: "center" }} scope="col" >
@@ -582,7 +592,9 @@ function Profile() {
                         {status.map((item, index) => (
                           <tr key={index}>
                             <td style={{ color: "#8898aa" }} scope="row">{item.id}</td>
-                            <td style={{ textAlign: "center", color: "#8898aa " }} className="text-muted">Sent to</td>
+                            <td style={{ color: "#8898aa", textAlign: 'center' }} scope="row">{item.userId}</td>
+
+                            <td style={{ textAlign: "center", color: "#8898aa " }} className="text-muted">{item.message}</td>
                             {/* <td style={{ textAlign: "center" }} className="text-muted">{item.message}</td> */}
                             {/* <td style={{ textAlign: "center" }} className="text-muted">a</td> */}
                             <td style={{ textAlign: "center" }} className="text-muted ">{item.money}</td>
@@ -592,10 +604,10 @@ function Profile() {
 
 
                             <td style={{ textAlign: "center" }} className="text-muted">
-                              <button onClick={() => accept(item.id, item.money, item.message)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
+                              <button onClick={() => accept(item.id, item.money, item.message,item.userId)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
                             </td>
                             <td style={{ textAlign: "center" }} className="text-muted">
-                              <button onClick={() => decline(item.id, item.money, item.message)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
+                              <button onClick={() => decline(item.id, item.money, item.message,item.userId)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
                             </td>
                           </tr>
                         ))}
