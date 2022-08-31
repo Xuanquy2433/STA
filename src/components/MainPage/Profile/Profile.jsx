@@ -395,7 +395,7 @@ function Profile() {
                                 </div>}
                                 <div class="modal-footer">
                                   {/* {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} ><span style={{ color: 'gold' }}>1 STA</span> = 10.000 money </p> : ''} */}
-                                  <p>Soạn <span style={{ color: 'gold' }}>[uid or email] + </span> <span style={{ color: 'gold' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold' }}>029323278927 MB BANK</span> </p>
+                                  <p>Nhập số tiền muốn nạp bên trên và soạn <span style={{ color: 'gold' }}>[uid or email] + </span> <span style={{ color: 'gold' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold' }}>029323278927 MB BANK</span> </p>
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                                   {showName || role !== 'admin' ? <button onClick={addRequest} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
