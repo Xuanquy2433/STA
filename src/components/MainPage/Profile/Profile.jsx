@@ -236,7 +236,7 @@ function Profile() {
                         <form method='PUT' class="form-inline">
                           <div class="form-group mb-2">
                             <label for="money" class="sr-only">STA</label>
-                            <input onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
+                            <input  min={'1'}  onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
                           </div>
                           <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
                           <div class="form-group mx-sm-3 mb-2">
@@ -300,7 +300,7 @@ function Profile() {
                                 <label for="money" class="sr-only">STA</label>
                                 <input style={{ width: '470px' }} onChange={(e) =>
                                   setDataBuy({ ...dataBuy, sta: e.target.value })
-                                } type="number" name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the STA" />
+                                } type="number" name="sta"  min={'1'} class="form-control" id="money" defaultValue={''} placeholder="Enter the STA" />
                               </div>
                             </form>
                           </div> : <div class="modal-body">
@@ -402,7 +402,7 @@ function Profile() {
                                       <input style={{ width: '470px' }} onChange={(e) => {
                                         setDataUser({ ...dataUser, money: e.target.value })
                                       }
-                                      } type="number" name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the money" />
+                                      } type="number" min={'1'} name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the money" />
                                     </div>
                                   </form>
                                 </div> : <div class="modal-body">
@@ -513,7 +513,7 @@ function Profile() {
                                   STA
                                 </label>
                                 <input
-                                  style={{ color: 'gold' }}
+                                  style={{ color: 'gold' ,fontWeight: '520'}}
                                   type="text"
                                   id="input-last-name"
                                   className="form-control form-control-alternative"
@@ -532,7 +532,7 @@ function Profile() {
                                   Money
                                 </label>
                                 <input
-                                  style={{ color: 'gold' }}
+                                  style={{ color: 'gold' ,fontWeight: '520'}}
                                   type="text"
                                   id="input-last-name"
                                   className="form-control form-control-alternative"
