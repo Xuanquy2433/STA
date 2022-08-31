@@ -517,7 +517,7 @@ function Profile() {
                                   type="text"
                                   id="input-last-name"
                                   className="form-control form-control-alternative"
-                                  placeholder="Last name"
+                                  placeholder="STA"
                                   defaultValue={sta}
                                   readOnly
                                 />
@@ -536,7 +536,7 @@ function Profile() {
                                   type="text"
                                   id="input-last-name"
                                   className="form-control form-control-alternative"
-                                  placeholder="Last name"
+                                  placeholder="Money"
                                   defaultValue={money}
                                   readOnly
                                 />
