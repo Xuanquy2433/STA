@@ -601,13 +601,11 @@ function Profile() {
                             <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
                             <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
 
-
-
                             <td style={{ textAlign: "center" }} className="text-muted">
-                              <button onClick={() => accept(item.id, item.money, item.message,item.userId)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
+                              <button onClick={() => accept(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
                             </td>
                             <td style={{ textAlign: "center" }} className="text-muted">
-                              <button onClick={() => decline(item.id, item.money, item.message,item.userId)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
+                              <button onClick={() => decline(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
                             </td>
                           </tr>
                         ))}
