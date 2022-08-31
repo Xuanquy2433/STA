@@ -34,15 +34,17 @@ function Profile() {
 
   const addRequest = async (e) => {
     e.preventDefault();
-    const response = await axios.post(API_ADD_REQUEST + token, dataUser);
-    if (response && response.status === 200) {
-      toast.success('Send success', {
+
+    if (dataUser.money < 10000) {
+      toast.warning("Minimum recharge 10000", {
         autoClose: 3000
       })
-
-    };
-
-
+    } else {
+      const response = await axios.post(API_ADD_REQUEST + token, dataUser);
+        toast.success('Send success, waiting for confirmation', {
+          autoClose: 3000
+        })
+    }
   }
   console.log(dataUser);
 
@@ -380,6 +382,9 @@ function Profile() {
                             <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                               <div class="modal-content">
                                 {showName || role !== 'admin' ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Recharge money</h2> : ''}
+                                <div style={{ textAlign: "center" }}>
+                                  <p>Soạn <span style={{ color: 'gold' }}>[UID or email] + </span> <span style={{ color: 'gold' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold' }}>029323278927 MB BANK</span> </p>
+                                </div>
                                 {showName || role !== 'admin' ? <div class="modal-body">
                                   <form method='PUT' class="form-inline">
                                     <div class="form-group mb-2">
@@ -395,7 +400,6 @@ function Profile() {
                                 </div>}
                                 <div class="modal-footer">
                                   {/* {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} ><span style={{ color: 'gold' }}>1 STA</span> = 10.000 money </p> : ''} */}
-                                  <p>Soạn <span style={{ color: 'gold' }}>[uid or email] + </span> <span style={{ color: 'gold' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold' }}>029323278927 MB BANK</span> </p>
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                                   {showName || role !== 'admin' ? <button onClick={addRequest} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
