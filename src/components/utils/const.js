@@ -15,6 +15,9 @@ export const API_UPDATE_REQUEST =`${API}/request/?token=`;
 export const API_GET_PRODUCT = `${API}/product/`;
 export const API_POST_PRODUCT = `${API}/product/add`;
 
+export const API_ADD_ORDER = `${API}/order/add?token=`;
+
+
 
 export const API_GET_CATEGORY = `${API}/category/`;
 

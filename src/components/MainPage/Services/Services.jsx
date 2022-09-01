@@ -4,10 +4,12 @@ import image1 from "../../../images/s1.png"
 import image2 from "../../../images/s2.png"
 import { Link as Link } from 'react-router-dom'
 import axios from "axios";
-import { API_GET_PRODUCT } from "../../utils/const";
+import { API_ADD_ORDER, API_GET_PRODUCT } from "../../utils/const";
+import { toast } from 'react-toastify';
+
 
 const Services = () => {
-
+  let token = localStorage.getItem("token");
   const [dataProduct, setDataProduct] = useState([])
 
   const getProduct = async () => {
@@ -22,6 +24,20 @@ const Services = () => {
     getProduct()
   }, [])
 
+  const order = async (id) => {
+    console.log("ok ", id);
+    try {
+      const response = await axios.post(API_ADD_ORDER + token, { "productId": id })
+      toast.success("Order success", {
+        autoClose: 2000
+      })
+    } catch (error) {
+      toast.error("Error API", {
+        autoClose: 2000
+      })
+    }
+
+  }
 
   return (
 
@@ -36,7 +52,7 @@ const Services = () => {
             return (
               <React.Fragment key={index}>
                 {/* <Link to={`/detail/${item.id}`}> */}
-                <Box {...item} />
+                <Box onclick={() => order(item.id)} {...item} />
                 {/* </Link> */}
               </React.Fragment>
             )

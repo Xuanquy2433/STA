@@ -3,7 +3,9 @@ import { Link } from "react-scroll";
 
 const Box = (props) => {
 
-  const { price, name, imageURL, description } = props
+  const { price, name, imageURL, description, percentage, investMonth, onclick } = props
+
+
   console.log("imageeeeeeeeeeeeeeeeeeee ", imageURL);
   return (
     <div className="s-box">
@@ -14,21 +16,19 @@ const Box = (props) => {
       <div className="s-b-text">
 
         <p style={{ marginTop: '0' }} className="details">
-          <i class="fa-solid fa-check"></i>  {description}
+          <i class="fa-solid fa-check"></i> Percentage {percentage}
         </p>
 
         <p style={{ marginTop: '0' }} className="details">
-          <i class="fa-solid fa-check"></i>  {description}
+          <i class="fa-solid fa-check"></i> InvestMonth  {investMonth}
         </p>
         <p style={{ marginTop: '0' }} className="details">
           <i class="fa-solid fa-check"></i>  {description}
         </p>
-        <p style={{ marginTop: '0' }} className="details">
-          <i class="fa-solid fa-check"></i>  {description}
-        </p>
-        <Link style={{ color: 'white' }} to="#" className="cv-btn btnHover">
-          {price} STA
-        </Link>
+
+        <button onClick={onclick} style={{ color: 'white' }} className="cv-btn btnHover">
+          {investMonth} STA
+        </button>
       </div>
     </div>
   );

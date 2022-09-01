@@ -509,7 +509,76 @@ function Profile() {
                       Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick
                       Murphy — writes, performs and records all of his own music.
                     </p>
-                    <a href="#">Show more</a>
+
+                    <button data-toggle="modal" className="btn btn-info" data-target="#showMore">Show more</button>
+
+                    <div class="modal fade" id="showMore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Purchased Service</h2>
+                          <div class="modal-body">
+                            
+                            <div style={{ backgroundColor: "#222222", padding: "0", borderRadius: "5px" }} className="col-xl-8 order-xl-1">
+                              <div style={{ height: "650px", borderRadius: "5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
+                                <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
+                                  <thead>
+                                    <tr>
+                                      {/* <th scope="col">UID</th> */}
+                                      <th style={{ textAlign: "center" }} scope="col">ID</th>
+                                      <th style={{ textAlign: "center" }} scope="col">User ID</th>
+                                      <th style={{ textAlign: "center" }} scope="col">Message</th>
+                                      <th style={{ textAlign: "center" }} scope="col">Money</th>
+                                      <th style={{ textAlign: "center" }} scope="col" >
+                                        Status
+                                      </th>
+                                      <th style={{ textAlign: "center" }} scope="col" >
+                                        Create date
+                                      </th>
+
+
+                                    </tr>
+                                  </thead>
+
+                                  <tbody>
+                                    {status.map((item, index) => (
+                                      <tr key={index}>
+                                        <td style={{ color: "#8898aa" }} scope="row">{item.id}</td>
+                                        <td style={{ color: "#8898aa", textAlign: 'center' }} scope="row">{item.userId}</td>
+
+                                        <td style={{ textAlign: "center", color: "#8898aa " }} className="text-muted">{item.message}</td>
+                                        {/* <td style={{ textAlign: "center" }} className="text-muted">{item.message}</td> */}
+                                        {/* <td style={{ textAlign: "center" }} className="text-muted">a</td> */}
+                                        <td style={{ textAlign: "center" }} className="text-muted ">{item.money}</td>
+                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
+                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
+
+                                        <td style={{ textAlign: "center" }} className="text-muted">
+                                          <button onClick={() => accept(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
+                                        </td>
+                                        <td style={{ textAlign: "center" }} className="text-muted">
+                                          <button onClick={() => decline(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+
+
+
+
+
+
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                   </div>
                 </div>
               </div>
