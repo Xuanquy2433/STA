@@ -64,6 +64,8 @@ const RouterScreen = () => {
 
                     <Route path="/admin" element={<AdminRechart />} />
 
+                    {/* <Route path="/detail/:id" element={<Basic />} /> */}
+
                     <Route path="*" element={<PageNotFound />} />
 
                 </Routes>

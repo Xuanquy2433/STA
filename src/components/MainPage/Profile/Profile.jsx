@@ -3,7 +3,7 @@ import './Profile.css'
 import { toast } from 'react-toastify';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import { API_ADD_REQUEST, API_BUY_STA, API_GET_REQUEST, API_GET_WALLET, API_SEND_STA, API_UPDATE_REQUEST } from '../../utils/const';
+import { API_ADD_REQUEST, API_BUY_STA, API_GET_CATEGORY, API_GET_REQUEST, API_GET_WALLET, API_POST_PRODUCT, API_SEND_STA, API_UPDATE_REQUEST } from '../../utils/const';
 import { putAPI } from '../../utils/api';
 import Moment from 'react-moment';
 
@@ -137,6 +137,68 @@ function Profile() {
 
   }
 
+  const [valueState, setValueState] = useState("")
+  const [category, setCategory] = useState([]);
+
+  const [addProductData, setAddProductData] = useState({
+    "categoryId": 0,
+    "description": "",
+    "imageURL": "",
+    "investMonth": 0,
+    "name": "",
+    "percentage": 0,
+    "price": 0
+  });
+
+  if (addProductData.categoryId === 0) {
+    console.log("Null id ");
+    // check nếu ko chọn sẽ mặc định lấy id 1
+    setAddProductData({ ...addProductData, categoryId: 1 })
+  }
+
+  const getCategory = async () => {
+    const response = await axios.get(API_GET_CATEGORY);
+    if (response && response.status === 200) {
+      setCategory(response.data)
+    }
+  }
+
+  const handler = (event) => {
+    const value = event.target.value
+    console.log(value);
+    setAddProductData({ ...addProductData, categoryId: (value) })
+    setValueState(value)
+    console.log("valueeeeeeeeeeeeeeeeee", value);
+  }
+
+  const onChangeTextProduct = (event) => {
+    console.log("onChangeText", event);
+    setAddProductData({ ...addProductData, [event.target.name]: event.target.value });
+  };
+
+
+  const onclAddProduct = async (e) => {
+    e.preventDefault()
+    console.log("onclick add product");
+    try {
+      const response = await axios.post(API_POST_PRODUCT, addProductData)
+      toast.success('Add success', {
+        autoClose: 2000
+      })
+    } catch (error) {
+      toast.error('Error API', {
+        autoClose: 2000
+      })
+    }
+
+  }
+
+
+
+  console.log("list category ", category);
+  console.log("data product adđ ", addProductData);
+
+
   const accept = async (id, money, message, userId) => {
     console.log(money, message);
     const response = await axios.put(API_UPDATE_REQUEST + token, {
@@ -179,6 +241,7 @@ function Profile() {
   useEffect(() => {
     getUserSta();
     getAllByStatus()
+    getCategory()
   }, []);
 
   const logout = () => {
@@ -225,18 +288,20 @@ function Profile() {
                 <div className="text-white mt-0 mb-5">
 
                 </div>
-                <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
+                {showName && role === 'user' ? <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
                   Transfer money
-                </button>
+                </button> : <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
+                  Add product
+                </button>}
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                     <div class="modal-content">
-                      {showName ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2> : ''}
-                      {showName ? <div class="modal-body">
+                      {showName && role === 'user' ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2> : <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Add Product</h2>}
+                      {showName && role === 'user' ? <div class="modal-body">
                         <form method='PUT' class="form-inline">
                           <div class="form-group mb-2">
                             <label for="money" class="sr-only">STA</label>
-                            <input  min={'1'}  onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
+                            <input min={'1'} onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
                           </div>
                           <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
                           <div class="form-group mx-sm-3 mb-2">
@@ -248,14 +313,91 @@ function Profile() {
 
                         </form>
                       </div> : <div class="modal-body">
-                        <h2 style={{ fontSize: '2em', textAlign: 'center' }}>Please login</h2>
+                        <form>
+                          <div className="form-row">
+                            <div className="form-group col-md-6">
+                              <label htmlFor="inputEmail4">Name</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="inputEmail4"
+                                placeholder="Name"
+                                name='name'
+                                onChange={onChangeTextProduct}
+                              />
+                            </div>
+                            <div className="form-group col-md-6">
+                              <label htmlFor="inputPassword4">Percentage</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="inputPassword4"
+                                placeholder="Percentage"
+                                name='percentage'
+                                onChange={onChangeTextProduct}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="form-row">
+                            <div className="form-group col-md-6">
+                              <label htmlFor="inputEmail4">Price</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="inputEmail4"
+                                placeholder="Price"
+                                name='price'
+                                onChange={onChangeTextProduct}
+                              />
+                            </div>
+                            <div className="form-group col-md-6">
+                              <label htmlFor="inputPassword4">InvestMonth</label>
+                              <input
+                                type="text"
+                                className="form-control"
+                                id="inputPassword4"
+                                placeholder="InvestMonth"
+                                name='investMonth'
+                                onChange={onChangeTextProduct}
+                              />
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Image</label>
+                            <input type="email" name='imageURL' class="form-control" onChange={onChangeTextProduct} id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Image URL" />
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Category</label>
+                            <select onChange={handler} name={valueState} class="form-control" id="exampleFormControlSelect1">
+                              {
+                                category.map((item, index) => (
+                                  <option key={index} value={item.id}  >
+                                    {item.categoryName}
+                                  </option>
+                                ))
+                              }
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Descriptions</label>
+                            <textarea name='description' class="form-control" onChange={onChangeTextProduct} id="exampleFormControlTextarea1" rows="3"></textarea>
+                          </div>
+
+                        </form>
                       </div>}
+
+
                       <div class="modal-footer">
-                        {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>{sta} STA</span></p> : ''}
+                        {showName && role === 'user' ? <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>{sta} STA</span></p> : ''}
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-                        {showName ? <button onClick={sendSTA} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
+                        {showName && role === 'user' ? <button onClick={sendSTA} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
+
+                        {showName && role === 'admin' ? <button onClick={onclAddProduct} type="submit" data-dismiss="modal" class="btn btn-primary">ADD</button> : ''}
 
                         {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
                       </div>
@@ -300,7 +442,7 @@ function Profile() {
                                 <label for="money" class="sr-only">STA</label>
                                 <input style={{ width: '470px' }} onChange={(e) =>
                                   setDataBuy({ ...dataBuy, sta: e.target.value })
-                                } type="number" name="sta"  min={'1'} class="form-control" id="money" defaultValue={''} placeholder="Enter the STA" />
+                                } type="number" name="sta" min={'1'} class="form-control" id="money" defaultValue={''} placeholder="Enter the STA" />
                               </div>
                             </form>
                           </div> : <div class="modal-body">
@@ -513,7 +655,7 @@ function Profile() {
                                   STA
                                 </label>
                                 <input
-                                  style={{ color: 'gold' ,fontWeight: '520'}}
+                                  style={{ color: 'gold', fontWeight: '520' }}
                                   type="text"
                                   id="input-last-name"
                                   className="form-control form-control-alternative"
@@ -532,7 +674,7 @@ function Profile() {
                                   Money
                                 </label>
                                 <input
-                                  style={{ color: 'gold' ,fontWeight: '520'}}
+                                  style={{ color: 'gold', fontWeight: '520' }}
                                   type="text"
                                   id="input-last-name"
                                   className="form-control form-control-alternative"
