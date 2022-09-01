@@ -512,14 +512,14 @@ function Profile() {
 
                     <button data-toggle="modal" className="btn btn-info" data-target="#showMore">Show more</button>
 
-                    <div class="modal fade" id="showMore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div  class="modal fade" id="showMore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                         <div class="modal-content">
                           <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Purchased Service</h2>
                           <div class="modal-body">
-                            
+
                             <div style={{ backgroundColor: "#222222", padding: "0", borderRadius: "5px" }} className="col-xl-8 order-xl-1">
-                              <div style={{ height: "650px", borderRadius: "5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
+                              <div style={{ height: "550px", borderRadius: "5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
                                 <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
                                   <thead>
                                     <tr>
