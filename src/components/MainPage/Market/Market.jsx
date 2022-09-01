@@ -17,6 +17,8 @@ function Market() {
     const [marketByUser, setMarketByUser] = useState([]);
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [checkBox, setCheckBox] = useState('sell');
+    const [valueState, setValueState] = useState("")
+
     const handleChange = event => {
         setIsSubscribed(current => !current);
         if (isSubscribed) {
@@ -34,8 +36,16 @@ function Market() {
         "price": '',
         "sta": '',
         "status": "placing",
-        "type": checkBox
+        "type": null
     })
+
+
+    if (data.type === null) {
+        console.log("Null id ");
+        // check nếu ko chọn sẽ mặc định lấy gia trị là sell
+        setData({ ...data, type: 'sell' })
+    }
+
 
     console.log("check ", checkBox);
     const onChangeText = (event) => {
@@ -79,7 +89,7 @@ function Market() {
 
     const updateMarket = async (id) => {
         try {
-            const response = await axios.put(API_PUT_BY_USER_MARKET + "?token="+ token, {
+            const response = await axios.put(API_PUT_BY_USER_MARKET + "?token=" + token, {
                 "id": id,
                 "status": "cancelled"
             })
@@ -94,6 +104,14 @@ function Market() {
             })
         }
 
+    }
+
+    const handler = (event) => {
+        const value = event.target.value
+        console.log(value);
+        setData({ ...data, type: (value) })
+        setValueState(value)
+        console.log("valueeeeeeeeeeeeeeeeee", value);
     }
 
     console.log("data ", data);
@@ -117,7 +135,7 @@ function Market() {
                                     {/* <th scope="col">UID</th> */}
                                     <th style={{ textAlign: "center" }} scope="col">STA Available</th>
                                     <th style={{ textAlign: "center" }} scope="col">Price</th>
-                                    <th style={{ textAlign: "center" }} scope="col"> Date</th>
+                                    {/* <th style={{ textAlign: "center" }} scope="col"> Date</th> */}
 
                                 </tr>
                             </thead>
@@ -126,7 +144,7 @@ function Market() {
                                     <tr key={index}>
                                         <td style={{ color: "#8898aa", textAlign: "center" }} scope="row">{item.staAvailable}</td>
                                         <td style={{ color: "#8898aa", textAlign: "center" }} scope="row">{item.price}</td>
-                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
+                                        {/* <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td> */}
 
                                     </tr>
                                 ))}
@@ -145,7 +163,7 @@ function Market() {
                                     {/* <th scope="col">UID</th> */}
                                     <th style={{ textAlign: "center" }} scope="col">STA Available</th>
                                     <th style={{ textAlign: "center" }} scope="col">Price</th>
-                                    <th style={{ textAlign: "center" }} scope="col"> Date</th>
+                                    {/* <th style={{ textAlign: "center" }} scope="col"> Date</th> */}
 
                                 </tr>
                             </thead>
@@ -154,7 +172,7 @@ function Market() {
                                     <tr key={index}>
                                         <td style={{ color: "#8898aa", textAlign: "center" }} scope="row">{item.staAvailable}</td>
                                         <td style={{ color: "#8898aa", textAlign: "center" }} scope="row">{item.price}</td>
-                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
+                                        {/* <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td> */}
 
                                     </tr>
                                 ))}
@@ -192,8 +210,27 @@ function Market() {
                                 onChange={onChangeText}
                             />
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Type</label>
+                            <select onChange={handler} name={valueState} class="form-control" id="exampleFormControlSelect1">
+                                <option value={'sell'}  >
+                                    Sell
+                                </option>
+                                <option value={'buy'}  >
+                                    Buy
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            {/* <label for="inputState">ok</label> */}
+                            <button onClick={addMarket} style={{marginTop: '30px',marginLeft: '133px'}} type="submit" className="btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
                     </div>
-                    <div className="custom-control custom-radio custom-control-inline">
+
+
+                    {/* <div className="custom-control custom-radio custom-control-inline">
                         <input
                             type="radio"
                             id="customRadioInline1"
@@ -218,11 +255,9 @@ function Market() {
                         <label className="custom-control-label" htmlFor="customRadioInline2">
                             Buy
                         </label>
-                    </div>
+                    </div> */}
 
-                    <button onClick={addMarket} style={{ display: 'block', marginTop: '15px' }} type="submit" className="btn btn-primary">
-                        Submit
-                    </button>
+
                 </div>
 
             </div>
@@ -237,7 +272,7 @@ function Market() {
                                     {/* <th scope="col">UID</th> */}
                                     <th style={{ textAlign: "center" }} scope="col">STA Available</th>
                                     <th style={{ textAlign: "center" }} scope="col">Price</th>
-                                    <th style={{ textAlign: "center" }} scope="col"> Date</th>
+                                    <th style={{ textAlign: "center" }} scope="col"> Type</th>
 
                                 </tr>
                             </thead>
@@ -246,12 +281,14 @@ function Market() {
                                     <tr key={index}>
                                         <td style={{ color: "#8898aa", textAlign: "center" }} scope="row">{item.staAvailable}</td>
                                         <td style={{ color: "#8898aa", textAlign: "center" }} scope="row">{item.price}</td>
-                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
+                                        <td style={{ color: "#8898aa", textAlign: "center" }} scope="row">{item.type}</td>
+
+                                        {/* <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td> */}
                                         <td style={{ textAlign: "center" }} className="text-muted">
-                                            <button onClick={() => updateMarket(item.id)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
+                                            <button onClick={() => updateMarket(item.id)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Cancel</button>
                                         </td>
                                     </tr>
-                                )): <tbody><h2  style={{textAlign: 'center',marginLeft: '300px'}}>Nothing</h2></tbody> }
+                                )) : <tbody><h2 style={{ textAlign: 'center', marginLeft: '300px' }}>Nothing</h2></tbody>}
                             </tbody>
                         </table>
                     </div>

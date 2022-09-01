@@ -16,11 +16,11 @@ const Box = (props) => {
       <div className="s-b-text">
 
         <p style={{ marginTop: '0' }} className="details">
-          <i class="fa-solid fa-check"></i> Percentage {percentage}
+          <i class="fa-solid fa-check"></i>  {percentage} %
         </p>
 
         <p style={{ marginTop: '0' }} className="details">
-          <i class="fa-solid fa-check"></i> InvestMonth  {investMonth}
+          <i class="fa-solid fa-check"></i>  {investMonth} Month
         </p>
         <p style={{ marginTop: '0' }} className="details">
           <i class="fa-solid fa-check"></i>  {description}
