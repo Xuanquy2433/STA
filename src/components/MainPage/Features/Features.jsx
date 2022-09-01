@@ -1,5 +1,7 @@
 import React from "react";
 import featureImg from "../../../images/Frame 19.png";
+import { Link } from "react-router-dom";
+
 const Features = () => {
   return (
     <>
@@ -24,7 +26,7 @@ const Features = () => {
             distribution of letters, as opposed to using 'Content here, content
             here', making it look like readable English.
           </p>
-          <button style={{ fontSize: '0.8em',height: '6vh' }}>View More Features</button>
+          <Link to="/market" style={{ fontSize: '0.8em',height: '6vh',backgroundColor: 'white',padding: '10px' }}>View More Features</Link>
         </div>
       </div>
     </>

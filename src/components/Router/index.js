@@ -26,6 +26,7 @@ import BuySta from "../MainPage/BuySta/BuySta";
 import AdminRechart from './../Admin/AdminRechart';
 import { Reddit } from "@mui/icons-material";
 import { Switch } from "@mui/material";
+import Market from "../MainPage/Market/Market";
 
 let cc = localStorage.getItem("user")
 console.log(cc);
@@ -63,6 +64,8 @@ const RouterScreen = () => {
                     <Route path="/profile/buySta" element={<BuySta />} />
 
                     <Route path="/admin" element={<AdminRechart />} />
+
+                    <Route path="/market" element={<Market />} />
 
                     {/* <Route path="/detail/:id" element={<Basic />} /> */}
 

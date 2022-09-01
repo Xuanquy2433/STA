@@ -20,6 +20,12 @@ export const API_POST_ORDER = `${API}/order/?token=`;
 
 export const API_LOG_USER = `${API}/logs/user?token=`;
 
+export const API_GET_TYPE_MARKET = `${API}/market/`;
+export const API_ADD_MARKET = `${API}/market/add?token=`;
+export const API_GET_BY_USER_MARKET = `${API}/market/user`;
+export const API_PUT_BY_USER_MARKET = `${API}/market/user`;
+
+
 
 
 export const API_GET_CATEGORY = `${API}/category/`;
