@@ -27,7 +27,7 @@ const Box = (props) => {
         </p>
 
         <button onClick={onclick} style={{ color: 'white' }} className="cv-btn btnHover">
-          {investMonth} STA
+          {price} STA
         </button>
       </div>
     </div>

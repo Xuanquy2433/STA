@@ -3,9 +3,10 @@ import './Profile.css'
 import { toast } from 'react-toastify';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import { API_ADD_REQUEST, API_BUY_STA, API_GET_CATEGORY, API_GET_REQUEST, API_GET_WALLET, API_POST_PRODUCT, API_SEND_STA, API_UPDATE_REQUEST } from '../../utils/const';
+import { API_ADD_REQUEST, API_BUY_STA, API_GET_CATEGORY, API_GET_REQUEST, API_GET_WALLET, API_LOG_USER, API_POST_ORDER, API_POST_PRODUCT, API_SEND_STA, API_UPDATE_REQUEST } from '../../utils/const';
 import { putAPI } from '../../utils/api';
 import Moment from 'react-moment';
+import LogUser from './LogUser';
 
 function Profile() {
   let showName
@@ -193,8 +194,23 @@ function Profile() {
 
   }
 
+  const [order, setOrder] = useState([]);
 
+  const getOrder = async (e) => {
+    const response = await axios.post(API_POST_ORDER + token)
+    setOrder(response.data)
 
+  }
+
+  const [logUser, setLogUser] = useState([]);
+  const getLogUser = async (e) => {
+    const response = await axios.get(API_LOG_USER + token)
+    setLogUser(response.data)
+
+  }
+
+  console.log("list log user ", logUser);
+  console.log("list order ", order);
   console.log("list category ", category);
   console.log("data product adđ ", addProductData);
 
@@ -242,6 +258,8 @@ function Profile() {
     getUserSta();
     getAllByStatus()
     getCategory()
+    getOrder()
+    getLogUser()
   }, []);
 
   const logout = () => {
@@ -290,9 +308,10 @@ function Profile() {
                 </div>
                 {showName && role === 'user' ? <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
                   Transfer money
-                </button> : <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
+                </button> : ''}
+                {showName && role === 'admin' ? <button data-toggle="modal" data-target="#exampleModal" className="btn btn-info">
                   Add product
-                </button>}
+                </button> : ''}
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -510,54 +529,35 @@ function Profile() {
                       Murphy — writes, performs and records all of his own music.
                     </p>
 
-                    <button data-toggle="modal" className="btn btn-info" data-target="#showMore">Show more</button>
+                    {showName && role === 'user' ? <button data-toggle="modal" className="btn btn-info" data-target="#showMore">Show more</button> : ''}
 
-                    <div  class="modal fade" id="showMore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                    <div class="modal fade bd-example-modal-lg" id="showMore" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                           <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Purchased Service</h2>
                           <div class="modal-body">
-
                             <div style={{ backgroundColor: "#222222", padding: "0", borderRadius: "5px" }} className="col-xl-8 order-xl-1">
                               <div style={{ height: "550px", borderRadius: "5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
                                 <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
                                   <thead>
                                     <tr>
                                       {/* <th scope="col">UID</th> */}
-                                      <th style={{ textAlign: "center" }} scope="col">ID</th>
-                                      <th style={{ textAlign: "center" }} scope="col">User ID</th>
-                                      <th style={{ textAlign: "center" }} scope="col">Message</th>
-                                      <th style={{ textAlign: "center" }} scope="col">Money</th>
-                                      <th style={{ textAlign: "center" }} scope="col" >
-                                        Status
-                                      </th>
-                                      <th style={{ textAlign: "center" }} scope="col" >
-                                        Create date
-                                      </th>
+                                      <th style={{ textAlign: "center" }} scope="col">STA PROFIT</th>
+                                      <th style={{ textAlign: "center" }} scope="col">CREATE DATE</th>
+                                      <th style={{ textAlign: "center" }} scope="col">CLAIM DATE</th>
+                                      <th style={{ textAlign: "center" }} scope="col">STATUS</th>
 
 
                                     </tr>
                                   </thead>
 
                                   <tbody>
-                                    {status.map((item, index) => (
+                                    {order.map((item, index) => (
                                       <tr key={index}>
-                                        <td style={{ color: "#8898aa" }} scope="row">{item.id}</td>
-                                        <td style={{ color: "#8898aa", textAlign: 'center' }} scope="row">{item.userId}</td>
-
-                                        <td style={{ textAlign: "center", color: "#8898aa " }} className="text-muted">{item.message}</td>
-                                        {/* <td style={{ textAlign: "center" }} className="text-muted">{item.message}</td> */}
-                                        {/* <td style={{ textAlign: "center" }} className="text-muted">a</td> */}
-                                        <td style={{ textAlign: "center" }} className="text-muted ">{item.money}</td>
-                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
+                                        <td style={{ color: "#8898aa", textAlign: 'center' }} scope="row">{item.staProfit}</td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
-
-                                        <td style={{ textAlign: "center" }} className="text-muted">
-                                          <button onClick={() => accept(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
-                                        </td>
-                                        <td style={{ textAlign: "center" }} className="text-muted">
-                                          <button onClick={() => decline(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Refuse</button>
-                                        </td>
+                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.claimDate}</Moment></td>
+                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
                                       </tr>
                                     ))}
                                   </tbody>
@@ -598,6 +598,22 @@ function Profile() {
                           <p data-toggle="modal" data-target="#rechargeMoney" className="btn btn-sm btn-primary">
                             Recharge money
                           </p>
+
+                          {showName && role === 'user' ? <span data-toggle="modal" className="btn btn-sm btn-primary" data-target="#history">View logs</span> : ''}
+                          <div class="modal fade bd-example-modal-lg style-1" id="history" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transaction history</h2>
+                                <LogUser logs={logUser} />
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
 
                           <div class="modal fade" id="rechargeMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">

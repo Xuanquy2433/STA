@@ -16,6 +16,9 @@ export const API_GET_PRODUCT = `${API}/product/`;
 export const API_POST_PRODUCT = `${API}/product/add`;
 
 export const API_ADD_ORDER = `${API}/order/add?token=`;
+export const API_POST_ORDER = `${API}/order/?token=`;
+
+export const API_LOG_USER = `${API}/logs/user?token=`;
 
 
 
