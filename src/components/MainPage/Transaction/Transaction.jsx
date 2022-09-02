@@ -8,11 +8,11 @@ function Transaction() {
     let status = localStorage.getItem("user");
 
     const fetchAPI = async () => {
-        const result = await getAPI(API_GET_LOGS + JSON.parse(status).status)
+        const result = await getAPI(API_GET_LOGS + "completed")
         if (result) {
             setDataLogs(result)
         }
-        console.log("logs", result);
+        console.log("logs ", result);
     }
 
     useEffect(() => {
@@ -62,26 +62,27 @@ function Transaction() {
                     <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">
                         <thead>
                             <tr>
-                                <th scope="col">UID</th>
-                                <th style={{ textAlign: "center" }} scope="col">Message</th>
-                                <th style={{ textAlign: "center" }} scope="col">Receiver ID</th>
+                                <th style={{ textAlign: "center" }} scope="col">UID</th>
+                                <th style={{ textAlign: "center" }} scope="col">STA</th>
+                                <th style={{ textAlign: "center" }} scope="col">PRICE</th>
                                 <th style={{ textAlign: "center" }} scope="col">Date</th>
                                 <th style={{ textAlign: "center" }} scope="col">Status</th>
                                 <th className="d-flex justify-content-end " scope="col" >
-                                    Amount
+                                    Type
                                 </th>
                             </tr>
                         </thead>
-
+                        {/* style={{display: item.receiverId ? '' : 'none' }} */}
                         <tbody>
                             {dataLogs.map((item, index) => (
-                                <tr key={index} style={{display: item.receiverId ? '' : 'none' }}>
-                                    <td style={{ color: "#8898aa" }} scope="row">{item.user.id}</td>
-                                    <td style={{ textAlign: "center", color: "#8898aa " }} className="">Sent to</td>
-                                    <td style={{ textAlign: "center" }} className="text-muted">{item.receiverId}</td>
+                                <tr key={index} >
+                                    <td style={{ color: "#8898aa",textAlign: 'center' }} scope="row">{item.id}</td>
+                                    {/* <td style={{ textAlign: "center", color: "#8898aa " }} className="">Sent to</td> */}
+                                    <td style={{ textAlign: "center" }} className="text-muted">{item.sta}</td>
+                                    <td style={{ textAlign: "center" }} className="text-muted">{item.price}</td>
                                     <td style={{ textAlign: "center" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
                                     <td style={{ textAlign: "center" }} className="text-muted">{item.status}</td>
-                                    <td style={{ color: "#8898aa" }} className="d-flex justify-content-end align-items-center">$ {item.sta}</td>
+                                    <td style={{ color: "#8898aa" }} className="d-flex justify-content-end align-items-center"> {item.type}</td>
                                 </tr>
                             ))}
                         </tbody>

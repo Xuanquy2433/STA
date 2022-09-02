@@ -9,8 +9,6 @@ export const API_GET_WALLET = `${API}/wallet/?token=`;
 export const API_SEND_STA =`${API}/wallet/send/`;
 export const API_BUY_STA =`${API}/wallet/exchange/`;
 
-export const API_ADD_REQUEST =`${API}/request/?token=`;
-export const API_UPDATE_REQUEST =`${API}/request/?token=`;
 
 export const API_GET_PRODUCT = `${API}/product/`;
 export const API_POST_PRODUCT = `${API}/product/add`;
@@ -32,13 +30,11 @@ export const API_GET_CATEGORY = `${API}/category/`;
 
 
 
+export const API_ADD_REQUEST =`${API}/request/?token=`;
+export const API_WITHDRAW_REQUEST =`${API}/request/?token=`;
+export const API_UPDATE_REQUEST =`${API}/request/?token=`;
 
 export const API_GET_REQUEST =`${API}/request/all?status=pending`;
 
 
-
-
-
-
-
-export const API_GET_LOGS = `${API}/logs/?status=`
+export const API_GET_LOGS = `${API}/market/all?status=`

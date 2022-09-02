@@ -3,7 +3,7 @@ import './Profile.css'
 import { toast } from 'react-toastify';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import { API_ADD_REQUEST, API_BUY_STA, API_GET_CATEGORY, API_GET_REQUEST, API_GET_WALLET, API_LOG_USER, API_POST_ORDER, API_POST_PRODUCT, API_SEND_STA, API_UPDATE_REQUEST } from '../../utils/const';
+import { API_ADD_REQUEST, API_BUY_STA, API_GET_CATEGORY, API_GET_REQUEST, API_GET_WALLET, API_LOG_USER, API_POST_ORDER, API_POST_PRODUCT, API_SEND_STA, API_UPDATE_REQUEST, API_WITHDRAW_REQUEST } from '../../utils/const';
 import { putAPI } from '../../utils/api';
 import Moment from 'react-moment';
 import LogUser from './LogUser';
@@ -31,9 +31,8 @@ function Profile() {
   const [dataUser, setDataUser] = useState({
     "message": email + " [" + randomSave + "]",
     "money": '',
-    "sta": 0,
+    "type": "deposit",
     "status": "pending",
-    "userID": userID
   });
 
 
@@ -219,10 +218,8 @@ function Profile() {
     console.log(money, message);
     const response = await axios.put(API_UPDATE_REQUEST + token, {
       "id": id,
-      "message": message,
       "money": money,
-      "sta": 0,
-      "status": "accept",
+      "status": "accepted",
       "userId": userId
     });
     if (response && response.status === 200) {
@@ -238,11 +235,9 @@ function Profile() {
     console.log(money, message);
     const response = await axios.put(API_UPDATE_REQUEST + token, {
       "id": id,
-      "message": message,
       "money": money,
-      "sta": 0,
-      "status": "decline",
-      "userId": userID
+      "status": "rejected",
+      "userId": userId
     });
     if (response && response.status === 200) {
       toast.error("Decline success", {
@@ -253,6 +248,22 @@ function Profile() {
 
   }
 
+  const [dataWithdraw, setDataWithdraw] = useState({
+    "message": '',
+    "money": '',
+    "type": "withdraw",
+    "status": "pending",
+  });
+
+  const withdraw = async (e) => {
+    e.preventDefault();
+    const response = await axios.post(API_WITHDRAW_REQUEST + token, dataWithdraw);
+    toast.success('Send withdraw money success, waiting for confirmation', {
+      autoClose: 3000
+    })
+  }
+
+  console.log("data withdraw ",dataWithdraw);
   console.log("status ", status);
   useEffect(() => {
     getUserSta();
@@ -599,22 +610,6 @@ function Profile() {
                             Recharge money
                           </p>
 
-                          {showName && role === 'user' ? <span data-toggle="modal" className="btn btn-sm btn-primary" data-target="#history">View logs</span> : ''}
-                          <div class="modal fade bd-example-modal-lg style-1" id="history" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                              <div class="modal-content">
-                                <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transaction history</h2>
-                                <LogUser logs={logUser} />
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-
-
-
                           <div class="modal fade" id="rechargeMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -642,6 +637,61 @@ function Profile() {
                                   {showName || role !== 'admin' ? <button onClick={addRequest} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button> : ''}
 
                                   {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {showName && role === 'user' ? <span data-toggle="modal" className="btn btn-sm btn-primary" data-target="#withdraw">Withdraw money</span> : ''}
+                          <div class="modal fade" id="withdraw" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                {showName || role !== 'admin' ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Withdraw money</h2> : ''}
+                                <div style={{ textAlign: "center" }}>
+                                  {/* <p>Soạn <span style={{ color: 'gold', fontWeight: '520' }}>[{email}] + [{randomSave}] + </span> <span style={{ color: 'gold', fontWeight: '520' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold', fontWeight: '520' }}>029323278927 NGUYEN VAN A</span>  <span style={{ color: 'blue', fontWeight: '520' }}>MB BANK</span> </p> */}
+                                </div>
+                                {showName || role !== 'admin' ? <div class="modal-body">
+                                  <form method='PUT' class="form-inline">
+                                    <div class="form-group mb-2">
+                                      <label for="money" class="sr-only">Money</label>
+                                      <input style={{ width: '470px' }} onChange={(e) => {
+                                        setDataWithdraw({ ...dataWithdraw, money: e.target.value })
+                                      }
+                                      } type="number" min={'1'} name="money" class="form-control" id="money" defaultValue={''} placeholder="Enter the money" />
+                                    </div>
+                                    <div class="form-group mb-2">
+                                      <label for="message" class="sr-only">Message</label>
+                                      <input style={{ width: '470px' }} onChange={(e) => {
+                                        setDataWithdraw({ ...dataWithdraw, message: e.target.value })
+                                      }
+                                      } type="text" min={'1'} name="message" class="form-control" id="message" defaultValue={''} placeholder="[Withdraw] + [Bank account number] + [Bank Name] + [Name]" />
+                                    </div>
+                                  </form>
+                                </div> : <div class="modal-body">
+                                  <h2 style={{ fontSize: '2em', textAlign: 'center' }}>You are admin ! </h2>
+                                </div>}
+                                <div class="modal-footer">
+                                  {/* {showName ? <p style={{ marginRight: '100px', fontWeight: '500' }} ><span style={{ color: 'gold' }}>1 STA</span> = 10.000 money </p> : ''} */}
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                  {showName || role !== 'admin' ? <button onClick={withdraw} type="submit" data-dismiss="modal" class="btn btn-primary">Send withdraw</button> : ''}
+
+                                  {/* {showName ? <button type="button" class="btn btn-primary">Send</button> : ''} */}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                          {showName && role === 'user' ? <span data-toggle="modal" className="btn btn-sm btn-primary" data-target="#history">View logs</span> : ''}
+                          <div class="modal fade bd-example-modal-lg style-1" id="history" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transaction history</h2>
+                                <LogUser logs={logUser} />
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
                               </div>
                             </div>
