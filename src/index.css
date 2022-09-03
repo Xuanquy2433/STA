@@ -155,9 +155,10 @@ nav .menu-btn,
 .cv-btn1:hover {
   /* background-color: #ffffff; */
   transition: all ease 0.5s;
-  background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
+  background: linear-gradient(to right, #ff8e15 0%, #b31b98 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;}
+  -webkit-text-fill-color: transparent;
+}
 
 .arrow {
   align-self: end;
@@ -166,7 +167,7 @@ nav .menu-btn,
   margin-bottom: 4em;
   position: absolute;
   bottom: 0px;
-  border-right: 2px solid #b31b98 ;
+  border-right: 2px solid #b31b98;
   animation: arrow-animation ease 1.5s;
   animation-iteration-count: infinite;
 }
@@ -177,7 +178,7 @@ nav .menu-btn,
   height: 0;
   border-style: solid;
   border-width: 11px 11px 0px 11px;
-  border-color: #b31b98  transparent transparent transparent;
+  border-color: #b31b98 transparent transparent transparent;
   right: -0.7em;
   bottom: -2px;
 }
@@ -637,11 +638,9 @@ h3 {
   margin-top: 30px;
 }
 
-
 /* transaction */
 
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Poppins&display=swap");
-
 
 .wrapper {
   background-color: #222;
@@ -882,19 +881,105 @@ tbody tr td .fa-long-arrow-down {
   }
 }
 
-
 /* ccc */
 .my-custom-scrollbar {
   position: relative;
   height: 400px;
   overflow: auto;
-  }
-  .table-wrapper-scroll-y {
+}
+.table-wrapper-scroll-y {
   display: block;
-  }
+}
 
-  .logoSTA{
-    background: linear-gradient(to right, #FF8E15 0%, #B31B98 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.logoSTA {
+  background: linear-gradient(to right, #ff8e15 0%, #b31b98 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* modal confirm */
+.modal-confirm {
+  color: #636363;
+  width: 400px;
+}
+.modal-confirm .modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+}
+.modal-confirm .modal-header {
+  border-bottom: none;
+  position: relative;
+}
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+  position: absolute;
+  top: -5px;
+  right: -2px;
+}
+.modal-confirm .modal-body {
+  color: #999;
+}
+.modal-confirm .modal-footer {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+  color: #999;
+}
+.modal-confirm .icon-box {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  z-index: 9;
+  text-align: center;
+  border: 3px solid #f15e5e;
+}
+.modal-confirm .icon-box i {
+  color: #f15e5e;
+  font-size: 46px;
+  display: inline-block;
+  margin-top: 13px;
+}
+.modal-confirm .btn,
+.modal-confirm .btn:active {
+  color: #fff;
+  border-radius: 4px;
+  background: #60c7c1;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  min-width: 120px;
+  border: none;
+  min-height: 40px;
+  border-radius: 3px;
+  margin: 0 5px;
+}
+.modal-confirm .btn-secondary {
+  background: #c1c1c1;
+}
+.modal-confirm .btn-secondary:hover,
+.modal-confirm .btn-secondary:focus {
+  background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+  background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover,
+.modal-confirm .btn-danger:focus {
+  background: #ee3535;
+}
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}

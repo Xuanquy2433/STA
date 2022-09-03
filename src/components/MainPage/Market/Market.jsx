@@ -123,25 +123,21 @@ function Market() {
 
 
     const getValue = (item) => {
-        if(item.type === "sell"){
+        if (item.type === "sell") {
             setData({
                 "price": item.price,
                 "sta": item.staAvailable,
                 "status": "placing",
                 "type": "sell"
-            })            
-        } else if(item.type === "buy"){
+            })
+        } else if (item.type === "buy") {
             setData({
                 "price": item.price,
                 "sta": item.staAvailable,
                 "status": "placing",
                 "type": "buy"
-            }) 
+            })
         }
-       
-
-
-
 
     }
 
@@ -244,7 +240,7 @@ function Market() {
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputState">Type</label>
-                            <select onChange={handler}  name={valueState} value={data.type} class="form-control" id="exampleFormControlSelect1">
+                            <select onChange={handler} name={valueState} value={data.type} class="form-control" id="exampleFormControlSelect1">
                                 <option value={'sell'}  >
                                     Sell
                                 </option>

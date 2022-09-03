@@ -554,6 +554,7 @@ function Profile() {
                                     <tr>
                                       {/* <th scope="col">UID</th> */}
                                       <th style={{ textAlign: "center" }} scope="col">STA PROFIT</th>
+                                      <th style={{ textAlign: "center" }} scope="col">PRICE</th>
                                       <th style={{ textAlign: "center" }} scope="col">CREATE DATE</th>
                                       <th style={{ textAlign: "center" }} scope="col">CLAIM DATE</th>
                                       <th style={{ textAlign: "center" }} scope="col">STATUS</th>
@@ -566,9 +567,11 @@ function Profile() {
                                     {order.map((item, index) => (
                                       <tr key={index}>
                                         <td style={{ color: "#8898aa", textAlign: 'center' }} scope="row">{item.staProfit}</td>
+                                        <td style={{ color: "#8898aa", textAlign: 'center' }} scope="row">{item.price}</td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.claimDate}</Moment></td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
+                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.price}</td>
                                       </tr>
                                     ))}
                                   </tbody>
