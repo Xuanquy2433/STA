@@ -61,6 +61,11 @@ const TopNavbar = () => {
               Chart
             </LinkScroll>
           </li>
+          <li>
+            <LinkRouter to="/market" >
+              Market
+            </LinkRouter>
+          </li>
 
         </ul>
         {/* <span

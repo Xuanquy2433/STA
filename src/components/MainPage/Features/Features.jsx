@@ -26,7 +26,7 @@ const Features = () => {
             distribution of letters, as opposed to using 'Content here, content
             here', making it look like readable English.
           </p>
-          <Link to="/market" style={{ fontSize: '0.8em',height: '6vh',backgroundColor: 'white',padding: '10px' }}>View More Features</Link>
+          <button style={{ fontSize: '0.7em',height: '6vh',padding: '10px' }}>View More Features</button>
         </div>
       </div>
     </>

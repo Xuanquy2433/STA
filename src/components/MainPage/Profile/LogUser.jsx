@@ -16,8 +16,8 @@ function LogUser({ logs }) {
                                     <th style={{ textAlign: "center" }} scope="col">STA</th>
                                     <th style={{ textAlign: "center" }} scope="col">Money</th>
                                     <th style={{ textAlign: "center" }} scope="col">createdDate</th>
-                                    <th style={{ textAlign: "center" }} scope="col">Name</th>
-                                    <th style={{ textAlign: "center" }} scope="col">Email</th>
+                                    <th style={{ textAlign: "center" }} scope="col">Type</th>
+                                    {/* <th style={{ textAlign: "center" }} scope="col">Email</th> */}
                                 </tr>
                             </thead>
 
@@ -28,8 +28,8 @@ function LogUser({ logs }) {
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.sta}</td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.money}</td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
-                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.user.firstName} {item.user.lastName}</td>
-                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.user.email}</td>
+                                        {/* <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.user.firstName} {item.user.lastName}</td> */}
+                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.type}</td>
                                     </tr>
                                 ))}
                             </tbody>

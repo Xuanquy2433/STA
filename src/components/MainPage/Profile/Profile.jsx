@@ -855,7 +855,7 @@ function Profile() {
                           <th style={{ textAlign: "center" }} scope="col">Message</th>
                           <th style={{ textAlign: "center" }} scope="col">Money</th>
                           <th style={{ textAlign: "center" }} scope="col" >
-                            Status
+                            Type
                           </th>
                           <th style={{ textAlign: "center" }} scope="col" >
                             Create date
@@ -875,7 +875,7 @@ function Profile() {
                             {/* <td style={{ textAlign: "center" }} className="text-muted">{item.message}</td> */}
                             {/* <td style={{ textAlign: "center" }} className="text-muted">a</td> */}
                             <td style={{ textAlign: "center" }} className="text-muted ">{item.money}</td>
-                            <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
+                            <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.type}</td>
                             <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
 
                             <td style={{ textAlign: "center" }} className="text-muted">
