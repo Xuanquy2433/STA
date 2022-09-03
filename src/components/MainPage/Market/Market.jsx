@@ -18,8 +18,6 @@ function Market() {
     const [marketBuy, setMarketBuy] = useState([]);
     const [marketByUser, setMarketByUser] = useState([]);
     const [marketByUserComplete, setMarketByUserComplete] = useState([]);
-    const [staGet, setStaGet] = useState('')
-    const [priceGet, setPriceGet] = useState('')
     const [isSubscribed, setIsSubscribed] = useState(false);
     const [checkBox, setCheckBox] = useState('sell');
     const [valueState, setValueState] = useState("")
@@ -38,16 +36,14 @@ function Market() {
 
 
     const [data, setData] = useState({
-        "price": '',
-        "sta": '',
+        "price": "",
+        "sta": "",
         "status": "placing",
-        "type": null
+        "type": "sell"
     })
 
 
     if (data.type === null) {
-        console.log("Null id ");
-        // check nếu ko chọn sẽ mặc định lấy gia trị là sell
         setData({ ...data, type: 'sell' })
     }
 
@@ -126,10 +122,26 @@ function Market() {
 
 
 
-    const getValue = (sta, price) => {
-        setStaGet(sta)
-        setPriceGet(price)
-        // setData({ ...data, price: price })
+    const getValue = (item) => {
+        if(item.type === "sell"){
+            setData({
+                "price": item.price,
+                "sta": item.staAvailable,
+                "status": "placing",
+                "type": "sell"
+            })            
+        } else if(item.type === "buy"){
+            setData({
+                "price": item.price,
+                "sta": item.staAvailable,
+                "status": "placing",
+                "type": "buy"
+            }) 
+        }
+       
+
+
+
 
     }
 
@@ -161,7 +173,7 @@ function Market() {
                             </thead>
                             <tbody>
                                 {marketSell && marketSell.map((item, index) => (
-                                    <tr onClick={() => getValue(item.staAvailable, item.price)} key={index}>
+                                    <tr onClick={() => getValue(item)} key={index}>
                                         <td style={{ color: "white", textAlign: "center" }} scope="row">{item.staAvailable}</td>
                                         <td style={{ color: "white", textAlign: "center" }} scope="row">{item.price}</td>
                                         {/* <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td> */}
@@ -188,7 +200,7 @@ function Market() {
                             </thead>
                             <tbody>
                                 {marketBuy && marketBuy.map((item, index) => (
-                                    <tr onClick={() => getValue(item.staAvailable, item.price)} key={index}>
+                                    <tr onClick={() => getValue(item)} key={index}>
                                         <td style={{ color: "white", textAlign: "center" }} scope="row">{item.staAvailable}</td>
                                         <td style={{ color: "white", textAlign: "center" }} scope="row">{item.price}</td>
                                         {/* <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td> */}
@@ -213,7 +225,7 @@ function Market() {
                                 id="inputEmail4"
                                 name='price'
                                 onChange={onChangeText}
-                              
+                                value={data.price}
                                 placeholder="Price"
                             />
                         </div>
@@ -226,12 +238,13 @@ function Market() {
                                 id="inputPassword4"
                                 placeholder="STA"
                                 name='sta'
+                                value={data.sta}
                                 onChange={onChangeText}
                             />
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputState">Type</label>
-                            <select onChange={handler} name={valueState} class="form-control" id="exampleFormControlSelect1">
+                            <select onChange={handler}  name={valueState} value={data.type} class="form-control" id="exampleFormControlSelect1">
                                 <option value={'sell'}  >
                                     Sell
                                 </option>
