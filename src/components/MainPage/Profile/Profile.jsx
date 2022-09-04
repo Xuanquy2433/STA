@@ -573,7 +573,6 @@ function Profile() {
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.claimDate}</Moment></td>
                                         <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.status}</td>
-                                        <td style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.price}</td>
                                       </tr>
                                     ))}
                                   </tbody>
