@@ -263,7 +263,7 @@ function Profile() {
     })
   }
 
-  console.log("data withdraw ",dataWithdraw);
+  console.log("data withdraw ", dataWithdraw);
   console.log("status ", status);
   useEffect(() => {
     getUserSta();
@@ -458,9 +458,11 @@ function Profile() {
                 </div>
                 <div className="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                   <div className="d-flex justify-content-between">
-                    <p data-toggle="modal" data-target="#buySTA" className="btn btn-sm btn-info mr-4">
+                    {showName && role === 'user' ? <p data-toggle="modal" data-target="#buySTA" className="btn btn-sm btn-info mr-4">
                       Buy STA
-                    </p>
+                    </p> : <p >
+                     
+                    </p>}
 
                     <div class="modal fade" id="buySTA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">

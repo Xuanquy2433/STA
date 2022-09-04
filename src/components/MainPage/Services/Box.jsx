@@ -69,7 +69,7 @@ const Box = (props) => {
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Do you really want to buy product {name} ? This process cannot be undone.
+              Do you really want to buy product {name} with {price} STA ? This process cannot be undone.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
