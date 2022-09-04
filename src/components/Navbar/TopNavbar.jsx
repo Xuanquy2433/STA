@@ -8,6 +8,9 @@ const TopNavbar = () => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
   let showName
+  let token = localStorage.getItem("token");
+  let user = localStorage.getItem("user");
+
 
   if (localStorage.getItem("user")) {
     let dataUser = localStorage.getItem("user");
@@ -61,11 +64,11 @@ const TopNavbar = () => {
               Chart
             </LinkScroll>
           </li>
-          <li>
+          {user && token ? <li>
             <LinkRouter to="/market" >
               Market
             </LinkRouter>
-          </li>
+          </li> : ''}
 
         </ul>
         {/* <span
