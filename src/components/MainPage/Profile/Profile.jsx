@@ -324,7 +324,7 @@ function Profile() {
                   Add product
                 </button> : ''}
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                  <div style={{ marginTop: '70px' }} class="modal-dialog" role="document">
                     <div class="modal-content">
                       {showName && role === 'user' ? <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2> : <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Add Product</h2>}
                       {showName && role === 'user' ? <div class="modal-body">
@@ -848,7 +848,7 @@ function Profile() {
                   </div>
                 </div>
                 :
-                <div style={{ backgroundColor: "#222222", padding: "0", borderRadius: "5px" }} className="col-xl-8 order-xl-1">
+                <div style={{ backgroundColor: "#222222", padding: "0", borderRadius: "5px" }} className="reponsive-gp col-xl-8 order-xl-1 ">
 
                   <div style={{ height: "650px", borderRadius: "5px" }} id="style-1" className="table-wrapper-scroll-y my-custom-scrollbar" >
                     <table class="table table-bordered table-striped mb-0" className="table table-darkN table-borderless">

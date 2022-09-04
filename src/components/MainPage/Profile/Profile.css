@@ -470,11 +470,15 @@
       flex: 0 0 50%;
     }
   
+
+
     .col-xl-8 {
       max-width: 100%;
       flex: 0 0 66.66667%;
     }
-  
+      .reponsive-gp{
+      max-width: 66%;
+    }
     .order-xl-1 {
       order: 1;
     }
@@ -482,6 +486,7 @@
     .order-xl-2 {
       order: 2;
     }
+
   }
   
   .form-control {
