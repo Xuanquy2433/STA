@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link as LinkScroll } from "react-scroll";
-import { Link as LinkRouter } from 'react-router-dom'
+import { Link as LinkRouter, useNavigate } from 'react-router-dom'
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { API_GET_WALLET } from '../utils/const';
@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import './TopNav.css'
+import { toast } from 'react-toastify';
 
 const TopNavbar = () => {
   const opengithub = (url) => {
@@ -19,6 +20,9 @@ const TopNavbar = () => {
   let user = localStorage.getItem("user");
   const [sta, setSta] = useState('');
   const [money, setMoney] = useState('');
+  const navigate = useNavigate();
+
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -44,6 +48,16 @@ const TopNavbar = () => {
       setMoney(response.data.money)
     }
   }
+
+  const logout = () => {
+    // alert("ok")
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    navigate('/')
+    window.location.reload(false)
+
+  }
+
 
   const style = {
     zIndex: '3',
@@ -130,9 +144,9 @@ const TopNavbar = () => {
           MenuListProps={{
             'aria-labelledby': 'basic-button',
           }}
-          
+
         >
-          <MenuItem onClick={handleClose} style={{width: '250px'}}>
+          <MenuItem onClick={handleClose} style={{ width: '250px' }}>
             <LinkRouter to={'/profile'}>
               <div className='navAvt' >
                 <img src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo" className='avt' alt="" />
@@ -145,7 +159,10 @@ const TopNavbar = () => {
           </MenuItem>
           <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
           <MenuItem onClick={handleClose}>Account Activity</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={() => {
+            handleClose()
+            logout()
+          }}>Logout</MenuItem>
         </Menu>
       </nav>
     </div>
