@@ -27,6 +27,7 @@ import AdminRechart from './../Admin/AdminRechart';
 import { Reddit } from "@mui/icons-material";
 import { Switch } from "@mui/material";
 import Market from "../MainPage/Market/Market";
+import EditProfile from "../MainPage/Profile/EditProfile";
 
 let cc = localStorage.getItem("user")
 console.log(cc);
@@ -56,6 +57,7 @@ const RouterScreen = () => {
                     <Route path="/register" element={<Register />} />
 
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/editProfile" element={<EditProfile />} />
 
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />

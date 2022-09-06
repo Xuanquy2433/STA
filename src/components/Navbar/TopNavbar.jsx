@@ -157,7 +157,7 @@ const TopNavbar = () => {
               </div>
             </LinkRouter>
           </MenuItem>
-          <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
+          <MenuItem onClick={handleClose}><LinkRouter to={'editProfile'}>Edit Profile</LinkRouter></MenuItem>
           <MenuItem onClick={handleClose}>Account Activity</MenuItem>
           <MenuItem onClick={() => {
             handleClose()
