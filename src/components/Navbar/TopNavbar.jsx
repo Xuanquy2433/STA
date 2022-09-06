@@ -88,7 +88,7 @@ const TopNavbar = () => {
               Home
             </LinkRouter>
           </li>
-          {/* <li>
+          <li>
             <LinkScroll to="features" smooth='true' duration={100}>
               Features
             </LinkScroll>
@@ -107,7 +107,7 @@ const TopNavbar = () => {
             <LinkScroll to="chart" smooth='true' duration={100}>
               Chart
             </LinkScroll>
-          </li> */}
+          </li>
           {user && token ? <li>
             <LinkRouter to="/market" >
               Market
