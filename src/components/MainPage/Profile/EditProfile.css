@@ -4,28 +4,28 @@
     color: #69707a;
     margin-top: 65px;
 }
-.img-account-profile {
+.editProfile .img-account-profile {
     height: 10rem;
 }
-.rounded-circle {
+.editProfile .rounded-circle {
     border-radius: 50% !important;
 }
-.card {
+.editProfile .card {
     box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
 }
-.card .card-header {
+.editProfile .card .card-header {
     font-weight: 500;
 }
-.card-header:first-child {
+.editProfile .card-header:first-child {
     border-radius: 0.35rem 0.35rem 0 0;
 }
-.card-header {
+.editProfile .card-header {
     padding: 1rem 1.35rem;
     margin-bottom: 0;
     background-color: rgba(33, 40, 50, 0.03);
     border-bottom: 1px solid rgba(33, 40, 50, 0.125);
 }
-.form-control,
+.editProfile .form-control, .editProfile 
 .dataTable-input {
     display: block;
     width: 100%;
@@ -44,11 +44,11 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.nav-borders .nav-link.active {
+.editProfile .nav-borders .nav-link.active {
     color: #0061f2;
     border-bottom-color: #0061f2;
 }
-.nav-borders .nav-link {
+.editProfile .nav-borders .nav-link {
     color: #69707a;
     border-bottom-width: 0.125rem;
     border-bottom-style: solid;
