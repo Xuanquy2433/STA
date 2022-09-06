@@ -2,6 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Link as LinkScroll } from "react-scroll";
 import { Link as LinkRouter } from 'react-router-dom'
 import PersonIcon from '@mui/icons-material/Person';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { API_GET_WALLET } from '../utils/const';
+import axios from 'axios';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import './TopNav.css'
 
 const TopNavbar = () => {
   const opengithub = (url) => {
@@ -10,7 +17,16 @@ const TopNavbar = () => {
   let showName
   let token = localStorage.getItem("token");
   let user = localStorage.getItem("user");
-
+  const [sta, setSta] = useState('');
+  const [money, setMoney] = useState('');
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   if (localStorage.getItem("user")) {
     let dataUser = localStorage.getItem("user");
@@ -19,12 +35,26 @@ const TopNavbar = () => {
     showName = firstName + " " + lastName
   }
 
+  const getUserSta = async () => {
+    console.log(token);
+    const response = await axios.post(API_GET_WALLET + token);
+    console.log("sta ", response.data);
+    if (response && response.status === 200) {
+      setSta(response.data.sta);
+      setMoney(response.data.money)
+    }
+  }
 
   const style = {
     zIndex: '3',
     color: 'white',
     position: 'fixed',
   }
+
+
+  useEffect(() => {
+    getUserSta();
+  }, []);
 
   return (
     <div >
@@ -40,11 +70,11 @@ const TopNavbar = () => {
         </label>
         <ul style={{ marginTop: '5px', marginBottom: '5px' }} className="menu">
           <li >
-            <LinkScroll to="main" className="active" smooth='true' duration={100}>
+            <LinkRouter to="/" className="active" smooth='true' duration={100}>
               Home
-            </LinkScroll>
+            </LinkRouter>
           </li>
-          <li>
+          {/* <li>
             <LinkScroll to="features" smooth='true' duration={100}>
               Features
             </LinkScroll>
@@ -63,7 +93,7 @@ const TopNavbar = () => {
             <LinkScroll to="chart" smooth='true' duration={100}>
               Chart
             </LinkScroll>
-          </li>
+          </li> */}
           {user && token ? <li>
             <LinkRouter to="/market" >
               Market
@@ -78,10 +108,45 @@ const TopNavbar = () => {
           GitHub
         </span> */}
         {showName ? <span style={{ marginTop: '13px' }} >
-          <LinkRouter to='/profile' >  <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Hi, {showName} <PersonIcon style={{ paddingBottom: "3px" }} /> </h5> </LinkRouter>
+          <Button
+            id="basic-button"
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+            style={{ color: 'white' }}
+          >
+            <PersonIcon style={{ paddingBottom: "3px" }} />  {showName} <ArrowDropDownIcon />
+          </Button>
         </span> : <LinkRouter to="/login">
           <h5 style={{ color: 'white', fontSize: '0.8rem' }}>Login</h5>
         </LinkRouter>}
+
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+          
+        >
+          <MenuItem onClick={handleClose} style={{width: '250px'}}>
+            <LinkRouter to={'/profile'}>
+              <div className='navAvt' >
+                <img src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo" className='avt' alt="" />
+              </div>
+              <div className='navName'>
+                <p className='pTop'>{showName}</p>
+                <p className='pBottom'>  My Profile</p>
+              </div>
+            </LinkRouter>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>Edit Profile</MenuItem>
+          <MenuItem onClick={handleClose}>Account Activity</MenuItem>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        </Menu>
       </nav>
     </div>
   );

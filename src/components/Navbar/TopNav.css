@@ -1,0 +1,25 @@
+.navAvt{
+float: left;
+}
+
+.navAvt img {
+    width: 40px;
+    border-radius: 50px;
+}
+
+.navName{
+    margin-left:  5px;
+    float: left;
+}
+
+.navName p {
+    margin: 0;
+}
+.navName .pTop{
+    font-size: 0.85em
+}
+
+.navName .pBottom{
+    color: black;
+    font-weight: 400;
+}
