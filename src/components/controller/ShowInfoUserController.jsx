@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { API_GET_WALLET } from '../utils/const';
+import AdminRechart from './../Admin/AdminRechart';
+import Activity from './../MainPage/Profile/Activity';
 
 function ShowInfoUserController() {
 
@@ -21,7 +23,10 @@ function ShowInfoUserController() {
         getUserSta();
     }, []);
     return (
-        <div>ShowInfoUserController</div>
+        <div>
+            <AdminRechart dataSTA={sta} />
+            <Activity dataSTA={sta} dataMoney={money} />
+        </div>
     )
 }
 

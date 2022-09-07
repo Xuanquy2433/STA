@@ -13,8 +13,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function Activity(props) {
-    const { sta, money } = props;
+function Activity({dataSTA, dataMoney}) {
     const [value, setValue] = React.useState('1');
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -81,7 +80,7 @@ function Activity(props) {
                                         <TableCell component="th" scope="row">
                                         </TableCell>
                                         <TableCell align="right"></TableCell>
-                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right">{dataSTA}</TableCell>
                                         <TableCell align="right"></TableCell>
                                         <TableCell align="right"></TableCell>
                                     </TableRow>

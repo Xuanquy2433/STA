@@ -64,7 +64,7 @@ const RouterScreen = () => {
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
                     <Route path="/diamond" element={<Diamond />} />
-
+                    <Route path="/activityUser" element={<Activity />} />
                     <Route path="/profile/buySta" element={<BuySta />} />
 
                     <Route path="/admin" element={<AdminRechart />} />
