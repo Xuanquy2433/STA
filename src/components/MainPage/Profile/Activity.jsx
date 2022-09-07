@@ -13,11 +13,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function Activity({dataSTA, dataMoney}) {
+function Activity({ dataSTA, dataMoney }) {
     const [value, setValue] = React.useState('1');
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    console.log(dataMoney);
 
     return (
         <div className='activity'>
@@ -29,9 +30,8 @@ function Activity({dataSTA, dataMoney}) {
                     STA
                 </div>
                 <div className="balance">
-
                     <div className="activity-money">
-                        10
+                        {dataSTA}
                     </div>
                 </div>
 
@@ -56,7 +56,8 @@ function Activity({dataSTA, dataMoney}) {
             <Box className='activity-history' sx={{ width: '85%', typography: 'body1', margin: 'auto' }}>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: 'white', paddingTop: '30px !important' }}>
-                        <TabList textColor='white' onChange={handleChange} aria-label="lab API tabs example">
+                        <TabList textColor='white' onChange={handleChange} aria-label="lab API tabs exampleimport Login from './../../Login/Login';
+">
                             <Tab label="Purchase history" value="1" />
                             <Tab label="Investment history" value="2" />
                             <Tab label="Transfer" value="3" />

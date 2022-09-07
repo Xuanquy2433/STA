@@ -22,9 +22,9 @@ function ShowInfoUserController() {
     useEffect(() => {
         getUserSta();
     }, []);
+
     return (
         <div>
-            <AdminRechart dataSTA={sta} />
             <Activity dataSTA={sta} dataMoney={money} />
         </div>
     )

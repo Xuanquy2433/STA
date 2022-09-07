@@ -29,6 +29,7 @@ import { Switch } from "@mui/material";
 import Market from "../MainPage/Market/Market";
 import EditProfile from "../MainPage/Profile/EditProfile";
 import Activity from "../MainPage/Profile/Activity";
+import ShowInfoUserController from './../controller/ShowInfoUserController';
 
 
 let cc = localStorage.getItem("user")
@@ -60,7 +61,7 @@ const RouterScreen = () => {
 
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/editProfile" element={<EditProfile />} />
-                    <Route path="/activityUser" element={<Activity />} />
+                    <Route path="/activityUser" element={<ShowInfoUserController />} />
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
                     <Route path="/diamond" element={<Diamond />} />
