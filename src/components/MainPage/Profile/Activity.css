@@ -1,0 +1,32 @@
+.activity{
+    background-color: #f2f6fc;
+    color: #69707a;
+    margin-top: 65px;
+    height: 50em;
+    text-align: center;
+}
+
+.activity .activity-title{
+    padding-top: 50px;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.activity .account-balance{
+    padding-top: 20px;
+}
+
+.activity .balance{
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+
+.activity .activity-content .activity-decription{
+    padding-top: 30px;
+    margin-bottom: 50px;
+}
+.activity .balance .activity-money{
+    font-size: 25px;
+    font-weight: 600;
+}
