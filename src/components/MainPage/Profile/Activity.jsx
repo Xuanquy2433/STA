@@ -12,6 +12,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import CurrencyFormat from 'react-currency-format';
 
 function Activity(props) {
     const { sta, money } = props
@@ -42,9 +43,9 @@ function Activity(props) {
                 <div className="balance">
 
                     <div className="activity-money">
-                        10.000.000
+                        <CurrencyFormat value={money} displayType={'text'} thousandSeparator={true} />
                     </div>
-                    <div className="dollar">
+                    <div style={{marginLeft: '5px'}} className="dollar">
                         vnđ
                     </div>
                 </div>
