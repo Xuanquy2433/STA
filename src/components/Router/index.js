@@ -27,8 +27,12 @@ import AdminRechart from './../Admin/AdminRechart';
 import Market from "../MainPage/Market/Market";
 import EditProfile from "../MainPage/Profile/EditProfile";
 import Activity from "../MainPage/Profile/Activity";
+<<<<<<< HEAD
 import axios from "axios";
 import { API_GET_WALLET } from "../utils/const";
+=======
+import ShowInfoUserController from './../controller/ShowInfoUserController';
+>>>>>>> cc83e252b022e30c865fda2610170727b4777dd7
 
 
 let cc = localStorage.getItem("user")
@@ -82,9 +86,13 @@ const RouterScreen = () => {
 
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/editProfile" element={<EditProfile />} />
+<<<<<<< HEAD
                     <Route path="/activityUser" element={<Activity {...data} />} />
                     <Route path="/profile/buySta" element={<BuySta />} />
 
+=======
+                    <Route path="/activityUser" element={<ShowInfoUserController />} />
+>>>>>>> cc83e252b022e30c865fda2610170727b4777dd7
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
                     <Route path="/diamond" element={<Diamond />} />
