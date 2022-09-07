@@ -13,18 +13,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-<<<<<<< HEAD
 function Activity(props) {
-
     const { sta, money } = props
-=======
-function Activity({ dataSTA, dataMoney }) {
->>>>>>> cc83e252b022e30c865fda2610170727b4777dd7
     const [value, setValue] = React.useState('1');
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    console.log(dataMoney);
+
 
     return (
         <div className='activity'>
@@ -37,11 +32,7 @@ function Activity({ dataSTA, dataMoney }) {
                 </div>
                 <div className="balance">
                     <div className="activity-money">
-<<<<<<< HEAD
                         {sta}
-=======
-                        {dataSTA}
->>>>>>> cc83e252b022e30c865fda2610170727b4777dd7
                     </div>
                 </div>
 
@@ -51,7 +42,7 @@ function Activity({ dataSTA, dataMoney }) {
                 <div className="balance">
 
                     <div className="activity-money">
-                        {money} 
+                        10.000.000
                     </div>
                     <div className="dollar">
                         vnđ
@@ -82,7 +73,7 @@ function Activity({ dataSTA, dataMoney }) {
                                         <TableCell>STATUS</TableCell>
                                         <TableCell align="right">STA</TableCell>
                                         <TableCell align="right">MONEY</TableCell>
-                                        <TableCell align="right">CREATEDDATE</TableCell>
+                                        <TableCell align="right">CREATE DATE</TableCell>
                                         <TableCell align="right">TYPE</TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -137,7 +128,6 @@ function Activity({ dataSTA, dataMoney }) {
                                 <TableBody>
                                     <TableRow>
                                         <TableCell component="th" scope="row">
-
                                         </TableCell>
                                         <TableCell align="right"></TableCell>
                                         <TableCell align="right"></TableCell>
