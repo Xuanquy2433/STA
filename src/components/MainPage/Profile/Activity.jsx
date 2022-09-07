@@ -59,17 +59,17 @@ function Activity() {
                 </div>
             </div>
 
-            <Box sx={{ width: '85%', typography: 'body1' ,margin :'auto'}}>
+            <Box className='activity-history' sx={{ width: '85%', typography: 'body1' ,margin :'auto'}}>
                 <TabContext value={value}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <TabList onChange={handleChange} aria-label="lab API tabs example">
+                    <Box sx={{  borderBottom: 1, borderColor: 'divider' ,color:'white' ,paddingTop:'30px !important' }}>
+                        <TabList textColor='white' onChange={handleChange}  aria-label="lab API tabs example">
                             <Tab label="Purchase history" value="1" />
                             <Tab label="Investment history" value="2" />
                         </TabList>
                     </Box>
                     <TabPanel value="1">
-                        <TableContainer component={Paper}>
-                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableContainer  component={Paper}>
+                            <Table className='activity-table' sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>STATUS</TableCell>

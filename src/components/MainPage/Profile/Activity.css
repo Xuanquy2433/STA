@@ -1,9 +1,10 @@
 .activity{
     background-color: #f2f6fc;
-    color: #69707a;
+    color: white;
     margin-top: 65px;
     height: 50em;
     text-align: center;
+    
 }
 
 .activity .activity-title{
@@ -25,8 +26,22 @@
 .activity .activity-content .activity-decription{
     padding-top: 30px;
     margin-bottom: 50px;
+    padding-bottom: 70px;
+}
+.activity .activity-content {
+    background-color: rgb(11, 20, 38);
+    padding-bottom: 50px;
+    
 }
 .activity .balance .activity-money{
     font-size: 25px;
     font-weight: 600;
+}
+
+.activity .activity-history{
+    margin-top: -150px;
+    background-color: transparent;
+}
+.activity .activity-history .activity-table{
+    background: white;
 }
