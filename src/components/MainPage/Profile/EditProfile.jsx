@@ -91,7 +91,7 @@ function EditProfile() {
                                             id="inputUsername"
                                             type="text"
                                             placeholder="Enter your username"
-                                            defaultValue={email}
+                                            defaultValue={showName}
                                         />
                                     </div>
                                     {/* Form Row*/}
