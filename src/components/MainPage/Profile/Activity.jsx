@@ -13,17 +13,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-function Activity() {
-
-
-
+function Activity(props) {
+    const { sta, money } = props;
     const [value, setValue] = React.useState('1');
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-
 
     return (
         <div className='activity'>
@@ -65,6 +60,8 @@ function Activity() {
                         <TabList textColor='white' onChange={handleChange} aria-label="lab API tabs example">
                             <Tab label="Purchase history" value="1" />
                             <Tab label="Investment history" value="2" />
+                            <Tab label="Transfer" value="3" />
+                            <Tab label="Offers" value="4" />
                         </TabList>
                     </Box>
                     <TabPanel value="1">
@@ -80,10 +77,8 @@ function Activity() {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-
                                     <TableRow>
                                         <TableCell component="th" scope="row">
-
                                         </TableCell>
                                         <TableCell align="right"></TableCell>
                                         <TableCell align="right"></TableCell>
@@ -118,7 +113,54 @@ function Activity() {
                             </Table>
                         </TableContainer>
                     </TabPanel>
+                    <TabPanel value="3">
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Name Services</TableCell>
+                                        <TableCell align="right">STA PROFIT</TableCell>
+                                        <TableCell align="right">CREATEDDATE</TableCell>
+                                        <TableCell align="right">CLAIM DATE</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">
 
+                                        </TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </TabPanel>
+                    <TabPanel value="4">
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Name Services</TableCell>
+                                        <TableCell align="right">STA PROFIT</TableCell>
+                                        <TableCell align="right">CREATEDDATE</TableCell>
+                                        <TableCell align="right">CLAIM DATE</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">
+
+                                        </TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </TabPanel>
                 </TabContext>
             </Box>
 
