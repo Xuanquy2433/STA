@@ -29,6 +29,8 @@ import { Switch } from "@mui/material";
 import Market from "../MainPage/Market/Market";
 import EditProfile from "../MainPage/Profile/EditProfile";
 import Activity from "../MainPage/Profile/Activity";
+import MyProfile from "../MainPage/Profile/MyProfile";
+import AdminPage from "../Admin/AdminPage";
 
 
 let cc = localStorage.getItem("user")
@@ -58,7 +60,8 @@ const RouterScreen = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
 
-                    <Route path="/profile" element={<Profile />} />
+                    {/* <Route path="/profile" element={<Profile />} /> */}
+                    <Route path="/myProfile" element={<MyProfile />} />
                     <Route path="/editProfile" element={<EditProfile />} />
                     <Route path="/activityUser" element={<Activity />} />
                     <Route path="/basic" element={<Basic />} />
@@ -67,8 +70,8 @@ const RouterScreen = () => {
 
                     <Route path="/profile/buySta" element={<BuySta />} />
 
-                    <Route path="/admin" element={<AdminRechart />} />
-
+                    {/* <Route path="/admin" element={<AdminRechart />} /> */}
+                    <Route path="/adminPage" element={<AdminPage     />} />
                     <Route path="/market" element={<Market />} />
 
                     {/* <Route path="/detail/:id" element={<Basic />} /> */}
