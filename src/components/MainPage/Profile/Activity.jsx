@@ -12,17 +12,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import CurrencyFormat from 'react-currency-format';
 
-function Activity() {
-
-
-
+function Activity(props) {
+    const { sta, money } = props
     const [value, setValue] = React.useState('1');
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-   
 
 
     return (
@@ -35,9 +32,8 @@ function Activity() {
                     STA
                 </div>
                 <div className="balance">
-
                     <div className="activity-money">
-                        10
+                        {sta}
                     </div>
                 </div>
 
@@ -47,9 +43,9 @@ function Activity() {
                 <div className="balance">
 
                     <div className="activity-money">
-                        10.000.000
+                        <CurrencyFormat value={money} displayType={'text'} thousandSeparator={true} />
                     </div>
-                    <div className="dollar">
+                    <div style={{marginLeft: '5px'}} className="dollar">
                         vnđ
                     </div>
                 </div>
@@ -59,34 +55,35 @@ function Activity() {
                 </div>
             </div>
 
-            <Box className='activity-history' sx={{ width: '85%', typography: 'body1' ,margin :'auto'}}>
+            <Box className='activity-history' sx={{ width: '85%', typography: 'body1', margin: 'auto' }}>
                 <TabContext value={value}>
-                    <Box sx={{  borderBottom: 1, borderColor: 'divider' ,color:'white' ,paddingTop:'30px !important' }}>
-                        <TabList textColor='white' onChange={handleChange}  aria-label="lab API tabs example">
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider', color: 'white', paddingTop: '30px !important' }}>
+                        <TabList textColor='white' onChange={handleChange} aria-label="lab API tabs exampleimport Login from './../../Login/Login';
+">
                             <Tab label="Purchase history" value="1" />
                             <Tab label="Investment history" value="2" />
+                            <Tab label="Transfer" value="3" />
+                            <Tab label="Offers" value="4" />
                         </TabList>
                     </Box>
                     <TabPanel value="1">
-                        <TableContainer  component={Paper}>
+                        <TableContainer component={Paper}>
                             <Table className='activity-table' sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>STATUS</TableCell>
                                         <TableCell align="right">STA</TableCell>
                                         <TableCell align="right">MONEY</TableCell>
-                                        <TableCell align="right">CREATEDDATE</TableCell>
+                                        <TableCell align="right">CREATE DATE</TableCell>
                                         <TableCell align="right">TYPE</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    
                                     <TableRow>
                                         <TableCell component="th" scope="row">
-
                                         </TableCell>
                                         <TableCell align="right"></TableCell>
-                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right">{sta}</TableCell>
                                         <TableCell align="right"></TableCell>
                                         <TableCell align="right"></TableCell>
                                     </TableRow>
@@ -118,7 +115,53 @@ function Activity() {
                             </Table>
                         </TableContainer>
                     </TabPanel>
+                    <TabPanel value="3">
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Name Services</TableCell>
+                                        <TableCell align="right">STA PROFIT</TableCell>
+                                        <TableCell align="right">CREATEDDATE</TableCell>
+                                        <TableCell align="right">CLAIM DATE</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">
+                                        </TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </TabPanel>
+                    <TabPanel value="4">
+                        <TableContainer component={Paper}>
+                            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Name Services</TableCell>
+                                        <TableCell align="right">STA PROFIT</TableCell>
+                                        <TableCell align="right">CREATEDDATE</TableCell>
+                                        <TableCell align="right">CLAIM DATE</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">
 
+                                        </TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                        <TableCell align="right"></TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    </TabPanel>
                 </TabContext>
             </Box>
 

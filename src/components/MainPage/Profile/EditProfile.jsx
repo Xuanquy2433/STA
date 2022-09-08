@@ -91,7 +91,7 @@ function EditProfile() {
                                             id="inputUsername"
                                             type="text"
                                             placeholder="Enter your username"
-                                            defaultValue={email}
+                                            defaultValue={showName}
                                         />
                                     </div>
                                     {/* Form Row*/}
@@ -188,7 +188,7 @@ function EditProfile() {
                                             <input
                                                 className="form-control"
                                                 id="inputBirthday"
-                                                type="text"
+                                                type="date"
                                                 name="birthday"
                                                 placeholder="Enter your birthday"
                                                 defaultValue="06/10/1988"
