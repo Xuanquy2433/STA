@@ -1,9 +1,9 @@
 .profile-container {
     padding-top: 100px;
     margin-top: 65px;
-    background-color: white;
+    background-color: #333333;
     height: 700px !important;
-
+    color: white;
 }
 
 .profile-container .profile-container-information {
@@ -93,13 +93,13 @@
 
 .profile-container .profile-container-withdraw .input-withdraw-money {
     margin: 20px 0 20px 0;
-    width: 95%;
+    width: 100%;
     padding: 10px 5px;
 }
 
 .profile-container .profile-container-withdraw .input-withdraw-bank {
     font-weight: 500;
     margin-bottom: 35px;
-    width: 95%;
+    width: 100%;
     padding: 10px 5px;
 }

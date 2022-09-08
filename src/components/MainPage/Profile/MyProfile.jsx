@@ -78,7 +78,7 @@ export default function MyProfile() {
                     </div>
 
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} sx={{display: "flex"}}>
                     <div className="profile-container-wallet">
                         <div className="profile-container-wallet-title">
                             Wallet
@@ -93,7 +93,7 @@ export default function MyProfile() {
                         </div>
 
                         <div className="profile-container-wallet-available">
-                            <div className="profile-container-wallet-available-flex-left">
+                            <div style={{width:"50%"}} className="profile-container-wallet-available-flex-left">
                                 <div className="profile-container-wallet-available-sta">
                                     STA
                                 </div>
@@ -101,7 +101,7 @@ export default function MyProfile() {
                                     10.000.000
                                 </div>
                             </div>
-                            <div className="profile-container-wallet-available-flex-right">
+                            <div style={{width:"50%"}}  className="profile-container-wallet-available-flex-right">
                                 <div className="profile-container-wallet-available-money">
                                     Money
                                 </div>
@@ -115,8 +115,8 @@ export default function MyProfile() {
 
                         <div className="profile-container-wallet-btn">
                             <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                <Button style={{ width: '180px' }}>Recharge Money</Button>
-                                <Button style={{ background: "green", width: '180px' }}>Buy STA</Button>
+                                <Button style={{ width: '180px',background:" linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }}>Recharge Money</Button>
+                                <Button style={{ background: "green", width: '180px',    background: "linear-gradient(to right, #ff8e15 0%, #b31b98 100%)" }}>Buy STA</Button>
                             </ButtonGroup>
 
                         </div>
@@ -151,8 +151,8 @@ export default function MyProfile() {
                             />
                         </Paper>
                         <div className="profile-container-wallet-btn">
-                            <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                <Button >Withdraw money</Button>
+                            <ButtonGroup sx={{minWidth:"100%"}} variant="contained" aria-label="outlined primary button group">
+                                <Button sx={{width:"100%",background:" linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)"}}>Withdraw money</Button>
                             </ButtonGroup>
 
                         </div>
