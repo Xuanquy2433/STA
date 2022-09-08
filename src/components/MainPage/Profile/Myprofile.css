@@ -1,0 +1,105 @@
+.profile-container {
+    padding-top: 100px;
+    margin-top: 65px;
+    background-color: white;
+    height: 800px !important;
+
+}
+
+.profile-container .profile-container-information {
+    padding-left: 50px;
+}
+
+.profile-container .profile-container-information .profile-container-information-address {
+    padding-top: 20px;
+    border-top: 1px solid #dddd;
+}
+
+.profile-container .profile-container-information-flex {
+    display: flex;
+    padding-bottom: 20px;
+
+}
+
+.profile-container .profile-container-information .profile-container-information-desc {
+    padding-left: 20px;
+}
+
+.profile-container .profile-container-information .profile-container-information-desc .profile-container-information-desc-name {
+    font-size: 18px;
+}
+
+.profile-container .profile-container-information .profile-container-information-icon {
+    font-size: 36px;
+    color: #1565c0;
+    margin-top: 80px;
+}
+
+.profile-container .profile-container-information .profile-container-information-icon i {
+    padding: 8px;
+}
+
+.profile-container .profile-container-wallet {
+    padding-left: 20px;
+}
+
+.profile-container .profile-container-wallet .profile-container-wallet-title {
+    font-size: 26px;
+    padding-bottom: 55px;
+    border-bottom: 1px solid #dddd;
+    font-weight: 500;
+}
+
+.profile-container .profile-container-wallet .profile-container-wallet-available {
+    font-size: 18px;
+    padding: 20px 0 10px 0;
+    display: flex;
+    text-align: center;
+}
+
+.profile-container .profile-container-wallet .profile-container-wallet-available .profile-container-wallet-available-flex-left {
+    padding-right: 45px;
+    border-right: 1px solid #dddd;
+    text-align: center;
+    padding-left: 25px;
+}
+.profile-container .profile-container-wallet .profile-container-wallet-available .profile-container-wallet-available-flex-right {
+    padding-left: 45px;
+    
+    
+}
+
+.profile-container .profile-container-wallet .profile-container-wallet-sta {
+    font-size: 22px;
+    font-weight: 500;
+    padding-bottom: 50px;
+}
+
+.profile-container .profile-container-wallet .profile-container-wallet-btn {
+    margin-top: 40px;
+}
+
+.profile-container .profile-container-withdraw {
+    padding-right: 50px;
+}
+
+
+.profile-container .profile-container-withdraw .profile-container-withdraw-title {
+    font-size: 26px;
+    padding-bottom: 55px;
+    border-bottom: 1px solid #dddd;
+    font-weight: 500;
+}
+
+.profile-container .profile-container-withdraw .input-withdraw-money {
+    margin: 20px 0 20px 0;
+    width: 95%;
+    padding: 10px 5px;
+}
+
+.profile-container .profile-container-withdraw .input-withdraw-bank {
+    font-weight: 500;
+    margin-bottom: 35px;
+    width: 95%;
+    padding: 10px 5px;
+}

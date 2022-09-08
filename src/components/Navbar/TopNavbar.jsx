@@ -147,7 +147,7 @@ const TopNavbar = () => {
 
         >
           <MenuItem onClick={handleClose} style={{ width: '250px' }}>
-            <LinkRouter to={'/profile'}>
+            <LinkRouter to={'/myProfile'}>
               <div className='navAvt' >
                 <img src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo" className='avt' alt="" />
               </div>
