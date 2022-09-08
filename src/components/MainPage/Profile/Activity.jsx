@@ -45,12 +45,12 @@ function Activity(props) {
                     <div className="activity-money">
                         <CurrencyFormat value={money} displayType={'text'} thousandSeparator={true} />
                     </div>
-                    <div style={{marginLeft: '5px'}} className="dollar">
+                    <div style={{ marginLeft: '5px' }} className="dollar">
                         vnđ
                     </div>
                 </div>
 
-                <div className="activity-decription">
+                <div style={{ width: '80%', margin: 'auto', marginBottom: '50px' }} className="activity-decription">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse blanditiis natus recusandae nihil! Nulla delectus incidunt modi recusandae cum ab non similique itaque labore, blanditiis exercitationem possimus ipsa maiores omnis.
                 </div>
             </div>
@@ -58,8 +58,7 @@ function Activity(props) {
             <Box className='activity-history' sx={{ width: '85%', typography: 'body1', margin: 'auto' }}>
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: 'white', paddingTop: '30px !important' }}>
-                        <TabList textColor='white' onChange={handleChange} aria-label="lab API tabs exampleimport Login from './../../Login/Login';
-">
+                        <TabList textColor='white' onChange={handleChange} aria-label="lab API tabs example">
                             <Tab label="Purchase history" value="1" />
                             <Tab label="Investment history" value="2" />
                             <Tab label="Transfer" value="3" />

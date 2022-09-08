@@ -56,13 +56,15 @@ const Box = (props) => {
     }
 
   }
-  
+
   const getUserSta = async () => {
     console.log(token);
-    const response = await axios.post(API_GET_WALLET + token);
-    console.log("sta ", response.data);
-    if (response && response.status === 200) {
-      setSta(response.data.sta);
+    if (token) {
+      const response = await axios.post(API_GET_WALLET + token);
+      console.log("sta ", response.data);
+      if (response && response.status === 200) {
+        setSta(response.data.sta);
+      }
     }
   }
 

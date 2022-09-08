@@ -31,21 +31,25 @@ const TopNavbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  let role
 
-  if (localStorage.getItem("user")) {
-    let dataUser = localStorage.getItem("user");
+  let dataUser = localStorage.getItem("user");
+  if (dataUser) {
     let firstName = JSON.parse(dataUser).userDataDto.firstName
     let lastName = JSON.parse(dataUser).userDataDto.lastName
+    role = JSON.parse(dataUser).userDataDto.role
     showName = firstName + " " + lastName
   }
 
   const getUserSta = async () => {
     console.log(token);
-    const response = await axios.post(API_GET_WALLET + token);
-    console.log("sta ", response.data);
-    if (response && response.status === 200) {
-      setSta(response.data.sta);
-      setMoney(response.data.money)
+    if (token) {
+      const response = await axios.post(API_GET_WALLET + token);
+      console.log("sta ", response.data);
+      if (response && response.status === 200) {
+        setSta(response.data.sta);
+        setMoney(response.data.money)
+      }
     }
   }
 
@@ -147,7 +151,7 @@ const TopNavbar = () => {
 
         >
           <MenuItem onClick={handleClose} style={{ width: '250px' }}>
-            <LinkRouter to={'/myProfile'}>
+            {showName && role === 'user' ? <LinkRouter to={'/myProfile'}>
               <div className='navAvt' >
                 <img src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo" className='avt' alt="" />
               </div>
@@ -155,10 +159,19 @@ const TopNavbar = () => {
                 <p className='pTop'>{showName}</p>
                 <p className='pBottom'>  My Profile</p>
               </div>
-            </LinkRouter>
+            </LinkRouter> : ''}
+            {showName && role === 'admin' ? <LinkRouter to={'/adminPage'}>
+              <div className='navAvt' >
+                <img src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo" className='avt' alt="" />
+              </div>
+              <div className='navName'>
+                <p className='pTop'>{showName}</p>
+                <p className='pBottom'>  My Profile</p>
+              </div>
+            </LinkRouter> : ''}
           </MenuItem>
-          <MenuItem onClick={handleClose}><LinkRouter to={'editProfile'}>Edit Profile</LinkRouter></MenuItem>
-          <MenuItem onClick={handleClose}><LinkRouter to={'activityUser'}>Account Activity</LinkRouter></MenuItem>
+          {dataUser && role === 'admin' ? '' : <MenuItem onClick={handleClose}><LinkRouter to={'editProfile'}>Edit Profile</LinkRouter></MenuItem>}
+          {dataUser && role === 'admin' ? '' : <MenuItem onClick={handleClose}><LinkRouter to={'activityUser'}>Account Activity</LinkRouter></MenuItem>}
           <MenuItem onClick={() => {
             handleClose()
             logout()

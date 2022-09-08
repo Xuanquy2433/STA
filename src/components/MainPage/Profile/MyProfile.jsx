@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Myprofile.css'
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -14,6 +14,7 @@ import InputBase from '@mui/material/InputBase';
 import PriceChangeOutlinedIcon from '@mui/icons-material/PriceChangeOutlined';
 import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlined';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import { useNavigate } from 'react-router-dom';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -25,12 +26,19 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 
+
 export default function MyProfile() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        let dataUser = localStorage.getItem("user");
+        console.log(dataUser);
+        if (dataUser === null || JSON.parse(dataUser).userDataDto.role !== 'user') {
+            navigate('/')
+        }
+    }, []);
     return (
-
-
         <Box className='profile-container' sx={{ flexGrow: 1 }}>
-            <Grid container spacing={8}>
+            <Grid style={{ marginTop: '20px', padding: '10px' }} container spacing={8}>
                 <Grid item xs={4}>
                     <div className="profile-container-information">
                         <div className="profile-container-information-flex">
@@ -74,13 +82,20 @@ export default function MyProfile() {
                     <div className="profile-container-wallet">
                         <div className="profile-container-wallet-title">
                             Wallet
+                            {/* <div style={{ textAlign: 'center',marginTop: '10px' }} >
+                                <div style={{fontSize: '0.6em'}} >
+                                    AVAILABLE  STA
+                                </div>
+                                <div style={{fontSize: '0.9em'}} >
+                                    10.000.000
+                                </div>
+                            </div> */}
                         </div>
-
 
                         <div className="profile-container-wallet-available">
                             <div className="profile-container-wallet-available-flex-left">
                                 <div className="profile-container-wallet-available-sta">
-                                    Available STA
+                                    STA
                                 </div>
                                 <div className="profile-container-wallet-sta">
                                     10.000.000
@@ -88,10 +103,10 @@ export default function MyProfile() {
                             </div>
                             <div className="profile-container-wallet-available-flex-right">
                                 <div className="profile-container-wallet-available-money">
-                                    Available Money
+                                    Money
                                 </div>
                                 <div className="profile-container-wallet-sta">
-                                    10.000.000 
+                                    10.000.000
                                 </div>
                             </div>
 
@@ -100,8 +115,8 @@ export default function MyProfile() {
 
                         <div className="profile-container-wallet-btn">
                             <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                <Button>Recharge Money</Button>
-                                <Button style={{ background: "green" }}>Buy STA</Button>
+                                <Button style={{ width: '180px' }}>Recharge Money</Button>
+                                <Button style={{ background: "green", width: '180px' }}>Buy STA</Button>
                             </ButtonGroup>
 
                         </div>

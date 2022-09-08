@@ -2,7 +2,7 @@
     padding-top: 100px;
     margin-top: 65px;
     background-color: white;
-    height: 800px !important;
+    height: 700px !important;
 
 }
 
@@ -45,7 +45,7 @@
 
 .profile-container .profile-container-wallet .profile-container-wallet-title {
     font-size: 26px;
-    padding-bottom: 55px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #dddd;
     font-weight: 500;
 }

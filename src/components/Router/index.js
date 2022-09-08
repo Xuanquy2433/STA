@@ -27,15 +27,12 @@ import AdminRechart from './../Admin/AdminRechart';
 import Market from "../MainPage/Market/Market";
 import EditProfile from "../MainPage/Profile/EditProfile";
 import Activity from "../MainPage/Profile/Activity";
-<<<<<<< HEAD
 import MyProfile from "../MainPage/Profile/MyProfile";
 import AdminPage from "../Admin/AdminPage";
-=======
 import axios from "axios";
 import { API_GET_WALLET } from "../utils/const";
 import ShowInfoUserController from './../controller/ShowInfoUserController';
 
->>>>>>> a388e6a3a048dbebf7cd2dde40629a93d04bcabd
 
 
 
@@ -45,17 +42,19 @@ const RouterScreen = () => {
     const [data, setData] = useState({
         "sta": 0,
         "money": 0,
-        "firstName": JSON.parse(dataUser).userDataDto.firstName,
-        "lastName": JSON.parse(dataUser).userDataDto.lastName,
-        "email": JSON.parse(dataUser).userDataDto.email,
+        "firstName": '',
+        "lastName": '',
+        "email": '',
     })
 
     const getUserSta = async () => {
         console.log(token);
-        const response = await axios.post(API_GET_WALLET + token);
-        console.log("sta ", response.data);
-        if (response && response.status === 200) {
-            setData({ ...data, sta: response.data.sta, money: response.data.money });
+        if (token) {
+            const response = await axios.post(API_GET_WALLET + token);
+            console.log("sta ", response.data);
+            if (dataUser && response && response.status === 200) {
+                setData({ ...data, sta: response.data.sta, money: response.data.money, firstName: JSON.parse(dataUser).userDataDto.firstName, lastName: JSON.parse(dataUser).userDataDto.lastName, email: JSON.parse(dataUser).userDataDto.email });
+            }
         }
     }
     useEffect(() => {
@@ -95,15 +94,12 @@ const RouterScreen = () => {
                     <Route path="/gold" element={<Gold />} />
                     <Route path="/diamond" element={<Diamond />} />
 
-<<<<<<< HEAD
                     <Route path="/profile/buySta" element={<BuySta />} />
 
                     {/* <Route path="/admin" element={<AdminRechart />} /> */}
-                    <Route path="/adminPage" element={<AdminPage     />} />
-=======
+                    <Route path="/adminPage" element={<AdminPage />} />
                     <Route path="/admin" element={<AdminRechart />} />
 
->>>>>>> a388e6a3a048dbebf7cd2dde40629a93d04bcabd
                     <Route path="/market" element={<Market />} />
 
                     {/* <Route path="/detail/:id" element={<Basic />} /> */}
