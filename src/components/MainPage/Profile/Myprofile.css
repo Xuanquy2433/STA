@@ -1,6 +1,6 @@
 .profile-container {
-    padding-top: 100px;
     margin-top: 65px;
+    padding-top: 30px;
     background-color: #333333;
     height: 700px !important;
     color: white;
@@ -18,14 +18,16 @@
 .profile-container .profile-container-information-flex {
     display: flex;
     padding-bottom: 20px;
-
 }
 
 .profile-container .profile-container-information .profile-container-information-desc {
     padding-left: 20px;
 }
 
-.profile-container .profile-container-information .profile-container-information-desc .profile-container-information-desc-name {
+.profile-container
+    .profile-container-information
+    .profile-container-information-desc
+    .profile-container-information-desc-name {
     font-size: 18px;
 }
 
@@ -57,16 +59,20 @@
     text-align: center;
 }
 
-.profile-container .profile-container-wallet .profile-container-wallet-available .profile-container-wallet-available-flex-left {
+.profile-container
+    .profile-container-wallet
+    .profile-container-wallet-available
+    .profile-container-wallet-available-flex-left {
     padding-right: 45px;
     border-right: 1px solid #dddd;
     text-align: center;
     padding-left: 25px;
 }
-.profile-container .profile-container-wallet .profile-container-wallet-available .profile-container-wallet-available-flex-right {
+.profile-container
+    .profile-container-wallet
+    .profile-container-wallet-available
+    .profile-container-wallet-available-flex-right {
     padding-left: 45px;
-    
-    
 }
 
 .profile-container .profile-container-wallet .profile-container-wallet-sta {
@@ -82,7 +88,6 @@
 .profile-container .profile-container-withdraw {
     padding-right: 50px;
 }
-
 
 .profile-container .profile-container-withdraw .profile-container-withdraw-title {
     font-size: 26px;
@@ -102,4 +107,28 @@
     margin-bottom: 35px;
     width: 100%;
     padding: 10px 5px;
+}
+
+.showMoney {
+    text-align: right;
+    margin: 0;
+    margin-bottom: 70px;
+    margin-right: 8rem;
+}
+
+.showMoney span{
+    margin-top: 10px;
+    color: #333333;
+    padding: 10px 30px 10px 30px;
+}
+.showMoney .span1{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: rgb(187, 218, 251);
+}
+
+.showMoney .span2{
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: whitesmoke;
 }
