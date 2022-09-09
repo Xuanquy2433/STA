@@ -180,10 +180,21 @@ export default function MyProfile() {
     });
     const withdraw = async (e) => {
         e.preventDefault();
-        const response = await axios.post(API_WITHDRAW_REQUEST + token, dataWithdraw);
-        toast.success('Send withdraw money success, waiting for confirmation', {
-            autoClose: 3000
-        })
+        if (dataWithdraw.money === '') {
+            toast.error('Please enter bank ! ', {
+                autoClose: 2000
+            })
+        } else if (dataWithdraw.message === '') {
+            toast.error('Please enter message ! ', {
+                autoClose: 2000
+            })
+        }
+        else {
+            const response = await axios.post(API_WITHDRAW_REQUEST + token, dataWithdraw);
+            toast.success('Send withdraw money success, waiting for confirmation', {
+                autoClose: 3000
+            })
+        }
     }
 
     const navigate = useNavigate();
@@ -317,7 +328,7 @@ export default function MyProfile() {
                                             </div>
                                             <div class="modal-body">
                                                 <form method='PUT' class="form-inline">
-                                                    <div style={{ width: '100%', border: '1px solid #ddd', padding: '10px' ,borderRadius: '4px'}} class="form-group mb-2">
+                                                    <div style={{ width: '100%', border: '1px solid #ddd', padding: '10px', borderRadius: '4px' }} class="form-group mb-2">
                                                         <label for="money" class="sr-only">Money</label>
                                                         <CurrencyFormat style={{ width: '100%' }} placeholder="Enter the money" onValueChange={(values) => {
                                                             const { formattedValue, value } = values;
