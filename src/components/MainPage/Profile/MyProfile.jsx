@@ -276,7 +276,7 @@ export default function MyProfile() {
                                             </div>
                                             <div class="modal-body">
                                                 <form method='PUT' class="form-inline">
-                                                    <div class="form-group mb-2">
+                                                    <div style={{width: '100%', border: '1px solid #ddd',padding: '10px'}} class="form-group mb-2">
                                                         <label for="money" class="sr-only">Money</label>
                                                         <CurrencyFormat style={{ width: '100%' }} placeholder="Enter the money" onValueChange={(values) => {
                                                             const { formattedValue, value } = values;
