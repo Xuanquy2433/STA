@@ -108,9 +108,21 @@ export default function MyProfile() {
         token: token
     })
     const sendSTA = async (e) => {
+        console.log("cc ", sendData);
         e.preventDefault()
-        if (sendData.receiver == email) {
+        if (sendData.receiver === email) {
             toast.error("You can't transfer money to yourself", {
+                autoClose: 2000
+            })
+            getUserSta()
+        } else if (sendData.sta === '') {
+            toast.error("Please enter money", {
+                autoClose: 2000
+            })
+            getUserSta()
+        }
+        else if (sendData.receiver === '') {
+            toast.error("Please enter email", {
                 autoClose: 2000
             })
             getUserSta()
@@ -119,7 +131,8 @@ export default function MyProfile() {
                 autoClose: 2000
             })
             getUserSta()
-        } else {
+        }
+        else {
             const response = await axios.put(API_SEND_STA + "?receiver=" + sendData.receiver + "&sta=" + sendData.sta + "&token=" + sendData.token)
             toast.success('Send success', {
                 autoClose: 2000
@@ -186,14 +199,40 @@ export default function MyProfile() {
     }, []);
     return (
         <Box className='profile-container' sx={{ flexGrow: 1 }}>
-            <div style={{marginTop:'20px'}} className='showMoney'>
+            <div style={{ marginTop: '20px' }} className='showMoney'>
                 <span className='span1'>{sta} <PaidIcon style={{ color: 'gold' }} /> </span>
                 <CurrencyFormat className='span2' value={money} displayType={'text'} suffix=" VNĐ" thousandSeparator={true} />
-                <Button style={{backgroundColor:'#e53935' , color:'white',marginLeft:'30px',marginRight:'-50px' , borderRadius:'20px'}} variant="Transfer money">Transfer money</Button>
-               
+                <Button data-toggle="modal" data-target="#transfer" style={{ backgroundColor: '#e53935', color: 'white', marginLeft: '30px', marginRight: '-50px', borderRadius: '20px' }} variant="Transfer money">Transfer money</Button>
+
+                <div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div style={{ marginTop: '160px' }} class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Transfer money</h2>
+                            <div class="modal-body">
+                                <form method='PUT' class="form-inline">
+                                    <div class="form-group mb-2">
+                                        <label for="money" class="sr-only">STA</label>
+                                        <input min={'1'} onChange={onChangeText} type="number" name="sta" class="form-control" id="money" placeholder="Enter the money" />
+                                    </div>
+                                    <div><i style={{ fontSize: '1.8em', marginLeft: '18px', marginRight: '2px' }} class="fa-solid fa-arrow-right-long"></i></div>
+                                    <div class="form-group mx-sm-3 mb-2">
+                                        <label for="idUser" class="sr-only">Email</label>
+                                        {/* <input onChange={onChangeText}  name="token" type="text" class="form-control" id="idUser" placeholder="Token" /> */}
+                                        <input onChange={onChangeText} name="receiver" type="text" class="form-control" id="idUser" placeholder="Email" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <p style={{ marginRight: '100px', fontWeight: '500' }} >You have <span style={{ color: 'gold' }}>{sta} STA</span></p>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button onClick={sendSTA} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
-
-
             <Grid style={{ marginTop: '20px', padding: '10px' }} container spacing={8}>
                 <Grid item xs={4}>
                     <div className="profile-container-information">
@@ -264,9 +303,7 @@ export default function MyProfile() {
                                     10.000.000
                                 </div>
                             </div>
-
                         </div>
-
 
                         <div className="profile-container-wallet-btn">
                             <ButtonGroup variant="contained" aria-label="outlined primary button group">
@@ -280,7 +317,7 @@ export default function MyProfile() {
                                             </div>
                                             <div class="modal-body">
                                                 <form method='PUT' class="form-inline">
-                                                    <div style={{ width: '100%', border: '1px solid #ddd', padding: '10px' }} class="form-group mb-2">
+                                                    <div style={{ width: '100%', border: '1px solid #ddd', padding: '10px' ,borderRadius: '4px'}} class="form-group mb-2">
                                                         <label for="money" class="sr-only">Money</label>
                                                         <CurrencyFormat style={{ width: '100%' }} placeholder="Enter the money" onValueChange={(values) => {
                                                             const { formattedValue, value } = values;
@@ -336,7 +373,7 @@ export default function MyProfile() {
                         <Paper className='input-withdraw-money'
                             component="form"
                             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
-                            <PriceChangeOutlinedIcon />
+                            <PriceChangeOutlinedIcon style={{ marginRight: '5px' }} />
                             {/* <InputBase
                                 sx={{ ml: 1, flex: 1 }}
                                 placeholder="Enter the money"
@@ -344,7 +381,7 @@ export default function MyProfile() {
                                 onChange={(e) => {
                                     setDataWithdraw({ ...dataWithdraw, money: e.target.value })
                                 }} /> */}
-                            <CurrencyFormat style={{ width: '100%' }} placeholder="Enter the money" onValueChange={(values) => {
+                            <CurrencyFormat style={{ width: '100%', height: '4vh' }} placeholder="Enter the money" onValueChange={(values) => {
                                 const { formattedValue, value } = values;
                                 setDataWithdraw({ ...dataWithdraw, money: value })
                             }} thousandSeparator={true} suffix={'  VNĐ'} />
