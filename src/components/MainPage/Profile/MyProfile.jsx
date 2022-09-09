@@ -19,6 +19,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import { API_ADD_REQUEST, API_BUY_STA, API_GET_CATEGORY, API_GET_REQUEST, API_GET_WALLET, API_LOG_USER, API_POST_ORDER, API_POST_PRODUCT, API_SEND_STA, API_UPDATE_REQUEST, API_WITHDRAW_REQUEST } from '../../utils/const';
 import CurrencyFormat from 'react-currency-format';
+import { TextField } from '@mui/material';
 
 
 
@@ -277,10 +278,14 @@ export default function MyProfile() {
                                                 <form method='PUT' class="form-inline">
                                                     <div class="form-group mb-2">
                                                         <label for="money" class="sr-only">Money</label>
-                                                        <input style={{ width: '470px' }} onChange={(e) => {
+                                                        <CurrencyFormat style={{ width: '100%' }} placeholder="Enter the money" onValueChange={(values) => {
+                                                            const { formattedValue, value } = values;
+                                                            setDataUser({ ...dataUser, money: value })
+                                                        }} thousandSeparator={true} suffix={'  VNĐ'} />
+                                                        {/* <input style={{ width: '470px' }} onChange={(e) => {
                                                             setDataUser({ ...dataUser, money: e.target.value })
                                                         }
-                                                        } type="number" min={'1'} name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the money" />
+                                                        } type="number" min={'1'} name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the money" /> */}
                                                     </div>
                                                 </form>
                                             </div>
@@ -328,13 +333,17 @@ export default function MyProfile() {
                             component="form"
                             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
                             <PriceChangeOutlinedIcon />
-                            <InputBase
+                            {/* <InputBase
                                 sx={{ ml: 1, flex: 1 }}
                                 placeholder="Enter the money"
                                 inputProps={{ 'aria-label': 'enter the money' }}
                                 onChange={(e) => {
                                     setDataWithdraw({ ...dataWithdraw, money: e.target.value })
-                                }} />
+                                }} /> */}
+                            <CurrencyFormat style={{ width: '100%' }} placeholder="Enter the money" onValueChange={(values) => {
+                                const { formattedValue, value } = values;
+                                setDataWithdraw({ ...dataWithdraw, money: value })
+                            }} thousandSeparator={true} suffix={'  VNĐ'} />
                         </Paper>
                         <Paper className='input-withdraw-bank'
                             component="form"
