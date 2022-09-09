@@ -138,13 +138,13 @@ function AdminPage() {
 
 
     useEffect(() => {
-        let dataUser = localStorage.getItem("user");
-        console.log(dataUser);
-        if (dataUser === null || JSON.parse(dataUser).userDataDto.role !== 'admin') {
-            navigate('/')
-        }
-        getAllByStatus()
-        getCategory()
+        // let dataUser = localStorage.getItem("user");
+        // console.log(dataUser);
+        // if (dataUser === null || JSON.parse(dataUser).userDataDto.role !== 'admin') {
+        //     navigate('/')
+        // }
+        // getAllByStatus()
+        // getCategory()
     }, []);
 
     return (
@@ -162,8 +162,8 @@ function AdminPage() {
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: 'white', paddingTop: '30px !important' }}>
                         <TabList textColor='white' onChange={handleChange} aria-label="lab API tabs example ">
-                            <Tab label="Duyệt user nạp " value="1" />
-                            <Tab label="Duyệt user rút" value="2" />
+                            <Tab label="Cofirm recharge Money " value="1" />
+                            <Tab label="Cofirm withdraw Money" value="2" />
                             <Tab label="Add product" value="3" />
                         </TabList>
                     </Box>
@@ -232,9 +232,11 @@ function AdminPage() {
                         <Box className='form-add-product'
                             sx={{
 
-                                maxWidth: '40%',
+                                maxWidth: '50%',
                                 margin: '0 auto',
-                                marginTop: ' 70px'
+                                marginTop: ' 70px',
+                                backgroundColor:'white'
+
                             }}
                         >
                             <TextField className='form-input-add-product' fullWidth label="Name" id="name" />
@@ -261,6 +263,7 @@ function AdminPage() {
                                         <MenuItem value={20}>Twenty</MenuItem>
 
                                     </Select>
+                                    <Button style={{backgroundColor:'#1565c0',width:'50%',height:'40px',margin:'0 auto',marginTop:'30px'}} variant="ADD">ADD</Button>
                                 </FormControl>
                             </div>
                         </Box>

@@ -2,7 +2,7 @@
     background-color: #f2f6fc;
     color: white;
     margin-top: 65px;
-    height: 60em;
+    height: 63em;
     text-align: center;
     
 }
@@ -57,8 +57,8 @@
     margin: 10px 0;
 }
 .activity .form-add-product{
-    /* border: 1px solid #dddd;
+    border: 1px solid #dddd;
     padding: 40px;
     border-radius: 10px;
-    box-shadow: inset; */
+    box-shadow: inset;
 }

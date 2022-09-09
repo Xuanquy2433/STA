@@ -186,10 +186,14 @@ export default function MyProfile() {
     }, []);
     return (
         <Box className='profile-container' sx={{ flexGrow: 1 }}>
-            <div className='showMoney'>
+            <div style={{marginTop:'20px'}} className='showMoney'>
                 <span className='span1'>{sta} <PaidIcon style={{ color: 'gold' }} /> </span>
                 <CurrencyFormat className='span2' value={money} displayType={'text'} suffix=" VNĐ" thousandSeparator={true} />
+                <Button style={{backgroundColor:'#e53935' , color:'white',marginLeft:'30px',marginRight:'-50px' , borderRadius:'20px'}} variant="Transfer money">Transfer money</Button>
+               
             </div>
+
+
             <Grid style={{ marginTop: '20px', padding: '10px' }} container spacing={8}>
                 <Grid item xs={4}>
                     <div className="profile-container-information">
@@ -276,7 +280,7 @@ export default function MyProfile() {
                                             </div>
                                             <div class="modal-body">
                                                 <form method='PUT' class="form-inline">
-                                                    <div style={{width: '100%', border: '1px solid #ddd',padding: '10px'}} class="form-group mb-2">
+                                                    <div style={{ width: '100%', border: '1px solid #ddd', padding: '10px' }} class="form-group mb-2">
                                                         <label for="money" class="sr-only">Money</label>
                                                         <CurrencyFormat style={{ width: '100%' }} placeholder="Enter the money" onValueChange={(values) => {
                                                             const { formattedValue, value } = values;
