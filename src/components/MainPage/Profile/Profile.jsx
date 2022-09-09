@@ -402,13 +402,7 @@ function Profile() {
                           <div class="form-group">
                             <label for="exampleFormControlSelect1">Category</label>
                             <select onChange={handler} name={valueState} class="form-control" id="exampleFormControlSelect1">
-                              {
-                                category.map((item, index) => (
-                                  <option key={index} value={item.id}  >
-                                    {item.categoryName}
-                                  </option>
-                                ))
-                              }
+                              
                             </select>
                           </div>
                           <div class="form-group">
