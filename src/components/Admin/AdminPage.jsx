@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './AdminPage.css'
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -15,6 +15,11 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { API_GET_CATEGORY, API_GET_REQUEST, API_POST_PRODUCT, API_UPDATE_REQUEST } from '../utils/const';
+import { toast } from 'react-toastify';
+import { TextField } from '@mui/material';
+import Moment from 'react-moment';
 
 function AdminPage() {
 
@@ -23,6 +28,102 @@ function AdminPage() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const [status, setStatus] = useState([]);
+    let token = localStorage.getItem("token");
+    const getAllByStatus = async () => {
+        const response = await axios.get(API_GET_REQUEST);
+        if (response && response.status === 200) {
+            setStatus(response.data)
+        }
+    }
+
+    // add product
+    const [valueState, setValueState] = useState("")
+    const [category, setCategory] = useState([]);
+    const [addProductData, setAddProductData] = useState({
+        "categoryId": 0,
+        "description": "",
+        "imageURL": "",
+        "investMonth": 0,
+        "name": "",
+        "percentage": 0,
+        "price": 0
+    });
+
+    if (addProductData.categoryId === 0) {
+        console.log("Null id ");
+        // check nếu ko chọn sẽ mặc định lấy id 1
+        setAddProductData({ ...addProductData, categoryId: 1 })
+    }
+
+    const getCategory = async () => {
+        const response = await axios.get(API_GET_CATEGORY);
+        if (response && response.status === 200) {
+            setCategory(response.data)
+        }
+    }
+
+    const handler = (event) => {
+        const value = event.target.value
+        console.log(value);
+        setAddProductData({ ...addProductData, categoryId: (value) })
+        setValueState(value)
+        console.log("valueeeeeeeeeeeeeeeeee", value);
+    }
+
+    const onChangeTextProduct = (event) => {
+        console.log("onChangeText", event);
+        setAddProductData({ ...addProductData, [event.target.name]: event.target.value });
+    };
+
+    const onclAddProduct = async (e) => {
+        e.preventDefault()
+        console.log("onclick add product");
+        try {
+            const response = await axios.post(API_POST_PRODUCT, addProductData)
+            toast.success('Add success', {
+                autoClose: 2000
+            })
+        } catch (error) {
+            toast.error('Error API', {
+                autoClose: 2000
+            })
+        }
+
+    }
+
+    const accept = async (id, money, message, userId) => {
+        console.log(money, message);
+        const response = await axios.put(API_UPDATE_REQUEST + token, {
+            "id": id,
+            "money": money,
+            "status": "accepted",
+            "userId": userId
+        });
+        if (response && response.status === 200) {
+            toast.success("Accept success", {
+                autoClose: 2000
+            });
+            getAllByStatus()
+        }
+    }
+
+    const decline = async (id, money, message, userId) => {
+        console.log(money, message);
+        const response = await axios.put(API_UPDATE_REQUEST + token, {
+            "id": id,
+            "money": money,
+            "status": "rejected",
+            "userId": userId
+        });
+        if (response && response.status === 200) {
+            toast.error("Decline success", {
+                autoClose: 2000
+            });
+            getAllByStatus()
+        }
+    }
+
 
     useEffect(() => {
         let dataUser = localStorage.getItem("user");
@@ -30,6 +131,8 @@ function AdminPage() {
         if (dataUser === null || JSON.parse(dataUser).userDataDto.role !== 'admin') {
             navigate('/')
         }
+        getAllByStatus()
+        getCategory()
     }, []);
 
     return (
@@ -57,22 +160,35 @@ function AdminPage() {
                             <Table className='activity-table' sx={{ minWidth: 650 }} aria-label="simple table">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell>STATUS</TableCell>
-                                        <TableCell align="right">STA</TableCell>
-                                        <TableCell align="right">MONEY</TableCell>
-                                        <TableCell align="right">CREATE DATE</TableCell>
-                                        <TableCell align="right">TYPE</TableCell>
+                                        <TableCell style={{ textAlign: "center" }} scope="col">ID</TableCell>
+                                        <TableCell style={{ textAlign: "center" }} scope="col">User ID</TableCell>
+                                        <TableCell style={{ textAlign: "center" }} scope="col">Message</TableCell>
+                                        <TableCell style={{ textAlign: "center" }} scope="col">Money</TableCell>
+                                        <TableCell style={{ textAlign: "center" }} scope="col" >
+                                            Type
+                                        </TableCell>
+                                        <TableCell style={{ textAlign: "center" }} scope="col" >
+                                            Create date
+                                        </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    <TableRow>
-                                        <TableCell component="th" scope="row">
-                                        </TableCell>
-                                        <TableCell align="right"></TableCell>
-                                        <TableCell align="right"></TableCell>
-                                        <TableCell align="right"></TableCell>
-                                        <TableCell align="right"></TableCell>
-                                    </TableRow>
+                                    {status.map((item, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell style={{ color: "#8898aa" }} scope="row">{item.id}</TableCell>
+                                            <TableCell style={{ color: "#8898aa", textAlign: 'center' }} scope="row">{item.userId}</TableCell>
+                                            <TableCell style={{ textAlign: "center", color: "#8898aa " }} className="text-muted">{item.message}</TableCell>
+                                            <TableCell style={{ textAlign: "center" }} className="text-muted ">{item.money}</TableCell>
+                                            <TableCell style={{ textAlign: "center", color: "#8898aa" }} className="text-muted">{item.type}</TableCell>
+                                            <TableCell style={{ textAlign: "center", color: "#8898aa" }} className="text-muted"><Moment format='MMMM Do YYYY, h:mm:ss a'>{item.createdDate}</Moment></TableCell>
+                                            <TableCell style={{ textAlign: "center" }} className="text-muted">
+                                                <button onClick={() => accept(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#3F51B5", color: "#FFFFFF", padding: "4px 8px", margin: "0" }} type="button" className="btn">Confirm</button>
+                                            </TableCell>
+                                            <TableCell style={{ textAlign: "center" }} className="text-muted">
+                                                <button onClick={() => decline(item.id, item.money, item.message, item.userId)} style={{ backgroundColor: "#78909C", color: "#FFFFFF", padding: "4px 8px", margin: "0", }} type="button" className="btn">Refuse</button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
                                 </TableBody>
                             </Table>
                         </TableContainer>
@@ -91,7 +207,6 @@ function AdminPage() {
                                 <TableBody>
                                     <TableRow>
                                         <TableCell component="th" scope="row">
-
                                         </TableCell>
                                         <TableCell align="right"></TableCell>
                                         <TableCell align="right"></TableCell>
@@ -102,9 +217,19 @@ function AdminPage() {
                         </TableContainer>
                     </TabPanel>
                     <TabPanel value="3">
-                        <TableContainer component={Paper}>
-                            <p>form</p>
-                        </TableContainer>
+                        <Box
+                            component="form"
+                            sx={{
+                                '& > :not(style)': { m: 1, width: '25ch' },
+                                marginTop: '50px'
+                            }}
+                            noValidate
+                            autoComplete="off">
+                            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+
+                        </Box>
+
+
                     </TabPanel>
                 </TabContext>
             </Box>

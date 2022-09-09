@@ -12,7 +12,7 @@
 
 .profile-container .profile-container-information .profile-container-information-address {
     padding-top: 20px;
-    border-top: 1px solid black;
+    border-top: 1px solid rgb(175, 175, 175);
 }
 
 .profile-container .profile-container-information-flex {
@@ -48,7 +48,7 @@
 .profile-container .profile-container-wallet .profile-container-wallet-title {
     font-size: 26px;
     padding-bottom: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid  rgb(175, 175, 175);
     font-weight: 500;
 }
 
@@ -64,7 +64,7 @@
     .profile-container-wallet-available
     .profile-container-wallet-available-flex-left {
     padding-right: 45px;
-    border-right: 1px solid black;
+    border-right: 1px solid  rgb(175, 175, 175);
     text-align: center;
     padding-left: 25px;
 }
@@ -92,7 +92,7 @@
 .profile-container .profile-container-withdraw .profile-container-withdraw-title {
     font-size: 26px;
     padding-bottom: 55px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid  rgb(175, 175, 175);
     font-weight: 500;
 }
 
@@ -124,11 +124,11 @@
 .showMoney .span1{
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
-    background-color: rgb(187, 218, 251);
+    background-color: white;
 }
 
 .showMoney .span2{
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
-    background-color: white;
+    background-color: rgb(187, 218, 251);
 }

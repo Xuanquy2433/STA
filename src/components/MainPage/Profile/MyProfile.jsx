@@ -49,9 +49,8 @@ export default function MyProfile() {
         userID = JSON.parse(dataUser).userDataDto.id
         showName = firstName + " " + lastName
     }
-
+    let token = localStorage.getItem("token");
     const [randomSave, setRandomSave] = useState((Math.random() + 1).toString(36).substring(7));
-
     const [dataUser, setDataUser] = useState({
         "message": email + " [" + randomSave + "]",
         "money": '',
@@ -59,10 +58,9 @@ export default function MyProfile() {
         "status": "pending",
     });
 
-
+    // recharge money
     const addRequest = async (e) => {
         e.preventDefault();
-
         if (dataUser.money < 10000) {
             toast.warning("Minimum recharge 10000", {
                 autoClose: 3000
@@ -77,28 +75,39 @@ export default function MyProfile() {
             }, 2000);
         }
     }
-    console.log("data user", dataUser);
 
-    const [sta, setSta] = useState('');
+    // buy sta
     const [money, setMoney] = useState('');
-    let token = localStorage.getItem("token");
+    const [dataBuy, setDataBuy] = useState({
+        sta: "",
+        token: token
+    })
+    const checkSTA = money / 10000
+    const buySTA = async (e) => {
+        e.preventDefault()
+        if (dataBuy.sta > checkSTA) {
+            toast.warning("You don't have enough money", {
+                autoClose: 2000
+            })
+            getUserSta()
+        } else {
+            const response = await axios.put(API_BUY_STA + "?sta=" + dataBuy.sta + "&token=" + dataBuy.token)
+            toast.success('Buy success', {
+                autoClose: 2000
+            })
+            getUserSta()
+        }
+    }
 
+    // send sta
+    const [sta, setSta] = useState('');
     const [sendData, setSendData] = useState({
         receiver: "",
         sta: "",
         token: token
     })
-
-    const [dataBuy, setDataBuy] = useState({
-        sta: "",
-        token: token
-    })
-
-    console.log(sendData);
     const sendSTA = async (e) => {
         e.preventDefault()
-        console.log(e);
-
         if (sendData.receiver == email) {
             toast.error("You can't transfer money to yourself", {
                 autoClose: 2000
@@ -118,25 +127,6 @@ export default function MyProfile() {
         }
     }
 
-    const checkSTA = money / 10000
-    console.log(checkSTA);
-    const buySTA = async (e) => {
-        e.preventDefault()
-        if (dataBuy.sta > checkSTA) {
-            toast.warning("You don't have enough money", {
-                autoClose: 2000
-            })
-            getUserSta()
-        } else {
-            const response = await axios.put(API_BUY_STA + "?sta=" + dataBuy.sta + "&token=" + dataBuy.token)
-            toast.success('Buy success', {
-                autoClose: 2000
-            })
-            getUserSta()
-        }
-
-    }
-
     const onChangeText = (event) => {
         console.log('onChangeText', event)
         setSendData({ ...sendData, [event.target.name]: event.target.value })
@@ -151,78 +141,13 @@ export default function MyProfile() {
             setMoney(response.data.money)
         }
     }
-    const [status, setStatus] = useState([]);
 
-    const getAllByStatus = async () => {
-        const response = await axios.get(API_GET_REQUEST);
-        if (response && response.status === 200) {
-            setStatus(response.data)
-        }
-
-    }
-
-    const [valueState, setValueState] = useState("")
-    const [category, setCategory] = useState([]);
-
-    const [addProductData, setAddProductData] = useState({
-        "categoryId": 0,
-        "description": "",
-        "imageURL": "",
-        "investMonth": 0,
-        "name": "",
-        "percentage": 0,
-        "price": 0
-    });
-
-    if (addProductData.categoryId === 0) {
-        console.log("Null id ");
-        // check nếu ko chọn sẽ mặc định lấy id 1
-        setAddProductData({ ...addProductData, categoryId: 1 })
-    }
-
-    const getCategory = async () => {
-        const response = await axios.get(API_GET_CATEGORY);
-        if (response && response.status === 200) {
-            setCategory(response.data)
-        }
-    }
-
-    const handler = (event) => {
-        const value = event.target.value
-        console.log(value);
-        setAddProductData({ ...addProductData, categoryId: (value) })
-        setValueState(value)
-        console.log("valueeeeeeeeeeeeeeeeee", value);
-    }
-
-    const onChangeTextProduct = (event) => {
-        console.log("onChangeText", event);
-        setAddProductData({ ...addProductData, [event.target.name]: event.target.value });
-    };
-
-
-    const onclAddProduct = async (e) => {
-        e.preventDefault()
-        console.log("onclick add product");
-        try {
-            const response = await axios.post(API_POST_PRODUCT, addProductData)
-            toast.success('Add success', {
-                autoClose: 2000
-            })
-        } catch (error) {
-            toast.error('Error API', {
-                autoClose: 2000
-            })
-        }
-
-    }
 
     const [order, setOrder] = useState([]);
 
     const getOrder = async (e) => {
         const response = await axios.post(API_POST_ORDER + token)
         setOrder(response.data)
-
     }
 
     const [logUser, setLogUser] = useState([]);
@@ -232,53 +157,13 @@ export default function MyProfile() {
 
     }
 
-    console.log("list log user ", logUser);
-    console.log("list order ", order);
-    console.log("list category ", category);
-    console.log("data product adđ ", addProductData);
-
-
-    const accept = async (id, money, message, userId) => {
-        console.log(money, message);
-        const response = await axios.put(API_UPDATE_REQUEST + token, {
-            "id": id,
-            "money": money,
-            "status": "accepted",
-            "userId": userId
-        });
-        if (response && response.status === 200) {
-            toast.success("Accept success", {
-                autoClose: 2000
-            });
-            getAllByStatus()
-        }
-
-    }
-
-    const decline = async (id, money, message, userId) => {
-        console.log(money, message);
-        const response = await axios.put(API_UPDATE_REQUEST + token, {
-            "id": id,
-            "money": money,
-            "status": "rejected",
-            "userId": userId
-        });
-        if (response && response.status === 200) {
-            toast.error("Decline success", {
-                autoClose: 2000
-            });
-            getAllByStatus()
-        }
-
-    }
-
+    //withdraw
     const [dataWithdraw, setDataWithdraw] = useState({
         "message": '',
         "money": '',
         "type": "withdraw",
         "status": "pending",
     });
-
     const withdraw = async (e) => {
         e.preventDefault();
         const response = await axios.post(API_WITHDRAW_REQUEST + token, dataWithdraw);
@@ -287,28 +172,6 @@ export default function MyProfile() {
         })
     }
 
-    console.log("data withdraw ", dataWithdraw);
-    console.log("status ", status);
-    useEffect(() => {
-        getUserSta();
-        getAllByStatus()
-        getCategory()
-        getOrder()
-        getLogUser()
-    }, []);
-
-    const logout = () => {
-        // alert("ok")
-        localStorage.removeItem("token")
-        localStorage.removeItem("user")
-        navigate('/')
-
-        toast.success("Logout success");
-        setTimeout(() => window.location.reload(false)
-            , 1000)
-    }
-
-
     const navigate = useNavigate();
     useEffect(() => {
         let dataUser = localStorage.getItem("user");
@@ -316,12 +179,15 @@ export default function MyProfile() {
         if (dataUser === null || JSON.parse(dataUser).userDataDto.role !== 'user') {
             navigate('/')
         }
+        getUserSta();
+        getOrder()
+        getLogUser()
     }, []);
     return (
         <Box className='profile-container' sx={{ flexGrow: 1 }}>
             <div className='showMoney'>
                 <span className='span1'>{sta} <PaidIcon style={{ color: 'gold' }} /> </span>
-               <CurrencyFormat className='span2' value={money} displayType={'text'} suffix=" VNĐ" thousandSeparator={true} />
+                <CurrencyFormat className='span2' value={money} displayType={'text'} suffix=" VNĐ" thousandSeparator={true} />
             </div>
             <Grid style={{ marginTop: '20px', padding: '10px' }} container spacing={8}>
                 <Grid item xs={4}>
@@ -334,15 +200,14 @@ export default function MyProfile() {
                             </div>
                             <div className="profile-container-information-desc">
                                 <div className="profile-container-information-desc-name">
-                                    Hello + Name
+                                    {showName}
                                 </div>
                                 <div className="profile-container-information-desc-phone">
                                     <PhoneIcon />&nbsp;
                                     0378583429
                                 </div>
                                 <div className="profile-container-information-desc-email">
-                                    <EmailIcon /> &nbsp;letrungquy50@gmail.com
-
+                                    <EmailIcon /> &nbsp; {email}
                                 </div>
                             </div>
                         </div>
@@ -355,10 +220,10 @@ export default function MyProfile() {
 
                         </div>
                         <div className="profile-container-information-icon">
-                            <i class="fa-brands fa-square-facebook"></i>
-                            <i class="fa-brands fa-square-twitter"></i>
-                            <i class="fa-brands fa-square-youtube"></i>
-                            <i class="fa-brands fa-square-google-plus"></i>
+                            <i style={{ cursor: 'pointer' }} class="fa-brands fa-square-facebook"></i>
+                            <i style={{ cursor: 'pointer' }} class="fa-brands fa-square-twitter"></i>
+                            <i style={{ cursor: 'pointer' }} class="fa-brands fa-square-youtube"></i>
+                            <i style={{ cursor: 'pointer' }} class="fa-brands fa-square-google-plus"></i>
                         </div>
                     </div>
 
@@ -400,8 +265,55 @@ export default function MyProfile() {
 
                         <div className="profile-container-wallet-btn">
                             <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                <Button style={{ width: '180px', background: " linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }}>Recharge Money</Button>
-                                <Button style={{ background: "green", width: '180px', background: "linear-gradient(to right, #ff8e15 0%, #b31b98 100%)" }}>Buy STA</Button>
+                                <Button data-toggle="modal" data-target="#rechargeMoney" style={{ width: '180px', background: " linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }}>Recharge Money</Button>
+                                <div class="modal fade" id="rechargeMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Recharge money</h2>
+                                            <div style={{ textAlign: "center" }}>
+                                                <p>Soạn <span style={{ color: 'gold', fontWeight: '520' }}>[{email}] + [{randomSave}] + </span> <span style={{ color: 'gold', fontWeight: '520' }}>[Số tiền muốn nạp] </span>  gửi đến STK <span style={{ color: 'gold', fontWeight: '520' }}>029323278927 NGUYEN VAN A</span>  <span style={{ color: 'blue', fontWeight: '520' }}>MB BANK</span> </p>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method='PUT' class="form-inline">
+                                                    <div class="form-group mb-2">
+                                                        <label for="money" class="sr-only">Money</label>
+                                                        <input style={{ width: '470px' }} onChange={(e) => {
+                                                            setDataUser({ ...dataUser, money: e.target.value })
+                                                        }
+                                                        } type="number" min={'1'} name="sta" class="form-control" id="money" defaultValue={''} placeholder="Enter the money" />
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button onClick={addRequest} type="submit" data-dismiss="modal" class="btn btn-primary">Send</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Button data-toggle="modal" data-target="#buySTA" style={{ background: "green", width: '180px', background: "linear-gradient(to right, #ff8e15 0%, #b31b98 100%)" }}>Buy STA</Button>
+                                <div class="modal fade" id="buySTA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <h2 style={{ textAlign: 'center', margin: '10px 0px 30px 0px' }} >Buy STA</h2>
+                                            <div class="modal-body">
+                                                <form method='PUT' class="form-inline">
+                                                    <div class="form-group mb-2">
+                                                        <label for="money" class="sr-only">STA</label>
+                                                        <input style={{ width: '470px' }} onChange={(e) =>
+                                                            setDataBuy({ ...dataBuy, sta: e.target.value })
+                                                        } type="number" name="sta" min={'1'} class="form-control" id="money" defaultValue={''} placeholder="Enter the STA" />
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <p style={{ marginRight: '100px', fontWeight: '500' }} ><span style={{ color: 'gold' }}>1 STA</span> = 10.000 money </p>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button onClick={buySTA} type="submit" data-dismiss="modal" class="btn btn-primary">Buy</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </ButtonGroup>
 
                         </div>
@@ -414,32 +326,32 @@ export default function MyProfile() {
                         </div>
                         <Paper className='input-withdraw-money'
                             component="form"
-                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-                        >
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
                             <PriceChangeOutlinedIcon />
                             <InputBase
                                 sx={{ ml: 1, flex: 1 }}
                                 placeholder="Enter the money"
                                 inputProps={{ 'aria-label': 'enter the money' }}
-                            />
+                                onChange={(e) => {
+                                    setDataWithdraw({ ...dataWithdraw, money: e.target.value })
+                                }} />
                         </Paper>
-
                         <Paper className='input-withdraw-bank'
                             component="form"
-                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-                        >
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
                             <AccountBalanceOutlinedIcon />
                             <InputBase
                                 sx={{ ml: 1, flex: 1 }}
                                 placeholder="[Withdraw] + [Bank account number] + [Bank Name] + [Name]Enter the money"
                                 inputProps={{ 'aria-label': '[Withdraw] + [Bank account number] + [Bank Name] + [Name]' }}
-                            />
+                                onChange={(e) => {
+                                    setDataWithdraw({ ...dataWithdraw, message: e.target.value })
+                                }} />
                         </Paper>
                         <div className="profile-container-wallet-btn">
                             <ButtonGroup sx={{ minWidth: "100%" }} variant="contained" aria-label="outlined primary button group">
-                                <Button sx={{ width: "100%", background: " linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }}>Withdraw money</Button>
+                                <Button onClick={withdraw} sx={{ width: "100%", background: " linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }}>Withdraw money</Button>
                             </ButtonGroup>
-
                         </div>
                     </div>
                 </Grid>
