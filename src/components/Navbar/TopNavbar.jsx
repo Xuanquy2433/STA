@@ -125,7 +125,7 @@ const TopNavbar = () => {
         >
           GitHub
         </span> */}
-        {showName ? <span style={{ marginTop: '13px' }} >
+        {showName ? <span style={{ marginTop: '3px' }} >
           <Button
             id="basic-button"
             aria-controls={open ? 'basic-menu' : undefined}
