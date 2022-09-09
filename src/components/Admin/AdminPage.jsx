@@ -135,16 +135,16 @@ function AdminPage() {
             getAllByStatus()
         }
     }
-
+console.log('staussss ',status);
 
     useEffect(() => {
-        // let dataUser = localStorage.getItem("user");
-        // console.log(dataUser);
-        // if (dataUser === null || JSON.parse(dataUser).userDataDto.role !== 'admin') {
-        //     navigate('/')
-        // }
-        // getAllByStatus()
-        // getCategory()
+        let dataUser = localStorage.getItem("user");
+        console.log(dataUser);
+        if (dataUser === null || JSON.parse(dataUser).userDataDto.role !== 'admin') {
+            navigate('/')
+        }
+        getAllByStatus()
+        getCategory()
     }, []);
 
     return (
