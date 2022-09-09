@@ -265,7 +265,7 @@ export default function MyProfile() {
 
                         <div className="profile-container-wallet-btn">
                             <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                                <Button data-toggle="modal" data-target="#rechargeMoney" style={{ width: '180px', background: " linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }}>Recharge Money</Button>
+                                <Button data-toggle="modal" data-target="#rechargeMoney" style={{ width: '180px' }}>Recharge Money</Button>
                                 <div class="modal fade" id="rechargeMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -291,7 +291,7 @@ export default function MyProfile() {
                                         </div>
                                     </div>
                                 </div>
-                                <Button data-toggle="modal" data-target="#buySTA" style={{ background: "green", width: '180px', background: "linear-gradient(to right, #ff8e15 0%, #b31b98 100%)" }}>Buy STA</Button>
+                                <Button data-toggle="modal" data-target="#buySTA" style={{ background: "green", width: '180px' }}>Buy STA</Button>
                                 <div class="modal fade" id="buySTA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div style={{ marginTop: '200px' }} class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -350,7 +350,7 @@ export default function MyProfile() {
                         </Paper>
                         <div className="profile-container-wallet-btn">
                             <ButtonGroup sx={{ minWidth: "100%" }} variant="contained" aria-label="outlined primary button group">
-                                <Button onClick={withdraw} sx={{ width: "100%", background: " linear-gradient(238.01deg, rgb(145, 1, 165) -1.4%, rgb(255, 86, 122) 54.09%, rgb(255, 153, 0) 93.78%)" }}>Withdraw money</Button>
+                                <Button onClick={withdraw} sx={{ width: "100%" }}>Withdraw money</Button>
                             </ButtonGroup>
                         </div>
                     </div>

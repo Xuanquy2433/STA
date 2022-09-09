@@ -20,8 +20,16 @@ import { API_GET_CATEGORY, API_GET_REQUEST, API_POST_PRODUCT, API_UPDATE_REQUEST
 import { toast } from 'react-toastify';
 import { TextField } from '@mui/material';
 import Moment from 'react-moment';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 
 function AdminPage() {
+
+
+
+
 
     const navigate = useNavigate();
     const [value, setValue] = React.useState('1');
@@ -40,6 +48,10 @@ function AdminPage() {
     // add product
     const [valueState, setValueState] = useState("")
     const [category, setCategory] = useState([]);
+    const handleChangeCategory = (event) => {
+        setCategory(event.target.value);
+    };
+
     const [addProductData, setAddProductData] = useState({
         "categoryId": 0,
         "description": "",
@@ -217,16 +229,40 @@ function AdminPage() {
                         </TableContainer>
                     </TabPanel>
                     <TabPanel value="3">
-                        <Box
-                            component="form"
+                        <Box className='form-add-product'
                             sx={{
-                                '& > :not(style)': { m: 1, width: '25ch' },
-                                marginTop: '50px'
-                            }}
-                            noValidate
-                            autoComplete="off">
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
 
+                                maxWidth: '40%',
+                                margin: '0 auto',
+                                marginTop: ' 70px'
+                            }}
+                        >
+                            <TextField className='form-input-add-product' fullWidth label="Name" id="name" />
+                            <TextField className='form-input-add-product' fullWidth label="Percentage" id="Percentage" />
+                            <div style={{display:'flex',justifyContent:' space-between'}} className="form-flex">
+                                <TextField style={{marginRight:'5px'}} className='form-input-add-product' fullWidth label="Price" id="Price" />
+                                <TextField className='form-input-add-product' fullWidth label="InvestMonth" id="InvestMonth" />
+                            </div>
+
+                            <TextField className='form-input-add-product' fullWidth label="Image" id="Image" />
+                            <TextField className='form-input-add-product' fullWidth label="Descriptions" id="Descriptions" />
+
+                            <div className='form-input-add-product'>
+                                <FormControl sx={{ width: '100%' }}>
+                                    <InputLabel id="demo-simple-select-helper-label">Category</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-helper-label"
+                                        id="demo-simple-select-helper"
+                                        value={category}
+                                        label="Category"
+                                        onChange={handleChangeCategory}
+                                    >
+                                        <MenuItem value={10}>Ten</MenuItem>
+                                        <MenuItem value={20}>Twenty</MenuItem>
+
+                                    </Select>
+                                </FormControl>
+                            </div>
                         </Box>
 
 

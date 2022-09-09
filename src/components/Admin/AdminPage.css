@@ -2,7 +2,7 @@
     background-color: #f2f6fc;
     color: white;
     margin-top: 65px;
-    height: 50em;
+    height: 60em;
     text-align: center;
     
 }
@@ -52,4 +52,13 @@
     border-radius: 0% !important;
     border-bottom: 2px solid #1565c0;
     margin-left: 20px;
+}
+.activity .form-input-add-product{
+    margin: 10px 0;
+}
+.activity .form-add-product{
+    /* border: 1px solid #dddd;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: inset; */
 }
