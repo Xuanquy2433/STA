@@ -26,11 +26,6 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 
 function AdminPage() {
-
-
-
-
-
     const navigate = useNavigate();
     const [value, setValue] = React.useState('1');
     const handleChange = (event, newValue) => {
@@ -48,9 +43,6 @@ function AdminPage() {
     // add product
     const [valueState, setValueState] = useState("")
     const [category, setCategory] = useState([]);
-    const handleChangeCategory = (event) => {
-        setCategory(event.target.value);
-    };
 
     const [addProductData, setAddProductData] = useState({
         "categoryId": 0,
