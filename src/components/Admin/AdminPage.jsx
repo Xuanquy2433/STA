@@ -75,6 +75,7 @@ function AdminPage() {
         }
     }
 
+    console.log("category", category);
     const handler = (event) => {
         const value = event.target.value
         console.log(value);
@@ -135,7 +136,7 @@ function AdminPage() {
             getAllByStatus()
         }
     }
-console.log('staussss ',status);
+    console.log('staussss ', status);
 
     useEffect(() => {
         let dataUser = localStorage.getItem("user");
@@ -235,14 +236,14 @@ console.log('staussss ',status);
                                 maxWidth: '50%',
                                 margin: '0 auto',
                                 marginTop: ' 70px',
-                                backgroundColor:'white'
+                                backgroundColor: 'white'
 
                             }}
                         >
                             <TextField className='form-input-add-product' fullWidth label="Name" id="name" />
                             <TextField className='form-input-add-product' fullWidth label="Percentage" id="Percentage" />
-                            <div style={{display:'flex',justifyContent:' space-between'}} className="form-flex">
-                                <TextField style={{marginRight:'5px'}} className='form-input-add-product' fullWidth label="Price" id="Price" />
+                            <div style={{ display: 'flex', justifyContent: ' space-between' }} className="form-flex">
+                                <TextField style={{ marginRight: '5px' }} className='form-input-add-product' fullWidth label="Price" id="Price" />
                                 <TextField className='form-input-add-product' fullWidth label="InvestMonth" id="InvestMonth" />
                             </div>
 
@@ -255,15 +256,17 @@ console.log('staussss ',status);
                                     <Select
                                         labelId="demo-simple-select-helper-label"
                                         id="demo-simple-select-helper"
-                                        value={category}
+                                        value={valueState} 
                                         label="Category"
-                                        onChange={handleChangeCategory}
+                                        onChange={handler}
                                     >
-                                        <MenuItem value={10}>Ten</MenuItem>
-                                        <MenuItem value={20}>Twenty</MenuItem>
-
+                                        {
+                                            category.map((item, index) => (
+                                                <MenuItem key={index} value={item.id}>{item.categoryName}</MenuItem>
+                                            ))
+                                        }
                                     </Select>
-                                    <Button style={{backgroundColor:'#1565c0',width:'50%',height:'40px',margin:'0 auto',marginTop:'30px'}} variant="ADD">ADD</Button>
+                                    <Button onClick={onclAddProduct} style={{ backgroundColor: '#1565c0', width: '50%', height: '40px', margin: '0 auto', marginTop: '30px' }} variant="ADD">ADD</Button>
                                 </FormControl>
                             </div>
                         </Box>
