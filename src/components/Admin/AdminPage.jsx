@@ -89,6 +89,7 @@ function AdminPage() {
             toast.success('Add success', {
                 autoClose: 2000
             })
+            getCategory()
         } catch (error) {
             toast.error('Error API', {
                 autoClose: 2000
@@ -258,7 +259,7 @@ function AdminPage() {
                                             ))
                                         }
                                     </Select>
-                                    <Button onClick={onclAddProduct} style={{ backgroundColor: '#1565c0', width: '50%', height: '40px', margin: '0 auto', marginTop: '30px' }} variant="ADD">ADD</Button>
+                                    <Button onClick={onclAddProduct} style={{ backgroundColor: '#1565c0', width: '100%', height: '40px', margin: '0 auto', marginTop: '30px' }} variant="ADD">ADD</Button>
                                 </FormControl>
                             </div>
                         </Box>
