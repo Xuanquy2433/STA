@@ -240,15 +240,15 @@ function AdminPage() {
 
                             }}
                         >
-                            <TextField className='form-input-add-product' fullWidth label="Name" id="name" />
-                            <TextField className='form-input-add-product' fullWidth label="Percentage" id="Percentage" />
+                            <TextField onChange={onChangeTextProduct} name="name" className='form-input-add-product' fullWidth label="Name" id="name" />
+                            <TextField onChange={onChangeTextProduct} name="percentage" className='form-input-add-product' fullWidth label="Percentage" id="Percentage" />
                             <div style={{ display: 'flex', justifyContent: ' space-between' }} className="form-flex">
-                                <TextField style={{ marginRight: '5px' }} className='form-input-add-product' fullWidth label="Price" id="Price" />
-                                <TextField className='form-input-add-product' fullWidth label="InvestMonth" id="InvestMonth" />
+                                <TextField onChange={onChangeTextProduct} name="price" style={{ marginRight: '5px' }} className='form-input-add-product' fullWidth label="Price" id="Price" />
+                                <TextField onChange={onChangeTextProduct} name="investMonth" className='form-input-add-product' fullWidth label="InvestMonth" id="InvestMonth" />
                             </div>
 
-                            <TextField className='form-input-add-product' fullWidth label="Image" id="Image" />
-                            <TextField className='form-input-add-product' fullWidth label="Descriptions" id="Descriptions" />
+                            <TextField onChange={onChangeTextProduct} name="imageURL" className='form-input-add-product' fullWidth label="Image" id="Image" />
+                            <TextField onChange={onChangeTextProduct} name="description" className='form-input-add-product' fullWidth label="Descriptions" id="Descriptions" />
 
                             <div className='form-input-add-product'>
                                 <FormControl sx={{ width: '100%' }}>
