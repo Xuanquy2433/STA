@@ -14,7 +14,7 @@ export const deleteAPI = async (url) => {
 }
 
 export const postAPI = async (url, payload) => {
-  const response = await axios.post(url, payload).catch((err) => console.error(err))
+  const response = await axios.post(url, payload).catch((err) => console.error("thissssssssssssss ",err))
   return response
 }
 

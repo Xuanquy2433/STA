@@ -48,7 +48,6 @@ const RouterScreen = () => {
     })
 
     const getUserSta = async () => {
-        console.log(token);
         if (token) {
             const response = await axios.post(API_GET_WALLET + token);
             console.log("sta ", response.data);
@@ -61,7 +60,6 @@ const RouterScreen = () => {
         getUserSta();
     }, []);
 
-    console.log("c ", data);
     return (
         <React.Fragment>
             <ToastContainer

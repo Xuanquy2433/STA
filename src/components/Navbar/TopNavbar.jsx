@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import './TopNav.css'
+import jwt_decode from "jwt-decode";
 import { toast } from 'react-toastify';
 
 const TopNavbar = () => {
@@ -32,17 +33,28 @@ const TopNavbar = () => {
     setAnchorEl(null);
   };
   let role
+  let decoded;
 
-  let dataUser = localStorage.getItem("user");
-  if (dataUser) {
-    let firstName = JSON.parse(dataUser).userDataDto.firstName
-    let lastName = JSON.parse(dataUser).userDataDto.lastName
-    role = JSON.parse(dataUser).userDataDto.role
+  console.log(token);
+  if (token !== null) {
+    decoded = jwt_decode(token);
+    console.log('decoded', decoded);
+    let firstName = decoded.firstName
+    let lastName = decoded.lastName
+    role = decoded.roles
     showName = firstName + " " + lastName
   }
+  console.log("role: ", role);
+  let dataUser = localStorage.getItem("user");
+  // console.log(JSON.parse(dataUser));
+  // if (dataUser) {
+  //   let firstName = JSON.parse(dataUser).userDataDto.firstName
+  //   let lastName = JSON.parse(dataUser).userDataDto.lastName
+  //   role = JSON.parse(dataUser).userDataDto.role
+  //   showName = firstName + " " + lastName
+  // }
 
   const getUserSta = async () => {
-    console.log(token);
     if (token) {
       const response = await axios.post(API_GET_WALLET + token);
       console.log("sta ", response.data);
@@ -151,7 +163,7 @@ const TopNavbar = () => {
 
         >
           <MenuItem onClick={handleClose} style={{ width: '250px' }}>
-            {showName && role === 'user' ? <LinkRouter to={'/myProfile'}>
+            {showName && role === '[ROLE_USER]' ? <LinkRouter to={'/myProfile'}>
               <div className='navAvt' >
                 <img src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo" className='avt' alt="" />
               </div>
@@ -160,7 +172,7 @@ const TopNavbar = () => {
                 <p className='pBottom'>  My Profile</p>
               </div>
             </LinkRouter> : ''}
-            {showName && role === 'admin' ? <LinkRouter to={'/adminPage'}>
+            {showName && role === '[ROLE_ADMIN]' ? <LinkRouter to={'/adminPage'}>
               <div className='navAvt' >
                 <img src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo" className='avt' alt="" />
               </div>
@@ -170,8 +182,8 @@ const TopNavbar = () => {
               </div>
             </LinkRouter> : ''}
           </MenuItem>
-          {dataUser && role === 'admin' ? '' : <MenuItem onClick={handleClose}><LinkRouter to={'editProfile'}>Edit Profile</LinkRouter></MenuItem>}
-          {dataUser && role === 'admin' ? '' : <MenuItem onClick={handleClose}><LinkRouter to={'activityUser'}>Account Activity</LinkRouter></MenuItem>}
+          {dataUser && role === '[ROLE_USER]' ? <MenuItem onClick={handleClose}><LinkRouter to={'editProfile'}>Edit Profile</LinkRouter></MenuItem> : ''}
+          {dataUser && role === '[ROLE_USER]' ? <MenuItem onClick={handleClose}><LinkRouter to={'activityUser'}>Account Activity</LinkRouter></MenuItem> : ''}
           <MenuItem onClick={() => {
             handleClose()
             logout()

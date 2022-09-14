@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './EditProfile.css'
+import jwt_decode from "jwt-decode";
+import { API, API_PUT_EDIT_AVATAR } from '../../utils/const';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
 
 function EditProfile() {
     let showName
@@ -7,16 +12,42 @@ function EditProfile() {
     let lastName
     let email
     let role
+    let decoded;
+    let avatar;
+    let token = localStorage.getItem("token");
     let userID
-    if (localStorage.getItem("user")) {
-        let dataUser = localStorage.getItem("user");
-        firstName = JSON.parse(dataUser).userDataDto.firstName
-        lastName = JSON.parse(dataUser).userDataDto.lastName
-        email = JSON.parse(dataUser).userDataDto.email
-        role = JSON.parse(dataUser).userDataDto.role
-        userID = JSON.parse(dataUser).userDataDto.id
+    if (token !== null) {
+        decoded = jwt_decode(token);
+        console.log('decoded', decoded);
+        firstName = decoded.firstName
+        lastName = decoded.lastName
+        email = decoded.email
+        avatar = decoded.avatar
+        role = decoded.roles
         showName = firstName + " " + lastName
     }
+    const [valueImage, setValueImage] = useState({
+        "image": '',
+    })
+    console.log("valueImage: ", valueImage);
+    const upload = async (e) => {
+        e.preventDefault();
+        console.log("click upload");
+        try {
+            const response = await axios.put(API_PUT_EDIT_AVATAR, valueImage);
+            if (response && response.status === 200) {
+                console.log("Update success, ", response.data);
+                toast.success('Update success', {
+                    autoClose: 3000
+                })
+            };
+        } catch (error) {
+            toast.error('Error', {
+                autoClose: 3000
+            })
+        }
+    }
+
     return (
         <div className='editProfile'>
             <div className="container-xl px-4 mt-4">
@@ -57,11 +88,11 @@ function EditProfile() {
                         {/* Profile picture card*/}
                         <div className="card mb-4 mb-xl-0">
                             <div className="card-header">Profile Picture</div>
-                            <div className="card-body text-center">
+                            <form method='PUT' onSubmit={upload} enctype="multipart/form-data" className="card-body text-center">
                                 {/* Profile picture image*/}
                                 <img
                                     className="img-account-profile rounded-circle mb-2"
-                                    src="https://crypto.com/nft/assets/images/profile/default-profile.jpg?d=lg-logo"
+                                    src={API + avatar}
                                     alt=""
                                 />
                                 {/* Profile picture help block*/}
@@ -69,10 +100,10 @@ function EditProfile() {
                                     JPG or PNG no larger than 5 MB
                                 </div>
                                 {/* Profile picture upload button*/}
-                                <button className="btn btn-primary" type="button">
-                                    Upload new image
-                                </button>
-                            </div>
+                                <input style={{ width: '50%' }} className="btn btn-primary" onChange={(e) => setValueImage({ image: e.target.files[0].name })} type="file" />
+                                {/* Upload new image */}
+                                <button className="btn btn-primary" type='submit'   >Save</button>
+                            </form>
                         </div>
                     </div>
                     <div className="col-xl-8">
@@ -91,7 +122,7 @@ function EditProfile() {
                                             id="inputUsername"
                                             type="text"
                                             placeholder="Enter your username"
-                                            defaultValue={showName}
+                                            defaultValue={email}
                                         />
                                     </div>
                                     {/* Form Row*/}

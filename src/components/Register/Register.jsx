@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { API_USER_SIGNUP } from '../utils/const';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
@@ -18,18 +18,45 @@ export default function Register() {
 
     const onSignup = async (e) => {
         e.preventDefault();
-        const response = await axios.post(API_USER_SIGNUP, data);
-        if (response && response.status === 200) {
-            console.log("Signup success");
-            // alert("Sign success");
-            toast.success('Register success', {
-                autoClose: 3000
+        if (data.email === '') {
+            toast.error('Email cannot be null', {
+                autoClose: 2000
             })
-            navigate('/login')
-            setTimeout(() => {
-                window.location.reload()
-            }, 2500);
-        };
+        }
+        else if (data.firstName === '') {
+            toast.error('First name cannot be null', {
+                autoClose: 2000
+            })
+        }
+        else if (data.lastName === '') {
+            toast.error('Last name cannot be null', {
+                autoClose: 2000
+            })
+        }
+        else if (data.password === '') {
+            toast.error('Password cannot be null', {
+                autoClose: 2000
+            })
+        }
+        else if (data.password.length < 8) {
+            toast.error('Password must have at least 8 characters', {
+                autoClose: 2000
+            })
+        }
+        else {
+            const response = await axios.post(API_USER_SIGNUP, data);
+            if (response && response.status === 201) {
+                console.log("Signup success");
+                // alert("Sign success");
+                toast.success('Register success', {
+                    autoClose: 3000
+                })
+                navigate('/login')
+                setTimeout(() => {
+                    window.location.reload()
+                }, 2500);
+            };
+        }
     }
 
 
@@ -92,10 +119,7 @@ export default function Register() {
                                                         </div>
                                                         <div className="text-center">
                                                             <button type="submit" onClick={(e) => {
-                                                                {
-                                                                    e.preventDefault()
-                                                                    onSignup(e);
-                                                                }
+                                                                onSignup(e);
                                                             }} className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
                                                         </div>
                                                     </form>

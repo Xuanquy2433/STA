@@ -14,22 +14,50 @@ export default function Login() {
 
     const onLogin = async (e) => {
         e.preventDefault();
-        const response = await axios.post(API_USER_LOGIN, data);
-        if (response && response.status === 200) {
-            console.log("Login success");
-            // alert("Login success");
-            localStorage.setItem("token", response?.data.token);
-            localStorage.setItem("user", JSON.stringify(response.data));
-
-            toast.success('Login success', {
-                autoClose: 3000
+        if (data.email === '') {
+            toast.error('Email cannot be null', {
+                autoClose: 2000
             })
-            navigate('/')
-            setTimeout(() => {
-                window.location.reload()
-            }, 1000);
-        };
-        
+        } else if (data.password === '') {
+            toast.error('Password cannot be null', {
+                autoClose: 2000
+            })
+        }
+        else if (data.password.length < 8) {
+            toast.error('Password must have at least 8 characters', {
+                autoClose: 2000
+            })
+        }
+        else {
+            try {
+                const response = await axios.post(API_USER_LOGIN, data);
+                if (response && response.status === 200) {
+                    console.log("Login success, ", response.data);
+                    // alert("Login success");
+                    localStorage.setItem("token", response?.data.token);
+                    localStorage.setItem("user", JSON.stringify(response.data));
+                    toast.success('Login success', {
+                        autoClose: 3000
+                    })
+                    navigate('/')
+                    // setTimeout(() => {
+                    //     window.location.reload()
+                    // }, 1000);
+                };
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    console.log(error.response.data.message)
+                    toast.error(`${error.response.data.message}`, {
+                        autoClose: 2000
+                    })
+                }
+                else {
+                    toast.error('Error', {
+                        autoClose: 2000
+                    })
+                }
+            }
+        }
     }
     return (
         <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
@@ -64,7 +92,7 @@ export default function Login() {
                                                             setData({ ...data, email: e.target.value })
                                                             console.log('username value: ', data.username);
                                                         }
-                                                        } type="text" className="form-control" name="username" placeholder="Username" required />
+                                                        } type="text" className="form-control" name="username" placeholder="Email" required />
                                                     </div>
                                                     {/*<label style="position: relative; bottom: -10px ; color: #344767; font-weight: 700; font-size: 14px" class="form-label">Password</label>*/}
                                                     <div className="input-group input-group-outline mb-3">
