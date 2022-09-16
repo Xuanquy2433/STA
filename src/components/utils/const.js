@@ -4,6 +4,10 @@ export const API_USER_LOGIN = `${API}/login`;
 
 export const API_USER_SIGNUP = `${API}/signup`;
 
+export const API_USER_SIGNUP_PHONE = `${API}/phoneSignup`;
+
+export const API_USER_SEND_OTP = `${API}/phoneSignup/sms?phone=`;
+
 export const API_GET_WALLET = `${API}/wallet/?token=`;
 
 export const API_SEND_STA =`${API}/wallet/send/`;

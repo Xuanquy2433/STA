@@ -46,8 +46,8 @@ export default function Login() {
                 };
             } catch (error) {
                 if (error.response && error.response.data) {
-                    console.log(error.response.data.message)
-                    toast.error(`${error.response.data.message}`, {
+                    console.log(error.response.data.error)
+                    toast.error(`${error.response.data.error}`, {
                         autoClose: 2000
                     })
                 }
@@ -120,7 +120,13 @@ export default function Login() {
                                                 <p className="mb-2 text-sm mx-auto">
                                                     Don't have an account?
                                                     <Link to="/register">
-                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Sign Up</span>
+                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Sign Up </span>
+                                                    </Link>
+                                                </p>
+                                                <p className="mb-2 text-sm mx-auto">
+                                                    or continue with
+                                                    <Link to="/SignUpWithPhone">
+                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Phone Number</span>
                                                     </Link>
                                                 </p>
                                             </div>
