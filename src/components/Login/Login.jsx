@@ -4,61 +4,74 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { API_USER_LOGIN } from '../utils/const';
 import { useNavigate } from "react-router-dom";
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import LoginEmail from './LoginEmail';
+import LoginPhone from './LoginPhone';
 
 export default function Login() {
-    const navigate = useNavigate();
-    const [data, setData] = useState({
-        email: "",
-        password: "",
-    });
+    // const navigate = useNavigate();
+    // const [data, setData] = useState({
+    //     email: "",
+    //     password: "",
+    // });
 
-    const onLogin = async (e) => {
-        e.preventDefault();
-        if (data.email === '') {
-            toast.error('Email cannot be null', {
-                autoClose: 2000
-            })
-        } else if (data.password === '') {
-            toast.error('Password cannot be null', {
-                autoClose: 2000
-            })
-        }
-        else if (data.password.length < 8) {
-            toast.error('Password must have at least 8 characters', {
-                autoClose: 2000
-            })
-        }
-        else {
-            try {
-                const response = await axios.post(API_USER_LOGIN, data);
-                if (response && response.status === 200) {
-                    console.log("Login success, ", response.data);
-                    // alert("Login success");
-                    localStorage.setItem("token", response?.data.token);
-                    localStorage.setItem("user", JSON.stringify(response.data));
-                    toast.success('Login success', {
-                        autoClose: 3000
-                    })
-                    navigate('/')
-                    // setTimeout(() => {
-                    //     window.location.reload()
-                    // }, 1000);
-                };
-            } catch (error) {
-                if (error.response && error.response.data) {
-                    console.log(error.response.data.error)
-                    toast.error(`${error.response.data.error}`, {
-                        autoClose: 2000
-                    })
-                }
-                else {
-                    toast.error('Error', {
-                        autoClose: 2000
-                    })
-                }
-            }
-        }
-    }
+    const [value, setValue] = React.useState('1');
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    // const onLogin = async (e) => {
+    //     e.preventDefault();
+    //     if (data.email === '') {
+    //         toast.error('Email cannot be null', {
+    //             autoClose: 2000
+    //         })
+    //     } else if (data.password === '') {
+    //         toast.error('Password cannot be null', {
+    //             autoClose: 2000
+    //         })
+    //     }
+    //     else if (data.password.length < 8) {
+    //         toast.error('Password must have at least 8 characters', {
+    //             autoClose: 2000
+    //         })
+    //     }
+    //     else {
+    //         try {
+    //             const response = await axios.post(API_USER_LOGIN, data);
+    //             if (response && response.status === 200) {
+    //                 console.log("Login success, ", response.data);
+    //                 // alert("Login success");
+    //                 localStorage.setItem("token", response?.data.token);
+    //                 localStorage.setItem("user", JSON.stringify(response.data));
+    //                 toast.success('Login success', {
+    //                     autoClose: 3000
+    //                 })
+    //                 navigate('/')
+    //                 // setTimeout(() => {
+    //                 //     window.location.reload()
+    //                 // }, 1000);
+    //             };
+    //         } catch (error) {
+    //             if (error.response && error.response.data) {
+    //                 console.log(error.response.data)
+    //                 toast.error(`${error.response.data.message}`, {
+    //                     autoClose: 2000
+    //                 })
+    //             }
+    //             else {
+    //                 toast.error('Error', {
+    //                     autoClose: 2000
+    //                 })
+    //             }
+    //         }
+    //     }
+    // }
     return (
         <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
             <div>
@@ -78,59 +91,27 @@ export default function Login() {
                                         <div className="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style={{ backgroundImage: 'url("./assets/img/illustrations/illustration-signin.jpg")', backgroundSize: 'cover' }}>
                                         </div>
                                     </div>
+
                                     <div className="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
-                                        <div className="card card-plain">
-                                            <div className="card-header">
-                                                <h4 className="font-weight-bolder">Sign In</h4>
-                                                <p className="mb-0">Enter your email and password to Sign In</p>
-                                            </div>
-                                            <div className="card-body">
-                                                <form >
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        {/*<label class="form-label">Username</label>*/}
-                                                        <input onChange={(e) => {
-                                                            setData({ ...data, email: e.target.value })
-                                                            console.log('username value: ', data.username);
-                                                        }
-                                                        } type="text" className="form-control" name="username" placeholder="Email" required />
-                                                    </div>
-                                                    {/*<label style="position: relative; bottom: -10px ; color: #344767; font-weight: 700; font-size: 14px" class="form-label">Password</label>*/}
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        <input onChange={(e) =>
-                                                            setData({ ...data, password: e.target.value })
-                                                        } type="password" className="form-control" placeholder="Password" name="password" required />
-                                                    </div>
-                                                    <div className="form-check form-check-info text-start ps-0">
-                                                        <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
-                                                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                                                            I agree the <a href="#" className="text-dark font-weight-bolder">Terms and Conditions</a>
-                                                        </label>
-                                                    </div>
-                                                    <div className="text-center">
-                                                        <button onClick={(e) => {
-                                                            {
-                                                                e.preventDefault()
-                                                                onLogin(e);
-                                                            }
-                                                        }} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div className="card-footer text-center pt-0 px-lg-2 px-1">
-                                                <p className="mb-2 text-sm mx-auto">
-                                                    Don't have an account?
-                                                    <Link to="/register">
-                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Sign Up </span>
-                                                    </Link>
-                                                </p>
-                                                <p className="mb-2 text-sm mx-auto">
-                                                    or continue with
-                                                    <Link to="/SignUpWithPhone">
-                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Phone Number</span>
-                                                    </Link>
-                                                </p>
-                                            </div>
-                                        </div>
+                                        <Box sx={{ width: '100%' }}>
+                                            <TabContext value={value} >
+                                                <Box >
+                                                    <TabList textColor="secondary"
+                                                        indicatorColor="secondary"
+                                                        aria-label="secondary tabs example" onChange={handleChange} >
+                                                        <Tab label="Login with email" value="1" />
+                                                        <Tab label="Login with phone" value="2" />
+                                                    </TabList>
+                                                </Box>
+                                                <TabPanel sx={{ padding: '0' }} value="1">
+                                                    <LoginEmail />
+                                                </TabPanel>
+                                                <TabPanel sx={{ padding: '0' }} value="2">
+                                                    <LoginPhone />
+                                                </TabPanel>
+                                            </TabContext>
+                                        </Box>
+
                                     </div>
                                 </div>
                             </div>
