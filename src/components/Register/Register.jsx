@@ -52,9 +52,9 @@ export default function Register() {
                     autoClose: 3000
                 })
                 navigate('/login')
-                setTimeout(() => {
-                    window.location.reload()
-                }, 2500);
+                // setTimeout(() => {
+                //     window.location.reload()
+                // }, 2500);
             };
         }
     }

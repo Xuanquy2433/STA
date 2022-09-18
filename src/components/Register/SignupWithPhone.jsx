@@ -86,6 +86,9 @@ export default function SignUpWithPhone() {
                             autoClose: 3000
                         })
                     };
+                    setTimeout(() => {
+                        setShow(!show)
+                    }, 1200);
                 }
             } catch (error) {
                 if (error.response && error.response.data) {
@@ -100,10 +103,6 @@ export default function SignUpWithPhone() {
                     })
                 }
             }
-            setTimeout(() => {
-                setShow(!show)
-            }, 1200);
-
         }
         else {
             toast.error('Please enter phone number ', {
