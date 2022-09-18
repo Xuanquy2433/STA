@@ -45,9 +45,14 @@ function LoginEmail() {
                     // }, 1000);
                 };
             } catch (error) {
-                if (error.response && error.response.data) {
-                    console.log(error.response.data)
+                console.log(error.response.data)
+                if (error.response.data.message) {
                     toast.error(`${error.response.data.message}`, {
+                        autoClose: 2000
+                    })
+                }
+                else if (error.response.data.error) {
+                    toast.error(`${error.response.data.error}`, {
                         autoClose: 2000
                     })
                 }

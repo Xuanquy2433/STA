@@ -2,6 +2,8 @@ export const API = "http://localhost:8082";
 
 export const API_USER_LOGIN = `${API}/login`;
 
+export const API_USER_LOGIN_PHONE = `${API}/phoneLogin`;
+
 export const API_USER_SIGNUP = `${API}/signup`;
 
 export const API_USER_SIGNUP_PHONE = `${API}/phoneSignup`;
