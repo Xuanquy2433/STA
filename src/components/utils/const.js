@@ -51,3 +51,5 @@ export const API_GET_LOGS = `${API}/market/all?status=`
 export const API_FORGET_PASSWORD = `${API}/forget_password/?email=`
 
 export const API_RESET_PASSWORD = `${API}/reset_password/`
+
+export const API_RESET_PASSWORD_PHONE = `${API}/reset_phone_password/`

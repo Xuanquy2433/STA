@@ -70,7 +70,7 @@ export default function ForgetPassword() {
                                         <div className="card card-plain">
                                             <div className="card-header">
                                                 <h4 className="font-weight-bolder">Forget Password</h4>
-                                                <p className="mb-0">Enter your email to forger password </p>
+                                                <p className="mb-0">Enter your email to forget password </p>
                                             </div>
                                             <div className="card-body">
                                                 <form >
