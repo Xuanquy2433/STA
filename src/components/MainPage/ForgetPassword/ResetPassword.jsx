@@ -3,14 +3,55 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
-import { API_FORGET_PASSWORD } from '../../utils/const';
+import { API_FORGET_PASSWORD, API_RESET_PASSWORD } from '../../utils/const';
 
 export default function ResetPassword() {
 
-    let { token } = useParams()
-    console.log(token);
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const token = params.get('token');
+    console.log("token ", token);
 
 
+    const [data, setData] = useState({
+        token: token,
+        newPassword: ""
+    })
+
+    const onSendPass = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.get(API_RESET_PASSWORD + "?newPassword=" + data.newPassword + "&token=" + data.token)
+            if (response && response.status === 200) {
+                setData(response.data)
+                toast.success('Password has been sent successfully', {
+                    autoClose: 3000
+                })
+            }
+        } catch (error) {
+            console.log(error.response.data)
+            if (error.response.data.message) {
+                toast.error(`${error.response.data.message}`, {
+                    autoClose: 2000
+                })
+            }
+            else if (error.response.data.error) {
+                toast.error(`${error.response.data.error}`, {
+                    autoClose: 2000
+                })
+            }
+            else {
+                toast.error('Error', {
+                    autoClose: 2000
+                })
+            }
+        }
+    }
+
+    const onchange = (e) => {
+        setData({ ...data, [e.target.name]: e.target.value })
+        console.log("onchange: ", e.target.value);
+    }
     return (
 
         <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
@@ -42,7 +83,7 @@ export default function ResetPassword() {
                                             <form >
                                                 <div className="input-group input-group-outline mb-3">
                                                     {/*<label class="form-label">Username</label>*/}
-                                                    <input type="text" className="form-control" name="password" placeholder="Reset Password" required />
+                                                    <input onChange={onchange} type="text" className="form-control" name="newPassword" placeholder="Reset Password" required />
                                                 </div>
                                                 <div className="form-check form-check-info text-start ps-0">
                                                     <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
@@ -51,7 +92,7 @@ export default function ResetPassword() {
                                                     </label>
                                                 </div>
                                                 <div className="text-center">
-                                                    <button type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Send</button>
+                                                    <button onClick={onSendPass} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Send</button>
                                                 </div>
                                             </form>
                                         </div>
