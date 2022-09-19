@@ -37,9 +37,6 @@ import SignUpWithPhone from "../Register/SignupWithPhone";
 import ForgetPassword from "../MainPage/ForgetPassword/ForgetPassword";
 import ResetPassword from "../MainPage/ForgetPassword/ResetPassword";
 
-
-
-
 const RouterScreen = () => {
     let tokens = localStorage.getItem("token");
     let dataUser = localStorage.getItem("user");
@@ -95,7 +92,7 @@ const RouterScreen = () => {
                     <Route path="/activityUser" element={<Activity {...data} />} />
                     <Route path="/profile/buySta" element={<BuySta />} />
                     <Route path="/forgetpassword" element={<ForgetPassword />} />
-                    <Route path="/reset_password/:token" element={<ResetPassword />} />
+                    <Route path="/reset_password/" element={<ResetPassword />} />
 
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
