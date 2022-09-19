@@ -95,7 +95,7 @@ const RouterScreen = () => {
                     <Route path="/activityUser" element={<Activity {...data} />} />
                     <Route path="/profile/buySta" element={<BuySta />} />
                     <Route path="/forgetpassword" element={<ForgetPassword />} />
-                    <Route path="/reset_password/?token" element={<ResetPassword />} />
+                    <Route path="/reset_password/:token" element={<ResetPassword />} />
 
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
