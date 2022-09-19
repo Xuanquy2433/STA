@@ -6,17 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { API_FORGET_PASSWORD } from '../../utils/const';
 
 export default function ForgetPassword() {
-    const [data, setData] = useState({
-        email: ""
-    })
-
-    const onChange = (e) => {
-        setData({ ...data, [e.target.name]: e.target.value })
-        console.log("onchange: ", e.target.value);
-    }
+    const [data, setData] = useState()
+    console.log("dataa ", data);
     const onSendPasswordForget = async (e) => {
         e.preventDefault();
-        const response = await axios.post(API_FORGET_PASSWORD, data)
+        const response = await axios.post(API_FORGET_PASSWORD + data)
         if (response && response.status === 200) {
             toast.success('Password has been sent successfully', {
                 autoClose: 3000
@@ -58,7 +52,7 @@ export default function ForgetPassword() {
                                                 <form >
                                                     <div className="input-group input-group-outline mb-3">
                                                         {/*<label class="form-label">Username</label>*/}
-                                                        <input onChange={onChange} type="text" className="form-control" name="email" placeholder="Email" required />
+                                                        <input onChange={(e) => setData(e.target.value)} type="text" className="form-control" name="email" placeholder="Email" required />
                                                     </div>
                                                     <div className="form-check form-check-info text-start ps-0">
                                                         <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
