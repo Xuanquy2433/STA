@@ -171,6 +171,12 @@ function LoginPhone() {
                             <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Phone Number</span>
                         </Link>
                     </p>
+
+                    <p className="mb-2 text-sm mx-auto">
+                        <Link to="/forgetpassword">
+                            <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Forget Password?</span>
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>
