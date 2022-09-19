@@ -32,6 +32,7 @@ import AdminPage from "../Admin/AdminPage";
 import axios from "axios";
 import { API_GET_WALLET } from "../utils/const";
 import ShowInfoUserController from './../controller/ShowInfoUserController';
+import SignUpWithPhone from "../Register/SignupWithPhone";
 
 
 
@@ -81,6 +82,7 @@ const RouterScreen = () => {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/SignUpWithPhone" element={<SignUpWithPhone />} />
 
                     {/* <Route path="/profile" element={<Profile />} /> */}
                     <Route path="/myProfile" element={<MyProfile />} />
