@@ -3,7 +3,8 @@ import {
     Routes,
     Navigate,
     Route,
-    Link
+    Link,
+    useParams
 } from "react-router-dom";
 
 import { Redirect } from 'react-router-dom';
@@ -34,12 +35,13 @@ import { API_GET_WALLET } from "../utils/const";
 import ShowInfoUserController from './../controller/ShowInfoUserController';
 import SignUpWithPhone from "../Register/SignupWithPhone";
 import ForgetPassword from "../MainPage/ForgetPassword/ForgetPassword";
+import ResetPassword from "../MainPage/ForgetPassword/ResetPassword";
 
 
 
 
 const RouterScreen = () => {
-    let token = localStorage.getItem("token");
+    let tokens = localStorage.getItem("token");
     let dataUser = localStorage.getItem("user");
     const [data, setData] = useState({
         "sta": 0,
@@ -48,10 +50,12 @@ const RouterScreen = () => {
         "lastName": '',
         "email": '',
     })
+    let { token } = useParams()
+    console.log(token);
 
     const getUserSta = async () => {
-        if (token) {
-            const response = await axios.post(API_GET_WALLET + token);
+        if (tokens) {
+            const response = await axios.post(API_GET_WALLET + tokens);
             console.log("sta ", response.data);
             if (dataUser && response && response.status === 200) {
                 setData({ ...data, sta: response.data.sta, money: response.data.money, firstName: JSON.parse(dataUser).userDataDto.firstName, lastName: JSON.parse(dataUser).userDataDto.lastName, email: JSON.parse(dataUser).userDataDto.email });
@@ -91,6 +95,7 @@ const RouterScreen = () => {
                     <Route path="/activityUser" element={<Activity {...data} />} />
                     <Route path="/profile/buySta" element={<BuySta />} />
                     <Route path="/forgetpassword" element={<ForgetPassword />} />
+                    <Route path="/reset_password/?token" element={<ResetPassword />} />
 
                     <Route path="/basic" element={<Basic />} />
                     <Route path="/gold" element={<Gold />} />
