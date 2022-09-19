@@ -47,3 +47,5 @@ export const API_UPDATE_REQUEST =`${API}/request/?token=`;
 export const API_GET_REQUEST =`${API}/request/all?status=pending`;
 
 export const API_GET_LOGS = `${API}/market/all?status=`
+
+export const API_FORGET_PASSWORD = `${API}/forget_password/?email=`
