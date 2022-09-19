@@ -9,11 +9,9 @@ import PhoneInput from 'react-phone-number-input';
 function LoginPhone() {
     const navigate = useNavigate();
     const [data, setData] = useState({
-        phone: "",
+        phoneNumber: "",
         password: "",
-        code: ""
     });
-
     const onLogin = async (e) => {
         e.preventDefault();
         if (data.phone === '') {
@@ -113,7 +111,7 @@ function LoginPhone() {
                 </div>
                 <div className="card-body">
                     <form >
-                        <div className="input-group input-group-outline mb-3">
+                        <div className="input-group input-group-outline mb-4">
                             {/*<label class="form-label">Username</label>*/}
                             {/* <input onChange={(e) => {
                                 setData({ ...data, phone: e.target.value })
@@ -125,37 +123,28 @@ function LoginPhone() {
                                 placeholder="Enter your phone number"
                                 onChange={(value) => {
                                     setValue(value)
-                                    setData({ ...data, phone: value })
+                                    setData({ ...data, phoneNumber: value })
                                 }} />
                         </div>
-                        <div className="text-end mb-3">
-                            <button onClick={submitOtp} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
-                        </div>
                         {/*<label style="position: relative; bottom: -10px ; color: #344767; font-weight: 700; font-size: 14px" class="form-label">Password</label>*/}
-                        {show && <React.Fragment>
-                            <div className="input-group input-group-outline mb-3">
-                                <input onChange={(e) =>
-                                    setData({ ...data, code: e.target.value })
-                                } type="text" className="form-control" placeholder="OTP" name="password" required />
-                            </div>
-                            <div className="input-group input-group-outline mb-3">
-                                <input onChange={(e) =>
-                                    setData({ ...data, password: e.target.value })
-                                } type="password" className="form-control" placeholder="Password" name="password" required />
-                            </div>
-                            <div className="form-check form-check-info text-start ps-0">
-                                <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
-                                <label className="form-check-label" htmlFor="flexCheckDefault">
-                                    I agree the <Link to={'#'} className="text-dark font-weight-bolder">Terms and Conditions</Link>
-                                </label>
-                            </div>
-                            <div className="text-center">
-                                <button onClick={(e) => {
-                                    e.preventDefault()
-                                    onLogin(e);
-                                }} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
-                            </div>
-                        </React.Fragment>}
+                        <div className="input-group input-group-outline mb-3">
+                            <input onChange={(e) =>
+                                setData({ ...data, password: e.target.value })
+                            } type="password" className="form-control" placeholder="Password" name="password" required />
+                        </div>
+                        <div className="form-check form-check-info text-start ps-0">
+                            <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
+                            <label className="form-check-label" htmlFor="flexCheckDefault">
+                                I agree the <Link to={'#'} className="text-dark font-weight-bolder">Terms and Conditions</Link>
+                            </label>
+                        </div>
+                        <div className="text-center">
+                            <button onClick={(e) => {
+                                e.preventDefault()
+                                onLogin(e);
+                            }} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign In</button>
+                        </div>
+
                     </form>
                 </div>
                 <div className="card-footer text-center pt-0 px-lg-2 px-1">
