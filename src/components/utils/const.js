@@ -53,3 +53,6 @@ export const API_FORGET_PASSWORD = `${API}/forget_password/?email=`
 export const API_RESET_PASSWORD = `${API}/reset_password/`
 
 export const API_RESET_PASSWORD_PHONE = `${API}/reset_phone_password/`
+
+export const API_USER_PROFILE = `${API}/user/profile`
+
