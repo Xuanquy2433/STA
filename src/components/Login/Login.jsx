@@ -13,7 +13,7 @@ import LoginEmail from './LoginEmail';
 import LoginPhone from './LoginPhone';
 
 export default function Login() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const [data, setData] = useState({
     //     email: "",
     //     password: "",
@@ -24,7 +24,14 @@ export default function Login() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    let token = localStorage.getItem("token");
+    let user = localStorage.getItem("user");
 
+    useEffect(() => {
+        if (user && token) {
+            navigate('/')
+        }
+    })
     // const onLogin = async (e) => {
     //     e.preventDefault();
     //     if (data.email === '') {
