@@ -149,6 +149,7 @@ export default function SignUpWithPhone() {
                                                             setData({ ...data, phoneNumber: e.target.value })
                                                         } className="form-control" placeholder="Enter your phone" required /> */}
                                                         <PhoneInput
+                                                        style={{border:"1px solid #ddd", borderRadius:"5px",padding:"0.625rem 0.75rem", width:"100%"}}
                                                             defaultCountry="VN"
                                                             placeholder="Enter your phone number"
                                                             onChange={(value) => {

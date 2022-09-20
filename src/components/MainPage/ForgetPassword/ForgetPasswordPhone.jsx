@@ -85,93 +85,65 @@ function ForgetPasswordPhone() {
     }
 
     return (
-        <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
-            <div>
-                <div className="container position-sticky z-index-sticky top-0">
-                    <div className="row">
-                        <div className="col-12">
-
-                        </div>
-                    </div>
-                </div>
-                <main className="main-content  mt-0">
-                    <section>
-                        <div className="page-header min-vh-100">
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                                        <div className="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style={{ backgroundImage: 'url("./assets/img/illustrations/illustration-signin.jpg")', backgroundSize: 'cover' }}>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
-
-                                        <div className="card card-plain">
-                                            <div className="card-header">
-                                                <h4 className="font-weight-bolder">Forget password with phone number</h4>
-                                                {/* <p className="mb-0">Enter your email to forger password </p> */}
-                                            </div>
-                                            <div className="card-body">
-                                                <div >
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        {/*<label class="form-label">Username</label>*/}
-                                                        {/* <input onChange={onchange} type="text" className="form-control" name="phoneNumber" placeholder="Phone Number" required /> */}
-                                                        <PhoneInput
-                                                            defaultCountry="VN"
-                                                            placeholder="Enter your phone number"
-                                                            onChange={(value) => {
-                                                                setValue(value)
-                                                                setData({ ...data, phoneNumber: value.replace('+', '%2B') })
-                                                            }} />
-                                                    </div>
-                                                    <div className="text-end mb-3">
-                                                        <button onClick={submitOtp} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
-                                                    </div>
-                                                    {show && <React.Fragment>
-                                                        <div className="input-group input-group-outline mb-3">
-                                                            {/*<label class="form-label">Username</label>*/}
-                                                            <input onChange={onchange} type="text" className="form-control" name="code" placeholder="OTP" required />
-                                                        </div>
-                                                        <div className="input-group input-group-outline mb-3">
-                                                            {/*<label class="form-label">Username</label>*/}
-                                                            <input onChange={onchange} type="password" className="form-control" name="newPassword" placeholder="Password" required />
-                                                        </div>
-                                                        <div className="text-center">
-                                                            <button onClick={resetPassword} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Send</button>
-                                                        </div>
-                                                    </React.Fragment>}
-                                                    {/* <div className="form-check form-check-info text-start ps-0">
-                                                        <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
-                                                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                                                            I agree the <a href="#" className="text-dark font-weight-bolder">Terms and Conditions</a>
-                                                        </label>
-                                                    </div> */}
-
-                                                </div>
-                                            </div>
-                                            <div className="card-footer text-center pt-0 px-lg-2 px-1">
-                                                <p className="mb-2 text-sm mx-auto">
-                                                    Don't have an account?
-                                                    <Link to="/register">
-                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Sign Up </span>
-                                                    </Link>
-                                                </p>
-                                                <p className="mb-2 text-sm mx-auto">
-                                                    or continue with
-                                                    <Link to="/SignUpWithPhone">
-                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Phone Number</span>
-                                                    </Link>
-                                                </p>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </main>
+        <div className="card card-plain">
+            <div className="card-header">
+                <h4 className="font-weight-bolder">Forget password with phone number</h4>
+                {/* <p className="mb-0">Enter your email to forger password </p> */}
             </div>
+            <div className="card-body">
+                <div >
+                    <div className="input-group input-group-outline mb-3">
+                        {/*<label class="form-label">Username</label>*/}
+                        {/* <input onChange={onchange} type="text" className="form-control" name="phoneNumber" placeholder="Phone Number" required /> */}
+                        <PhoneInput
+                            style={{border:"1px solid #ddd", borderRadius:"5px",padding:"0.625rem 0.75rem", width:"100%"}}
+                            defaultCountry="VN"
+                            placeholder="Enter your phone number"
+                            onChange={(value) => {
+                                setValue(value)
+                                setData({ ...data, phoneNumber: value.replace('+', '%2B') })
+                            }} />
+                    </div>
+                    <div className="text-end mb-3">
+                        <button onClick={submitOtp} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">Submit</button>
+                    </div>
+                    {show && <React.Fragment>
+                        <div className="input-group input-group-outline mb-3">
+                            {/*<label class="form-label">Username</label>*/}
+                            <input onChange={onchange} type="text" className="form-control" name="code" placeholder="OTP" required />
+                        </div>
+                        <div className="input-group input-group-outline mb-3">
+                            {/*<label class="form-label">Username</label>*/}
+                            <input onChange={onchange} type="password" className="form-control" name="newPassword" placeholder="New password" required />
+                        </div>
+                        <div className="text-center">
+                            <button onClick={resetPassword} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Send</button>
+                        </div>
+                    </React.Fragment>}
+                    {/* <div className="form-check form-check-info text-start ps-0">
+                    <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
+                    <label className="form-check-label" htmlFor="flexCheckDefault">
+                        I agree the <a href="#" className="text-dark font-weight-bolder">Terms and Conditions</a>
+                    </label>
+                </div> */}
+
+                </div>
+            </div>
+            <div className="card-footer text-center pt-0 px-lg-2 px-1">
+                <p className="mb-2 text-sm mx-auto">
+                    Don't have an account?
+                    <Link to="/register">
+                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Sign Up </span>
+                    </Link>
+                </p>
+                <p className="mb-2 text-sm mx-auto">
+                    or continue with
+                    <Link to="/SignUpWithPhone">
+                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Phone Number</span>
+                    </Link>
+                </p>
+            </div>
+
         </div>
     )
 }

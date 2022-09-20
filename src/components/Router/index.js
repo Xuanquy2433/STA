@@ -92,7 +92,7 @@ const RouterScreen = () => {
                     <Route path="/editProfile" element={<EditProfile />} />
                     <Route path="/activityUser" element={<Activity {...data} />} />
                     <Route path="/profile/buySta" element={<BuySta />} />
-                    <Route path="/forgetPassword" element={<ForgetPasswordPhone />} />
+                    <Route path="/forgetPassword" element={<ForgetPassword />} />
                     <Route path="/reset_password/" element={<ResetPassword />} />
 
                     <Route path="/basic" element={<Basic />} />

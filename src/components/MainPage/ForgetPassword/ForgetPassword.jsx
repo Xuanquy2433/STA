@@ -4,11 +4,23 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { API_FORGET_PASSWORD } from '../../utils/const';
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import ForgetPasswordEmail from './ForgetPasswordEmail';
+import ForgetPasswordPhone from './ForgetPasswordPhone';
 
 export default function ForgetPassword() {
     const [data, setData] = useState({
         email: ""
     })
+    const [value, setValue] = React.useState('1');
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
     const onSendPasswordForget = async (e) => {
         e.preventDefault();
         try {
@@ -44,7 +56,6 @@ export default function ForgetPassword() {
         console.log("onchange: " + e.target.value);
     }
 
-
     return (
         <div style={{ backgroundColor: "white", zIndex: "-1", marginTop: "60px" }}>
             <div>
@@ -67,44 +78,27 @@ export default function ForgetPassword() {
 
                                     <div className="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
 
-                                        <div className="card card-plain">
-                                            <div className="card-header">
-                                                <h4 className="font-weight-bolder">Forget Password</h4>
-                                                <p className="mb-0">Enter your email to forget password </p>
-                                            </div>
-                                            <div className="card-body">
-                                                <form >
-                                                    <div className="input-group input-group-outline mb-3">
-                                                        {/*<label class="form-label">Username</label>*/}
-                                                        <input onChange={onchange} type="text" className="form-control" name="email" placeholder="Email" required />
-                                                    </div>
-                                                    <div className="form-check form-check-info text-start ps-0">
-                                                        <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />
-                                                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                                                            I agree the <a href="#" className="text-dark font-weight-bolder">Terms and Conditions</a>
-                                                        </label>
-                                                    </div>
-                                                    <div className="text-center">
-                                                        <button onClick={onSendPasswordForget} type="submit" className="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Send</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div className="card-footer text-center pt-0 px-lg-2 px-1">
-                                                <p className="mb-2 text-sm mx-auto">
-                                                    Don't have an account?
-                                                    <Link to="/register">
-                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Sign Up </span>
-                                                    </Link>
-                                                </p>
-                                                <p className="mb-2 text-sm mx-auto">
-                                                    or continue with
-                                                    <Link to="/SignUpWithPhone">
-                                                        <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Phone Number</span>
-                                                    </Link>
-                                                </p>
-                                            </div>
+                                        <Box sx={{ width: '100%' }}>
+                                            <TabContext value={value} >
+                                                <Box >
+                                                    <TabList textColor="secondary"
+                                                        indicatorColor="secondary"
+                                                        aria-label="secondary tabs example" onChange={handleChange} >
+                                                        <Tab label="Forget with email" value="1" />
+                                                        <Tab label="Forget with phone" value="2" />
+                                                    </TabList>
+                                                </Box>
+                                                <TabPanel sx={{ padding: '0' }} value="1">
+                                                    <ForgetPasswordEmail />
+                                                </TabPanel>
+                                                <TabPanel sx={{ padding: '0' }} value="2">
+                                                    <ForgetPasswordPhone />
+                                                </TabPanel>
+                                            </TabContext>
+                                        </Box>
 
-                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>

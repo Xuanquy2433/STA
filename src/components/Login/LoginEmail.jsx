@@ -118,7 +118,7 @@ function LoginEmail() {
                             <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Phone Number</span>
                         </Link>
                     </p> <p className="mb-2 text-sm mx-auto">
-                        <Link to="/forgetpassword">
+                        <Link to="/forgetPassword">
                             <span style={{ fontSize: '.876rem' }} className="text-primary text-gradient font-weight-bold"> Forget Password?</span>
                         </Link>
                     </p>
