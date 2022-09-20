@@ -7,6 +7,8 @@ import { API_FORGET_PASSWORD, API_RESET_PASSWORD } from '../../utils/const';
 
 export default function ResetPassword() {
 
+    const navigate = useNavigate();
+
     const search = window.location.search;
     const params = new URLSearchParams(search);
     const token = params.get('token');
@@ -24,9 +26,10 @@ export default function ResetPassword() {
             const response = await axios.get(API_RESET_PASSWORD + "?newPassword=" + data.newPassword + "&token=" + data.token)
             if (response && response.status === 200) {
                 setData(response.data)
-                toast.success('Password has been sent successfully', {
+                toast.success('Password has been successfully recovered', {
                     autoClose: 3000
                 })
+                navigate('/login')
             }
         } catch (error) {
             console.log(error.response.data)
@@ -83,7 +86,7 @@ export default function ResetPassword() {
                                             <form >
                                                 <div className="input-group input-group-outline mb-3">
                                                     {/*<label class="form-label">Username</label>*/}
-                                                    <input onChange={onchange} type="text" className="form-control" name="newPassword" placeholder="Reset Password" required />
+                                                    <input onChange={onchange} type="password" className="form-control" name="newPassword" placeholder="New Password" required />
                                                 </div>
                                                 <div className="form-check form-check-info text-start ps-0">
                                                     <input className="form-check-input" type="checkbox" defaultValue id="flexCheckDefault" defaultChecked />

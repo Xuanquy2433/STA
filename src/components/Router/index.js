@@ -36,6 +36,7 @@ import ShowInfoUserController from './../controller/ShowInfoUserController';
 import SignUpWithPhone from "../Register/SignupWithPhone";
 import ForgetPassword from "../MainPage/ForgetPassword/ForgetPassword";
 import ResetPassword from "../MainPage/ForgetPassword/ResetPassword";
+import ForgetPasswordPhone from "../MainPage/ForgetPassword/ForgetPasswordPhone";
 
 const RouterScreen = () => {
     let tokens = localStorage.getItem("token");
@@ -91,7 +92,7 @@ const RouterScreen = () => {
                     <Route path="/editProfile" element={<EditProfile />} />
                     <Route path="/activityUser" element={<Activity {...data} />} />
                     <Route path="/profile/buySta" element={<BuySta />} />
-                    <Route path="/forgetpassword" element={<ForgetPassword />} />
+                    <Route path="/forgetPassword" element={<ForgetPasswordPhone />} />
                     <Route path="/reset_password/" element={<ResetPassword />} />
 
                     <Route path="/basic" element={<Basic />} />
