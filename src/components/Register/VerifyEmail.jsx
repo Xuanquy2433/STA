@@ -16,7 +16,7 @@ export default function VerifyEmail() {
     const verifyEmail = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.get(API_VERIFY_EMAIL + "?code=" + code)
+            const response = await axios.get(API_VERIFY_EMAIL + code)
             if (response && response.status === 200) {
                 toast.success('Verify email has been successfully', {
                     autoClose: 3000

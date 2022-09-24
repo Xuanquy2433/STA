@@ -56,6 +56,6 @@ export const API_RESET_PASSWORD_PHONE = `${API}/reset_phone_password/`
 
 export const API_USER_PROFILE = `${API}/user/profile`
 
-export const API_VERIFY_EMAIL = `${API}/verify/`
+export const API_VERIFY_EMAIL = `${API}/verify/?code=`
 
 
